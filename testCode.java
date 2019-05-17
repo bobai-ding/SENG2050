@@ -1,8 +1,9 @@
-Import Java.io.*;
+import java.io.*;
 
 public class testCode{
 
-  Public Void Static Main(String[] args){
+  public static void main(String[] args){
     System.out.println("Hello World");
+    return;
   }
 }
