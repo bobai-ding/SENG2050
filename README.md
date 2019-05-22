@@ -9,7 +9,7 @@ CURRENT TODO by 26th
 
 Will;
 
-1. Use case descriptions
+1. Use case descriptions _/
 2. Use case diagrams
 
 Lachlan;
@@ -19,6 +19,6 @@ Lachlan;
 
 Simi;
 
-5. Content model
+5. Content model _/
 6. A development plan (which person is going to work on what, integration plan, timeline etc.),
 maximum one page.
