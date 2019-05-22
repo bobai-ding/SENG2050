@@ -22,3 +22,13 @@ Simi;
 5. Content model _/
 6. A development plan (which person is going to work on what, integration plan, timeline etc.),
 maximum one page.
+
+
+Program split:
+Will:
+Database integration
+
+Lachlan:
+
+Simi:
+Objects
