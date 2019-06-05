@@ -5,30 +5,29 @@ assignment 3 stuff with the things
 google doc w/ site planning
 https://docs.google.com/document/d/150ViThCGTeSyuNGluRY9Wxn13LGmbo5C23dWn6JjlFc/edit?usp=sharing
 
-CURRENT TODO by 26th
+CURRENT TODO by the 9th
+
+General stuff (and in no specific order);
+
+1. Make it look nice
+2. User login w/ verification
+3. 
+4.
 
 Will;
 
-1. Use case descriptions _/
-2. Use case diagrams
+1. Database stuff _
+2. 
+3.
 
 Lachlan;
 
-3. Navigation models
-4. Presentation models
+1. Objects _
+2.
+3.
 
 Simi;
 
-5. Content model _/
-6. A development plan (which person is going to work on what, integration plan, timeline etc.),
-maximum one page. _/
-
-
-Program split:
-Will:
-Database integration
-
-Lachlan:
-
-Simi:
-Objects
+1.
+2.
+3.
