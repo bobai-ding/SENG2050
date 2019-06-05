@@ -8,9 +8,10 @@
 </head>
 <body>
 	<table>
-		<tr><th>UserID</th><th>Report Content</th><th>Time</th><th>Date</th></tr>
+		<tr><th>UserID</th><th>Title<th>Report Content</th><th>Time</th><th>Date</th></tr>
 			<tr>
 				<td><c:out value="${specificReport.author.uid}"/></td>
+				<td><c:out value="${specificReport.title}"/></td>
 				<td><c:out value="${specificReport.reportContent}"/></td>
 				<td><c:out value="${specificReport.time}"/></td>
 				<td><c:out value="${specificReport.date}"/></td>

@@ -20,8 +20,9 @@ public class TempController extends HttpServlet {
 			if (submit.equals("ADD")) {
 				String uid = request.getParameter("uid");
 				String content = request.getParameter("content");
-				System.out.println("LOG: Adding new entry under UserID: " + uid);
-				Report.addReport(uid, content);
+				String title = request.getParameter("title");
+				System.out.println("LOG: Adding new entry under UserID: " + uid + " with Title: " + title);
+				Report.addReport(uid, content, title);
 			} 
 			else if (submit.equals("DELETE")) {
 				String uid = request.getParameter("uid");
@@ -34,8 +35,9 @@ public class TempController extends HttpServlet {
 			}
 			else if (submit.equals("FIND")) {
 				String uid = request.getParameter("uid");
-				System.out.println("LOG: Finding entry under UserID: " + uid);
-				request.setAttribute("specificReport", Database.returnSpecificReport(uid, null));
+				String title = request.getParameter("title");
+				System.out.println("LOG: Finding entry under UserID: " + uid + " with Title: " + title);
+				request.setAttribute("specificReport", Database.returnSpecificReport(uid, title));
 				dispatchLocation = "/WEB-INF/jsp/SpecificReport.jsp";
 			}
 		} else {

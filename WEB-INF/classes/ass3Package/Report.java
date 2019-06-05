@@ -147,7 +147,14 @@ public class Report implements Serializable{
     	this.reportContent = content;
     }
     
-    
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	//have an array list of the comment shiz
 
     
@@ -174,9 +181,10 @@ public class Report implements Serializable{
 				
 				user.setUid(result.getString(1));
 				report.setAuthor(user);
-				report.setReportContent(result.getString(2));
-				report.setTime(result.getTime(3).toLocalTime());
-				report.setDate(result.getDate(4).toLocalDate());
+				report.setTitle(result.getString(2));
+				report.setReportContent(result.getString(3));
+				report.setTime(result.getTime(4).toLocalTime());
+				report.setDate(result.getDate(5).toLocalDate());
 				reports.add(0, report);
 			}
 		}
@@ -191,30 +199,29 @@ public class Report implements Serializable{
 		
 	}
 	
-	
 	// Add a new report to database
-	public static void addReport(String uid, String reportContent) {
+	public static void addReport(String uid, String title, String reportContent) {
 		Connection con = null;
 		Time tempTime = Time.valueOf(LocalTime.now());
 		Date tempDate = Date.valueOf(LocalDate.now());
 		try {
 			con = Config.getConnection();
-			PreparedStatement ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?)");
+			PreparedStatement ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?,?)");
 			ps.setString(1, uid);
-			ps.setString(2, reportContent);
-			ps.setTime(3, tempTime);
-			ps.setDate(4, tempDate);
+			ps.setString(2, title);
+			ps.setString(3, reportContent);
+			ps.setTime(4, tempTime);
+			ps.setDate(5, tempDate);
 			ps.executeUpdate();
 		} catch(Exception e){
 			System.err.println(e.getMessage());
-			System.err.println(e.getStackTrace());
 		}
 	}
 	
 	// Create table in database for reports
 	public static void createReportTable() {
-		String varNames[] = {"UserID", "ReportContent", "Time", "Date"};
-		String varType[] = {"VARCHAR(80)", "VARCHAR(1000)", "TIME", "DATE"};
+		String varNames[] = {"UserID", "Title", "ReportContent", "Time", "Date"};
+		String varType[] = {"VARCHAR(80)", "VARCHAR(80)", "VARCHAR(1000)", "TIME", "DATE"};
 		
 		Database.createTableString("reports", varNames, varType);
 	}

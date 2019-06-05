@@ -8,22 +8,23 @@
 </head>
 
 <body>
+	<form action="Controller" method="POST">
+			<input type="submit" value="LOAD" name="submit">
+			<input type="submit" value="REMOVE TABLE" name="submit">
+	</form>
+	
 	<table>
-		<tr><th>UserID</th><th>Report Content</th><th>Time</th><th>Date</th></tr>
+		<tr><th>UserID</th><th>Title<th>Report Content</th><th>Time</th><th>Date</th></tr>
 		<c:forEach var="report" items="${reports}">
 			<tr>
 				<td><c:out value="${report.author.uid}"/></td>
+				<td><c:out value="${report.title}"/></td>
 				<td><c:out value="${report.reportContent}"/></td>
 				<td><c:out value="${report.time}"/></td>
 				<td><c:out value="${report.date}"/></td>
 			</tr>
 		</c:forEach>
 	</table>
-	
-	<form action="Controller" method="POST">
-			<input type="submit" value="LOAD" name="submit">
-			<input type="submit" value="REMOVE TABLE" name="submit">
-	</form>
 	
 	<form action="Controller" method="POST">
 			<input type="text" name="uid" placeholder="UserID to delete/find">
@@ -33,6 +34,7 @@
 	
 	<form action="Controller" method="POST">
 			<input type="text" name="uid" placeholder="UserID">
+			<input type="text" name="title" placeholder="Message title">
 			<input type="text" name="content" placeholder="Write content message">
 			<input type="submit" value="ADD" name="submit">
 	</form>
