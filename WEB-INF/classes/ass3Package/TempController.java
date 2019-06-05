@@ -15,6 +15,7 @@ public class TempController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String submit = request.getParameter("submit");
+		String dispatchLocation = "/WEB-INF/jsp/Reports.jsp";
 		if (submit != null) {
 			if (submit.equals("ADD")) {
 				String uid = request.getParameter("uid");
@@ -31,13 +32,18 @@ public class TempController extends HttpServlet {
 				System.out.println("LOG: Removing table");
 				Database.removeTable("reports");
 			}
+			else if (submit.equals("FIND")) {
+				String uid = request.getParameter("uid");
+				System.out.println("LOG: Finding entry under UserID: " + uid);
+				request.setAttribute("specificReport", Database.returnSpecificReport(uid));
+			}
 		} else {
 			request.setAttribute("hideIfUserIsNotFound", "hidden");
 		}
 		
 		submit = null;
 		request.setAttribute("reports", Report.getAllReports());
-		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Reports.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher(dispatchLocation).forward(request, response);
 		
 	}
 	

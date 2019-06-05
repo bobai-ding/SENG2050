@@ -1,12 +1,9 @@
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%-- Import the Core taglib--%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="ISO-8859-1">
+	<meta charset="utf-8">
 	<title>Reports Page</title>
 </head>
 
@@ -39,14 +36,5 @@
 			<input type="text" name="content" placeholder="Write content message">
 			<input type="submit" value="ADD" name="submit">
 	</form>
-	
-	<table <c:out value="${hideIfUserIsNotFound}"/>>
-		<tr><th>UserID</th></tr>
-		<c:forEach var="report" items="${reports}">
-			<tr>
-				<td><c:out value="${report.author.uid}"/></td>
-			</tr>
-		</c:forEach>
-	</table>
 </body>
 </html>
