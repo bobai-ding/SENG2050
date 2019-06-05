@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Controller")
-public class Controller extends HttpServlet {
+public class TempController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override

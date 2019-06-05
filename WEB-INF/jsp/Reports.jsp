@@ -16,6 +16,9 @@
 		<c:forEach var="report" items="${reports}">
 			<tr>
 				<td><c:out value="${report.author.uid}"/></td>
+				<td><c:out value="${report.reportContent}"/></td>
+				<td><c:out value="${report.time}"/></td>
+				<td><c:out value="${report.date}"/></td>
 			</tr>
 		</c:forEach>
 	</table>
