@@ -131,9 +131,9 @@ public class Database {
 		User user = null;
 		try {	
 			connect();
-			ps = conn.prepareStatement("SELECT * FROM reports WHERE UserID = ?");
-			// TODO "SELECT * FROM reports WHERE UserID = ? AND Title = ?"
+			ps = conn.prepareStatement("SELECT * FROM reports WHERE UserID = ? AND Title = ?");
 			ps.setString(1, uid);
+			ps.setString(2, title);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -142,9 +142,10 @@ public class Database {
 				
 				user.setUid(rs.getString(1));
 				report.setAuthor(user);
-				report.setReportContent(rs.getString(2));
-				report.setTime(rs.getTime(3).toLocalTime());
-				report.setDate(rs.getDate(4).toLocalDate());
+				report.setTitle(rs.getString(2));
+				report.setReportContent(rs.getString(3));
+				report.setTime(rs.getTime(4).toLocalTime());
+				report.setDate(rs.getDate(5).toLocalDate());
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());

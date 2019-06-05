@@ -28,14 +28,15 @@
 	
 	<form action="Controller" method="POST">
 			<input type="text" name="uid" placeholder="UserID to delete/find">
+			<input type="text" name="title" placeholder="Report Title">
 			<input type="submit" value="DELETE" name="submit">
 			<input type="submit" value="FIND" name="submit">
 	</form>
 	
 	<form action="Controller" method="POST">
 			<input type="text" name="uid" placeholder="UserID">
-			<input type="text" name="title" placeholder="Message title">
-			<input type="text" name="content" placeholder="Write content message">
+			<input type="text" name="title" placeholder="Report Title">
+			<input type="text" name="content" placeholder="Write report here">
 			<input type="submit" value="ADD" name="submit">
 	</form>
 </body>
