@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--create the HTML table using foreach tag--%>
 <table>
-	<tr><th>UserID</th><th>Year</th><th>URL</th></tr>
+	<tr><th>UserID</th></tr>
 	<c:forEach var="report" items="${reports}">
 		<tr>
 			<td><c:out value="${report.author.uid}"/></td>
@@ -16,7 +16,7 @@
 </form>
 
 <form action="Controller" method="POST">
-		<input type="text" name="title" placeholder="UserID to delete">
+		<input type="text" name="uid" placeholder="UserID to delete">
 		<input type="submit" value="DELETE" name="submit">
 </form>
 
