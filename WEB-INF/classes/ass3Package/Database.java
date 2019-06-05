@@ -107,11 +107,11 @@ public class Database {
 	}
 	
 	// Remove an entry
-	public static void deleteEntry(String title, String tableName) {
+	public static void deleteEntry(String entry, String colName, String tableName) {
 		try {
 			connect();
-			ps = conn.prepareStatement("DELETE FROM " + tableName + " WHERE title = ?");
-			ps.setString(1, title);
+			ps = conn.prepareStatement("DELETE FROM " + tableName + " WHERE " + colName + " = ?");
+			ps.setString(1, entry);
 			ps.executeUpdate();
 		} catch(Exception e) {
 			System.err.println(e.getMessage());
@@ -121,6 +121,33 @@ public class Database {
 		    try { ps.close(); } catch (Exception e) { /* ignored */ }
 		    try { conn.close(); } catch (Exception e) { /* ignored */ }
 		}
+	}
+
+	// Remove an entry
+	public static Report returnSpecificReport(String uid, String colName, String tableName) {
+		Report report = null;
+		User user = null;
+		try {	
+			connect();
+			ps = conn.prepareStatement("SELECT * FROM " + tableName + " WHERE UserID = ?");
+			ps.setString(1, uid);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				report = new Report();
+				user = new User();
+				user.setUid(rs.getString(1));
+				report.setAuthor(user);
+			}
+		} catch(Exception e) {
+			System.err.println(e.getMessage());
+		} finally {
+			try { rs.close(); } catch (Exception e) { /* ignored */ }
+		    try { stmt.close(); } catch (Exception e) { /* ignored */ }
+		    try { ps.close(); } catch (Exception e) { /* ignored */ }
+		    try { conn.close(); } catch (Exception e) { /* ignored */ }
+		}
+		return report;
 	}
 
 	// Delete entire table

@@ -171,21 +171,13 @@ public class Report implements Serializable{
 				//report.setTime(result.getTime(3));
 				reports.add(report);
 			}
-			
-			
 		}
 		catch(Exception e){
 			System.err.println(e.getMessage());
 			System.err.println(e.getStackTrace());
 		}
 		finally {
-			try {
-				if(con != null) {
-				    con.close();
-				}
-			} catch(SQLException ex){
-				ex.printStackTrace();
-			}	
+			try { con.close(); } catch (Exception e) { /* ignored */ }
 		}
 		return reports;
 		
