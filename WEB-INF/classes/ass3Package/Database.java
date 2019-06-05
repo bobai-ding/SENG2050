@@ -63,10 +63,10 @@ public class Database {
 	}
 	
 	// Create a new table
-	public static void createTableString(String tableName, String[] varNames, int[] charVals) {
+	public static void createTableString(String tableName, String[] varNames, String[] varType) {
 		String createStatement = "CREATE TABLE " + tableName + "(";
 		for (int i=0; i<varNames.length; i++) {
-			createStatement += varNames[i] + " VARCHAR(" + charVals[i] + ")";
+			createStatement += varNames[i] + " " + varType[i];
 			
 			if(i < varNames.length-1) {
 				createStatement += ",";
@@ -74,6 +74,7 @@ public class Database {
 		}
 		createStatement += ")";
 		
+		System.out.println("TESTING: creating table: \n" + createStatement);
 		try {
 			connect();
 			stmt.executeUpdate(createStatement);

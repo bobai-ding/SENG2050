@@ -1,5 +1,6 @@
 package ass3Package;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 
 public class Report implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -30,8 +32,8 @@ public class Report implements Serializable{
 
         //create a new report with a report string and user object
 
-        time = LocalTime.now();
-        date = LocalDate.now();
+        setTime(LocalTime.now());
+        setDate(LocalDate.now());
         this.reportContent = report;
         this.author = author;
 
@@ -44,12 +46,13 @@ public class Report implements Serializable{
 
     public void editReport(String report){
 
-        //need to format the time to remove the ms
-
+        // TODO need to format the time to remove the ms
+    	// Can use .withNano(0) to remove
+    	
         //probs need to format the date to aus standards
 
-        time = LocalTime.now();
-        date = LocalDate.now();
+    	setTime(LocalTime.now());
+        setDate(LocalDate.now());
         this.reportContent = report;
     }
 
@@ -170,7 +173,8 @@ public class Report implements Serializable{
 				user.setUid(result.getString(1));
 				report.setAuthor(user);
 				report.setReportContent(result.getString(2));
-				//report.setTime(result.getTime(3));
+				report.setTime(result.getTime(3).toLocalTime());
+				report.setDate(result.getDate(4).toLocalDate());
 				reports.add(report);
 			}
 		}
@@ -184,6 +188,7 @@ public class Report implements Serializable{
 		return reports;
 		
 	}
+	
 	
 	// Add a new report to database
 	public static void addReport(String uid) {
@@ -203,9 +208,28 @@ public class Report implements Serializable{
 	
 	// Create table in database for reports
 	public static void createReportTable() {
-		String varNames[] = {"UserID"};
-		int charVals[] = {80, 4, 256};
+		String varNames[] = {"UserID", "ReportContent", "Time", "Date"};
+		String varType[] = {"VARCHAR(80)", "VARCHAR(1000)", "TIME", "DATE"};
 		
-		Database.createTableString("reports", varNames, charVals);
+		Database.createTableString("reports", varNames, varType);
 	}
+	
+
+/*
+CREATE TABLE tablename (
+	userID VARCHAR(80),
+	reportContent VARCHAR(1000),
+	time TIME,
+	date DATE
+);
+
+INSERT INTO tablename VALUES (
+	'userID'
+	'content'
+	'00:00:00'
+	'0000-00-00'
+);
+*/
+	
+	
 }
