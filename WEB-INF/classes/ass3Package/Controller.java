@@ -15,27 +15,32 @@ public class Controller extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String submit = request.getParameter("submit");
-		if (submit.equals("ADD")) {
-			String uid = request.getParameter("uid");
-			System.out.println("LOG: Adding new entry under UserID: " + uid);
-			Report.addReport(uid);
-		} 
-		else if (submit.equals("DELETE")) {
-			String uid = request.getParameter("uid");
-			System.out.println("LOG: Removing entry under UserID: " + uid);
-			Database.deleteEntry(uid, "UserID", "reports");
-		} 
-		else if (submit.equals("REMOVE TABLE")) {
-			System.out.println("LOG: Removing table");
-			Database.removeTable("reports");
+		if (submit != null) {
+			if (submit.equals("ADD")) {
+				String uid = request.getParameter("uid");
+				System.out.println("LOG: Adding new entry under UserID: " + uid);
+				Report.addReport(uid);
+			} 
+			else if (submit.equals("DELETE")) {
+				String uid = request.getParameter("uid");
+				System.out.println("LOG: Removing entry under UserID: " + uid);
+				Database.deleteEntry(uid, "UserID", "reports");
+			} 
+			else if (submit.equals("REMOVE TABLE")) {
+				System.out.println("LOG: Removing table");
+				Database.removeTable("reports");
+			}
+		} else {
+			request.setAttribute("hideUserToFind", "hidden");
 		}
 		
 		submit = null;
 		request.setAttribute("reports", Report.getAllReports());
-		doGet(request, response);
+		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Reports.jsp").forward(request, response);
+		
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Reports.jsp").forward(request, response);
+		doPost(request, response);
 	}
 }
