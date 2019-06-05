@@ -2,6 +2,8 @@ package ass3Package;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -28,8 +30,8 @@ public class Report implements Serializable{
 
         //create a new report with a report string and user object
 
-        time = java.time.LocalTime.now();
-        date = java.time.LocalDate.now();
+        time = LocalTime.now();
+        date = LocalDate.now();
         this.reportContent = report;
         this.author = author;
 
@@ -46,8 +48,8 @@ public class Report implements Serializable{
 
         //probs need to format the date to aus standards
 
-        time = java.time.LocalTime.now();
-        date = java.time.LocalDate.now();
+        time = LocalTime.now();
+        date = LocalDate.now();
         this.reportContent = report;
     }
 
@@ -117,19 +119,19 @@ public class Report implements Serializable{
         return author;
     }
     
-	public java.time.LocalTime getTime() {
+	public LocalTime getTime() {
 		return time;
 	}
 
-	public void setTime(java.time.LocalTime time) {
+	public void setTime(LocalTime time) {
 		this.time = time;
 	}
 
-	public java.time.LocalDate getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(java.time.LocalDate date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
@@ -167,7 +169,7 @@ public class Report implements Serializable{
 				
 				user.setUid(result.getString(1));
 				report.setAuthor(user);
-				//report.setReportContent(result.getString(2));
+				report.setReportContent(result.getString(2));
 				//report.setTime(result.getTime(3));
 				reports.add(report);
 			}
