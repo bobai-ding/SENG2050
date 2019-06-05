@@ -213,23 +213,4 @@ public class Report implements Serializable{
 		
 		Database.createTableString("reports", varNames, varType);
 	}
-	
-
-/*
-CREATE TABLE tablename (
-	userID VARCHAR(80),
-	reportContent VARCHAR(1000),
-	time TIME,
-	date DATE
-);
-
-INSERT INTO tablename VALUES (
-	'userID'
-	'content'
-	'00:00:00'
-	'0000-00-00'
-);
-*/
-	
-	
 }
