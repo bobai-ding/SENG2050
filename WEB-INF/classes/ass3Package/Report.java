@@ -2,16 +2,22 @@ package ass3Package;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
+
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Report implements Serializable{
 
     private User author;
-
+    private String reportContent;
+    
     private java.time.LocalTime time;
     private java.time.LocalDate date;
-
-    private String reportContent;
 
     private LinkedList<Comment> comments = new LinkedList<>();
 
@@ -83,6 +89,7 @@ public class Report implements Serializable{
         }
     }
 
+    // Getter / Setters
     public Comment[] getComments(){
 
         //returns all the current comments that a report has in an array
@@ -99,6 +106,10 @@ public class Report implements Serializable{
         return outputComments;
     }
 
+	public void setComments(LinkedList<Comment> comments) {
+		this.comments = comments;
+	}
+    
     public void setAuthor(User author){
         this.author = author;
     }
@@ -106,7 +117,98 @@ public class Report implements Serializable{
     public User getAuthor(){
         return author;
     }
+    
+	public java.time.LocalTime getTime() {
+		return time;
+	}
 
-    //have an array list of the comment shiz
+	public void setTime(java.time.LocalTime time) {
+		this.time = time;
+	}
 
+	public java.time.LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(java.time.LocalDate date) {
+		this.date = date;
+	}
+
+	public String getReportContent() {
+		return reportContent;
+	}
+
+    public void setReportContent(String content) {
+    	this.reportContent = content;
+    }
+    
+    
+	//have an array list of the comment shiz
+
+    
+	public static List<Report> getAllReports(){		
+		String query = "SELECT * FROM reports";
+		List<Report> reports = new LinkedList<>();
+		Connection con = null;
+		try { 
+			con = Config.getConnection();
+			Statement statement = con.createStatement();
+			
+			// Check table exists
+			if(!(Database.checkTableExists("reports"))){
+				createReportTable();
+			}
+			
+			ResultSet result = statement.executeQuery(query); //step 3 and 4
+			while(result.next()){ //step 5
+				Report report = new Report();
+				User user = new User();
+				
+				user.setUid(result.getString(1));
+				report.setAuthor(user);
+				//report.setReportContent(result.getString(2));
+				//report.setTime(result.getTime(3));
+				reports.add(report);
+			}
+			
+			
+		}
+		catch(Exception e){
+			System.err.println(e.getMessage());
+			System.err.println(e.getStackTrace());
+		}
+		finally {
+			try {
+				if(con != null) {
+				    con.close();
+				}
+			} catch(SQLException ex){
+				ex.printStackTrace();
+			}	
+		}
+		return reports;
+		
+	}
+
+	public static void addReport(String uid) {
+		Connection con = null;
+		try {
+			con = Config.getConnection();
+			PreparedStatement ps = con.prepareStatement("INSERT INTO reports VALUES (?)");
+			ps.setString(1, uid);
+			//ps.setInt(2, date);
+			//ps.setString(3, url);
+			ps.executeUpdate();
+		} catch(Exception e){
+			System.err.println(e.getMessage());
+			System.err.println(e.getStackTrace());
+		}
+	}	
+	
+	public static void createReportTable() {
+		String varNames[] = {"UserID"};
+		int charVals[] = {80, 4, 256};
+		
+		Database.createTableString("reports", varNames, charVals);
+	}
 }
