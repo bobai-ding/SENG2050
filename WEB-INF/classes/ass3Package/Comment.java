@@ -1,4 +1,4 @@
-package ass3package;
+package ass3Package;
 
 import java.io.Serializable;
 import java.text.DateFormat;
