@@ -24,7 +24,7 @@ public class TempController extends HttpServlet {
 				String title = request.getParameter("title");
 				System.out.println("LOG: Adding new entry under UserID: " + uid + " with Title: " + title);
 				//TODO Add type selection
-				Report.addReport(uid, title, content, "TODO");
+				Report.addReport(uid, title, content, type);
 			} 
 			else if (submit.equals("DELETE")) {
 				String uid = request.getParameter("uid");

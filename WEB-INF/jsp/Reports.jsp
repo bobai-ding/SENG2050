@@ -47,6 +47,8 @@
 			<input type="text" name="uid" placeholder="UserID">
 			<input type="text" name="title" placeholder="Report Title">
 			<input type="text" name="content" placeholder="Write report here">
+			Type
+			<input type="radio" name="type" value="testing"> testing
 			<input type="submit" value="ADD" name="submit">
 	</form>
 </body>
