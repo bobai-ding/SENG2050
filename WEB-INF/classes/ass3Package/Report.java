@@ -1,6 +1,5 @@
 package ass3Package;
 
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.time.LocalDate;
@@ -10,9 +9,9 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.sql.Date;
 
 public class Report implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -191,14 +190,17 @@ public class Report implements Serializable{
 	
 	
 	// Add a new report to database
-	public static void addReport(String uid) {
+	public static void addReport(String uid, String reportContent) {
 		Connection con = null;
+		Time tempTime = Time.valueOf(LocalTime.now());
+		Date tempDate = Date.valueOf(LocalDate.now());
 		try {
 			con = Config.getConnection();
-			PreparedStatement ps = con.prepareStatement("INSERT INTO reports VALUES (?)");
+			PreparedStatement ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?)");
 			ps.setString(1, uid);
-			//ps.setInt(2, date);
-			//ps.setString(3, url);
+			ps.setString(2, reportContent);
+			ps.setTime(3, tempTime);
+			ps.setDate(4, tempDate);
 			ps.executeUpdate();
 		} catch(Exception e){
 			System.err.println(e.getMessage());

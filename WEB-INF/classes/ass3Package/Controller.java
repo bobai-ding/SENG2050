@@ -18,8 +18,9 @@ public class Controller extends HttpServlet {
 		if (submit != null) {
 			if (submit.equals("ADD")) {
 				String uid = request.getParameter("uid");
+				String content = request.getParameter("content");
 				System.out.println("LOG: Adding new entry under UserID: " + uid);
-				Report.addReport(uid);
+				Report.addReport(uid, content);
 			} 
 			else if (submit.equals("DELETE")) {
 				String uid = request.getParameter("uid");

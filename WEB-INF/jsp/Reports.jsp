@@ -12,7 +12,7 @@
 
 <body>
 	<table>
-		<tr><th>UserID</th></tr>
+		<tr><th>UserID</th><th>Report Content</th><th>Time</th><th>Date</th></tr>
 		<c:forEach var="report" items="${reports}">
 			<tr>
 				<td><c:out value="${report.author.uid}"/></td>
@@ -26,18 +26,15 @@
 	</form>
 	
 	<form action="Controller" method="POST">
-			<input type="text" name="uid" placeholder="UserID to delete">
+			<input type="text" name="uid" placeholder="UserID to delete/find">
 			<input type="submit" value="DELETE" name="submit">
+			<input type="submit" value="FIND" name="submit">
 	</form>
 	
 	<form action="Controller" method="POST">
 			<input type="text" name="uid" placeholder="UserID">
+			<input type="text" name="content" placeholder="Write content message">
 			<input type="submit" value="ADD" name="submit">
-	</form>
-	
-	<form action="Controller" method="POST">
-			<input type="text" name="uid" placeholder="UserID to find">
-			<input type="submit" value="FIND" name="submit">
 	</form>
 	
 	<table <c:out value="${hideIfUserIsNotFound}"/>>
