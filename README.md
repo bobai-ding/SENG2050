@@ -11,6 +11,7 @@ General stuff (and in no specific order);
 
 1. Make it look nice
 2. User login w/ verification
+    - Look into tomcat users
 3. 
 4.
 
