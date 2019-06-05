@@ -124,12 +124,12 @@ public class Database {
 	}
 
 	// Remove an entry
-	public static Report returnSpecificReport(String uid, String colName, String tableName) {
+	public static Report returnSpecificReport(String uid) {
 		Report report = null;
 		User user = null;
 		try {	
 			connect();
-			ps = conn.prepareStatement("SELECT * FROM " + tableName + " WHERE UserID = ?");
+			ps = conn.prepareStatement("SELECT * FROM reports WHERE UserID = ?");
 			ps.setString(1, uid);
 			rs = ps.executeQuery();
 			
