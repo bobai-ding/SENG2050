@@ -4,13 +4,15 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 public class Comment implements Serializable {
 
     private String comment;
     private User author;
-    private java.time.LocalTime time;
-    private java.time.LocalDate date;
+    private LocalTime time;
+    private LocalDate date;
     private boolean edited = false;
 
     private int commentNum;
@@ -25,8 +27,8 @@ public class Comment implements Serializable {
         //comment constructor w/ variables
 
         //set the time on creation
-        time = java.time.LocalTime.now();
-        date = java.time.LocalDate.now();
+        time = LocalTime.now();
+        date = LocalDate.now();
 
         //set values
         this.comment = comment;
@@ -36,8 +38,8 @@ public class Comment implements Serializable {
     public void setComment(String comment, User author) {
         //set the variables of the object
         //updates the time / date as what they were on creation
-        time = java.time.LocalTime.now();
-        date = java.time.LocalDate.now();
+        time = LocalTime.now();
+        date = LocalDate.now();
         this.author = author;
         this.comment = comment;
     }
