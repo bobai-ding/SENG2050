@@ -4,7 +4,7 @@
 <%-- Import the Core taglib--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Reports Page</title>
@@ -40,7 +40,7 @@
 			<input type="submit" value="FIND" name="submit">
 	</form>
 	
-	<table hidden>
+	<table <c:out value="${hideIfUserIsNotFound}"/>>
 		<tr><th>UserID</th></tr>
 		<c:forEach var="report" items="${reports}">
 			<tr>

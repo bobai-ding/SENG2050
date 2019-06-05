@@ -31,7 +31,7 @@ public class Controller extends HttpServlet {
 				Database.removeTable("reports");
 			}
 		} else {
-			request.setAttribute("hideUserToFind", "hidden");
+			request.setAttribute("hideIfUserIsNotFound", "hidden");
 		}
 		
 		submit = null;
