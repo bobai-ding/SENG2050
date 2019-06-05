@@ -31,15 +31,17 @@ public class TempController extends HttpServlet {
 				System.out.println("LOG: Removing table");
 				Database.removeTable("reports");
 			}
+		} else {
+			request.setAttribute("hideIfUserIsNotFound", "hidden");
 		}
 		
 		submit = null;
 		request.setAttribute("reports", Report.getAllReports());
-		doGet(request, response);
+		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Reports.jsp").forward(request, response);
 		
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Reports.jsp").forward(request, response);
+		doPost(request, response);
 	}
 }
