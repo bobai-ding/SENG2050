@@ -145,6 +145,8 @@ public class Report implements Serializable{
 	//have an array list of the comment shiz
 
     
+    // Database
+    // Return all reports as a list
 	public static List<Report> getAllReports(){		
 		String query = "SELECT * FROM reports";
 		List<Report> reports = new LinkedList<>();
@@ -188,7 +190,8 @@ public class Report implements Serializable{
 		return reports;
 		
 	}
-
+	
+	// Add a new report to database
 	public static void addReport(String uid) {
 		Connection con = null;
 		try {
@@ -204,6 +207,7 @@ public class Report implements Serializable{
 		}
 	}	
 	
+	// Create table in database for reports
 	public static void createReportTable() {
 		String varNames[] = {"UserID"};
 		int charVals[] = {80, 4, 256};
