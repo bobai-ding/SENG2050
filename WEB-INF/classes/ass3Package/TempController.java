@@ -15,31 +15,31 @@ public class TempController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String submit = request.getParameter("submit");
+		String uid = request.getParameter("uid");
+		String content = request.getParameter("content");
+		String type = request.getParameter("type");
+		String title = request.getParameter("title");
+		int reportid = 0;
+		
 		String dispatchLocation = "/WEB-INF/jsp/Reports.jsp";
+		
 		if (submit != null) {
+			if (request.getParameter("reportid") != null)  reportid = Integer.parseInt(request.getParameter("reportid"));
 			if (submit.equals("ADD")) {
-				String uid = request.getParameter("uid");
-				String content = request.getParameter("content");
-				String type = request.getParameter("type");
-				String title = request.getParameter("title");
 				System.out.println("LOG: Adding new entry under UserID: " + uid + " with Title: " + title);
-				//TODO Add type selection
 				Report.addReport(uid, title, content, type);
 			} 
 			else if (submit.equals("DELETE")) {
-				String uid = request.getParameter("uid");
-				System.out.println("LOG: Removing entry under UserID: " + uid);
-				Database.deleteEntry(uid, "UserID", "reports");
+				System.out.println("LOG: Removing entry under ReportID: " + reportid);
+				Database.deleteEntry(reportid, "ReportID", "reports");
 			} 
 			else if (submit.equals("REMOVE TABLE")) {
 				System.out.println("LOG: Removing table");
 				Database.removeTable("reports");
 			}
-			else if (submit.equals("FIND")) {
-				String uid = request.getParameter("uid");
-				String title = request.getParameter("title");
-				System.out.println("LOG: Finding entry under UserID: " + uid + " with Title: " + title);
-				request.setAttribute("specificReport", Database.returnSpecificReport(uid, title));
+			else if (submit.equals("OPEN")) {
+				System.out.println("LOG: Opening entry under ReportID: " + reportid);
+				request.setAttribute("specificReport", Database.viewSpecificReport(reportid));
 				dispatchLocation = "/WEB-INF/jsp/ViewReport.jsp";
 			}
 		} else {

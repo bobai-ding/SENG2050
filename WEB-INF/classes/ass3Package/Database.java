@@ -93,19 +93,22 @@ public class Database {
 		return stmt = conn.createStatement();
 	}
 	
-	// Execute a database command
-	// Use_db for the "USE databaseName" command
-	public static void dbExecute(String toExecute) {
-		try {
-			connect();
-			stmt.executeUpdate(toExecute);
-		} catch(Exception e) {
-			System.err.println(e.getMessage());
-		} finally {
-		    try { stmt.close(); } catch (Exception e) { /* ignored */ }
-		    try { conn.close(); } catch (Exception e) { /* ignored */ }
+	// Remove an entry
+		public static void deleteEntry(int entry, String colName, String tableName) {
+			try {
+				connect();
+				ps = conn.prepareStatement("DELETE FROM " + tableName + " WHERE " + colName + " = ?");
+				ps.setInt(1, entry);
+				ps.executeUpdate();
+			} catch(Exception e) {
+				System.err.println(e.getMessage());
+			} finally {
+				try { rs.close(); } catch (Exception e) { /* ignored */ }
+			    try { stmt.close(); } catch (Exception e) { /* ignored */ }
+			    try { ps.close(); } catch (Exception e) { /* ignored */ }
+			    try { conn.close(); } catch (Exception e) { /* ignored */ }
+			}
 		}
-	}
 	
 	// Remove an entry
 	public static void deleteEntry(String entry, String colName, String tableName) {
@@ -124,9 +127,8 @@ public class Database {
 		}
 	}
 
-	// Remove an entry
-	// TODO add title
-	public static Report returnSpecificReport(String uid, String title) {
+	// View a specific report
+	public static Report viewSpecificReport(String uid, String title) {
 		Report report = null;
 		User user = null;
 		try {	
@@ -160,10 +162,50 @@ public class Database {
 		return report;
 	}
 
+	public static Report viewSpecificReport(int reportid) {
+		Report report = null;
+		User user = null;
+		try {	
+			connect();
+			ps = conn.prepareStatement("SELECT * FROM reports WHERE ReportID = ?");
+			ps.setInt(1, reportid);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				report = new Report();
+				user = new User();
+				
+				report.setReportid(rs.getInt(1));
+				user.setUid(rs.getString(2));
+				report.setAuthor(user);
+				report.setTitle(rs.getString(3));
+				report.setReportContent(rs.getString(4));
+				report.setType(rs.getString(5));
+				report.setTime(rs.getTime(6).toLocalTime());
+				report.setDate(rs.getDate(7).toLocalDate());
+			}
+		} catch(Exception e) {
+			System.err.println(e.getMessage());
+		} finally {
+			try { rs.close(); } catch (Exception e) { /* ignored */ }
+		    try { stmt.close(); } catch (Exception e) { /* ignored */ }
+		    try { ps.close(); } catch (Exception e) { /* ignored */ }
+		    try { conn.close(); } catch (Exception e) { /* ignored */ }
+		}
+		return report;
+	}
+
 	// Delete entire table
 	public static void removeTable(String tableName) {
-		dbExecute("DROP TABLE " + tableName);
-		
+		try {
+			connect();
+			stmt.executeUpdate("DROP TABLE " + tableName);
+		} catch(Exception e) {
+			System.err.println(e.getMessage());
+		} finally {
+		    try { stmt.close(); } catch (Exception e) { /* ignored */ }
+		    try { conn.close(); } catch (Exception e) { /* ignored */ }
+		}
 	}
 	
 	public static int numOfEntrys(String tableName) {
