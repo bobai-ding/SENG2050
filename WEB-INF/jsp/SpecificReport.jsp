@@ -9,14 +9,12 @@
 <body>
 	<table>
 		<tr><th>UserID</th><th>Report Content</th><th>Time</th><th>Date</th></tr>
-		<c:forEach var="report" items="${reports}">
 			<tr>
-				<td><c:out value="${report.author.uid}"/></td>
-				<td><c:out value="${report.reportContent}"/></td>
-				<td><c:out value="${report.time}"/></td>
-				<td><c:out value="${report.date}"/></td>
+				<td><c:out value="${specificReport.author.uid}"/></td>
+				<td><c:out value="${specificReport.reportContent}"/></td>
+				<td><c:out value="${specificReport.time}"/></td>
+				<td><c:out value="${specificReport.date}"/></td>
 			</tr>
-		</c:forEach>
 	</table>
 </body>
 </html>

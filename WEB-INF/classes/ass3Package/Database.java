@@ -125,20 +125,26 @@ public class Database {
 	}
 
 	// Remove an entry
-	public static Report returnSpecificReport(String uid) {
+	// TODO add title
+	public static Report returnSpecificReport(String uid, String title) {
 		Report report = null;
 		User user = null;
 		try {	
 			connect();
 			ps = conn.prepareStatement("SELECT * FROM reports WHERE UserID = ?");
+			// TODO "SELECT * FROM reports WHERE UserID = ? AND Title = ?"
 			ps.setString(1, uid);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				report = new Report();
 				user = new User();
+				
 				user.setUid(rs.getString(1));
 				report.setAuthor(user);
+				report.setReportContent(rs.getString(2));
+				report.setTime(rs.getTime(3).toLocalTime());
+				report.setDate(rs.getDate(4).toLocalDate());
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());

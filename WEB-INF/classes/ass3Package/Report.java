@@ -17,6 +17,8 @@ public class Report implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private User author;
     private String reportContent;
+    private String title;
+    // TODO add title to database and stuff
     
     private java.time.LocalTime time;
     private java.time.LocalDate date;
@@ -151,6 +153,7 @@ public class Report implements Serializable{
     
     // Database
     // Return all reports as a list
+    // TODO add title
 	public static List<Report> getAllReports(){		
 		String query = "SELECT * FROM reports";
 		List<Report> reports = new LinkedList<>();
@@ -174,7 +177,7 @@ public class Report implements Serializable{
 				report.setReportContent(result.getString(2));
 				report.setTime(result.getTime(3).toLocalTime());
 				report.setDate(result.getDate(4).toLocalDate());
-				reports.add(report);
+				reports.add(0, report);
 			}
 		}
 		catch(Exception e){
@@ -206,7 +209,7 @@ public class Report implements Serializable{
 			System.err.println(e.getMessage());
 			System.err.println(e.getStackTrace());
 		}
-	}	
+	}
 	
 	// Create table in database for reports
 	public static void createReportTable() {

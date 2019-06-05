@@ -35,7 +35,8 @@ public class TempController extends HttpServlet {
 			else if (submit.equals("FIND")) {
 				String uid = request.getParameter("uid");
 				System.out.println("LOG: Finding entry under UserID: " + uid);
-				request.setAttribute("specificReport", Database.returnSpecificReport(uid));
+				request.setAttribute("specificReport", Database.returnSpecificReport(uid, null));
+				dispatchLocation = "/WEB-INF/jsp/SpecificReport.jsp";
 			}
 		} else {
 			request.setAttribute("hideIfUserIsNotFound", "hidden");
