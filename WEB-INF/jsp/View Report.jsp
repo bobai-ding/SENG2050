@@ -4,18 +4,22 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Specific report</title>
+	<title>View Report</title>
 </head>
 <body>
+	<h1> View Report </h1>
 	<table>
 		<tr><th>UserID</th><th>Title<th>Report Content</th><th>Time</th><th>Date</th></tr>
 			<tr>
 				<td><c:out value="${specificReport.author.uid}"/></td>
 				<td><c:out value="${specificReport.title}"/></td>
-				<td><c:out value="${specificReport.reportContent}"/></td>
 				<td><c:out value="${specificReport.time}"/></td>
 				<td><c:out value="${specificReport.date}"/></td>
 			</tr>
 	</table>
+	
+	<p><c:out value="${specificReport.reportContent}"/><p>
+	
+	Need to show comments here
 </body>
 </html>
