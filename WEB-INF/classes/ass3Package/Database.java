@@ -140,12 +140,14 @@ public class Database {
 				report = new Report();
 				user = new User();
 				
-				user.setUid(rs.getString(1));
+				report.setReportid(rs.getInt(1));
+				user.setUid(rs.getString(2));
 				report.setAuthor(user);
-				report.setTitle(rs.getString(2));
-				report.setReportContent(rs.getString(3));
-				report.setTime(rs.getTime(4).toLocalTime());
-				report.setDate(rs.getDate(5).toLocalDate());
+				report.setTitle(rs.getString(3));
+				report.setReportContent(rs.getString(4));
+				report.setType(rs.getString(5));
+				report.setTime(rs.getTime(6).toLocalTime());
+				report.setDate(rs.getDate(7).toLocalDate());
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());
@@ -162,6 +164,24 @@ public class Database {
 	public static void removeTable(String tableName) {
 		dbExecute("DROP TABLE " + tableName);
 		
+	}
+	
+	public static int numOfEntrys(String tableName) {
+		try {
+			connect();
+			rs = stmt.executeQuery("SELECT COUNT(*) FROM " + tableName);
+			while(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch(Exception e) {
+			System.err.println(e.getMessage());
+		} finally {
+			try { rs.close(); } catch (Exception e) { /* ignored */ }
+		    try { stmt.close(); } catch (Exception e) { /* ignored */ }
+		    try { ps.close(); } catch (Exception e) { /* ignored */ }
+		    try { conn.close(); } catch (Exception e) { /* ignored */ }
+		}
+		return 0;
 	}
 	
 	public static void tryCatchTemplate() {

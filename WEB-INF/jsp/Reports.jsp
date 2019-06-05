@@ -14,12 +14,22 @@
 	</form>
 	
 	<table>
-		<tr><th>UserID</th><th>Title<th>Report Content</th><th>Time</th><th>Date</th></tr>
+		<tr>
+			<th>Report ID</th>
+			<th>UserID</th>
+			<th>Title</th>
+			<th>Report Content</th>
+			<th>Type</th>
+			<th>Time</th>
+			<th>Date</th>
+		</tr>
 		<c:forEach var="report" items="${reports}">
 			<tr>
+				<td><c:out value="${report.reportid}"/></td>
 				<td><c:out value="${report.author.uid}"/></td>
 				<td><c:out value="${report.title}"/></td>
 				<td><c:out value="${report.reportContent}"/></td>
+				<td><c:out value="${report.type}"/></td>
 				<td><c:out value="${report.time}"/></td>
 				<td><c:out value="${report.date}"/></td>
 			</tr>

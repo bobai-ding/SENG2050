@@ -18,7 +18,8 @@ public class Report implements Serializable{
 	private User author;
     private String reportContent;
     private String title;
-    // TODO add title to database and stuff
+    private String type;
+    private int reportid;
     
     private java.time.LocalTime time;
     private java.time.LocalDate date;
@@ -155,12 +156,26 @@ public class Report implements Serializable{
 		this.title = title;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public int getReportid() {
+		return reportid;
+	}
+
+	public void setReportid(int reportid) {
+		this.reportid = reportid;
+	}
 	//have an array list of the comment shiz
 
     
     // Database
     // Return all reports as a list
-    // TODO add title
 	public static List<Report> getAllReports(){		
 		String query = "SELECT * FROM reports";
 		List<Report> reports = new LinkedList<>();
@@ -179,12 +194,14 @@ public class Report implements Serializable{
 				Report report = new Report();
 				User user = new User();
 				
-				user.setUid(result.getString(1));
+				report.setReportid(result.getInt(1));
+				user.setUid(result.getString(2));
 				report.setAuthor(user);
-				report.setTitle(result.getString(2));
-				report.setReportContent(result.getString(3));
-				report.setTime(result.getTime(4).toLocalTime());
-				report.setDate(result.getDate(5).toLocalDate());
+				report.setTitle(result.getString(3));
+				report.setReportContent(result.getString(4));
+				report.setType(result.getString(5));
+				report.setTime(result.getTime(6).toLocalTime());
+				report.setDate(result.getDate(7).toLocalDate());
 				reports.add(0, report);
 			}
 		}
@@ -200,18 +217,21 @@ public class Report implements Serializable{
 	}
 	
 	// Add a new report to database
-	public static void addReport(String uid, String title, String reportContent) {
+	public static void addReport(String uid, String title, String reportContent, String type) {
 		Connection con = null;
 		Time tempTime = Time.valueOf(LocalTime.now());
 		Date tempDate = Date.valueOf(LocalDate.now());
+		int reportid = Database.numOfEntrys("reports");
 		try {
 			con = Config.getConnection();
-			PreparedStatement ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?,?)");
-			ps.setString(1, uid);
-			ps.setString(2, title);
-			ps.setString(3, reportContent);
-			ps.setTime(4, tempTime);
-			ps.setDate(5, tempDate);
+			PreparedStatement ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?,?,?,?)");
+			ps.setInt(1, reportid);
+			ps.setString(2, uid);
+			ps.setString(3, title);
+			ps.setString(4, reportContent);
+			ps.setString(5, type);
+			ps.setTime(6, tempTime);
+			ps.setDate(7, tempDate);
 			ps.executeUpdate();
 		} catch(Exception e){
 			System.err.println(e.getMessage());
@@ -220,8 +240,8 @@ public class Report implements Serializable{
 	
 	// Create table in database for reports
 	public static void createReportTable() {
-		String varNames[] = {"UserID", "Title", "ReportContent", "Time", "Date"};
-		String varType[] = {"VARCHAR(80)", "VARCHAR(80)", "VARCHAR(1000)", "TIME", "DATE"};
+		String varNames[] = {"ReportID", "UserID", "Title", "ReportContent", "Type", "Time", "Date"};
+		String varType[] = {"INT", "VARCHAR(80)", "VARCHAR(80)", "VARCHAR(1000)", "VARCHAR(80)", "TIME", "DATE"};
 		
 		Database.createTableString("reports", varNames, varType);
 	}

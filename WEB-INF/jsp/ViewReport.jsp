@@ -9,12 +9,19 @@
 <body>
 	<h1> View Report </h1>
 	<table>
-		<tr><th>UserID</th><th>Title<th>Report Content</th><th>Time</th><th>Date</th></tr>
+		<tr>
+			<th>Report ID</th>
+			<th>UserID</th>
+			<th>Title</th>
+			<th>Type</th>
+			<th>Time</th>
+			<th>Date</th>
+		</tr>
 			<tr>
 				<td><c:out value="${specificReport.reportid}"/></td>
 				<td><c:out value="${specificReport.author.uid}"/></td>
-				<td><c:out value="${specificReport.type}"/></td>
 				<td><c:out value="${specificReport.title}"/></td>
+				<td><c:out value="${specificReport.type}"/></td>
 				<td><c:out value="${specificReport.time}"/></td>
 				<td><c:out value="${specificReport.date}"/></td>
 			</tr>
