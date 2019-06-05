@@ -41,6 +41,7 @@ public class Database {
 		return false;
 	}
 	
+	// Check if the database contains a table
 	public static boolean checkTableExists(String tableName) {
 		try {
 			connect();
@@ -48,7 +49,7 @@ public class Database {
 			// check if "employee" table is there
 			rs = meta.getTables(conn.getCatalog(), null, tableName, new String[] {"TABLE"});
 			if(rs.next()) {
-				System.out.println("LOG: Table exists");
+				System.out.println("LOG: Table " + tableName + " exists");
 				return true;
 			}
 		} catch(Exception e) {

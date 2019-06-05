@@ -39,14 +39,5 @@
 			<input type="text" name="content" placeholder="Write content message">
 			<input type="submit" value="ADD" name="submit">
 	</form>
-	
-	<table <c:out value="${hideIfUserIsNotFound}"/>>
-		<tr><th>UserID</th></tr>
-		<c:forEach var="report" items="${reports}">
-			<tr>
-				<td><c:out value="${report.author.uid}"/></td>
-			</tr>
-		</c:forEach>
-	</table>
 </body>
 </html>
