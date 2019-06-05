@@ -1,6 +1,5 @@
 package ass3Package;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,8 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Report implements Serializable{
-
-    private User author;
+	private static final long serialVersionUID = 1L;
+	private User author;
     private String reportContent;
     
     private java.time.LocalTime time;

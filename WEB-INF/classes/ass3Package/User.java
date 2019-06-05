@@ -3,8 +3,9 @@ package ass3Package;
 import java.io.Serializable;
 
 public class User implements Serializable {
-
-    private String uid;
+	private static final long serialVersionUID = 1L;
+	
+	private String uid;
 
     User(){
 
