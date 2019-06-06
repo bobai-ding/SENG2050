@@ -5,7 +5,6 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Login Page</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<h1> Welcome to the UoN IT Issue Reporting System </h1>
