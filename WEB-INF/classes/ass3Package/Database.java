@@ -213,7 +213,11 @@ public class Database {
 	public static int numOfEntrys(String tableName, int reportid) {
 		try {
 			connect();
-			rs = stmt.executeQuery("SELECT COUNT(*) FROM " + tableName + "WHERE ReportID = " + reportid);
+			ps = conn.prepareStatement("SELECT COUNT(*) FROM " + tableName + " WHERE ReportID = ?");
+			ps.setInt(1, reportid);
+			System.out.println("TESTING: " + ps);
+			rs = ps.executeQuery(); 
+			
 			while(rs.next()) {
 				return rs.getInt(1);
 			}

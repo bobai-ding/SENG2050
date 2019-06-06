@@ -32,11 +32,15 @@ public class TempController extends HttpServlet {
 			} 
 			else if (submit.equals("DELETE")) {
 				System.out.println("LOG: Removing entry under ReportID: " + reportid);
+				// Delete report from reports table
 				Database.deleteEntry(reportid, "ReportID", "reports");
+				// Delete associated comments from comments table
+				Database.deleteEntry(reportid, "ReportID", "comments");
 			} 
 			else if (submit.equals("REMOVE TABLE")) {
 				System.out.println("LOG: Removing table");
 				Database.removeTable("reports");
+				Database.removeTable("comments");
 			}
 			else if (submit.equals("OPEN")) {
 				System.out.println("LOG: Opening entry under ReportID: " + reportid);
