@@ -254,10 +254,6 @@ public class Report implements Serializable{
 		}
 	}
 	
-	public static void updateReport() {
-		
-	}
-	
 	// Create table in database for reports
 	public static void createReportTable() {
 		String varNames[] = {"ReportID", "UserID", "Title", "ReportContent", "Type", "Time", "Date", "Status"};
