@@ -17,9 +17,7 @@
 	</div>
 	<div class="bottom">
 	Logged in user: <c:out value="${user.getName()}"/>
-	<c:forEach var="roles" items="userRoles"> 
-		User roles: <c:out value="${roles.toString()}"/>
-	</c:forEach>
+	User roles: <c:out value="${userRoles[0]}"/>
 	<form action="Controller" method="POST">
 			<input type="hidden" name="uid" value="<c:out value="${user.getName()}"/>">
 			<input type="text" name="title" placeholder="Report Title">

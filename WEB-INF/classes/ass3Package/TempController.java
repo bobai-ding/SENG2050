@@ -2,6 +2,7 @@ package ass3Package;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -70,7 +71,6 @@ public class TempController extends HttpServlet {
 		final Principal userPrincipal = request.getUserPrincipal();
 	    GenericPrincipal genericPrincipal = (GenericPrincipal) userPrincipal;
 	    final String[] roles = genericPrincipal.getRoles();
-	    System.out.println(roles[0]);
 	    request.setAttribute("userRoles", roles);
 		
 		getServletContext().getRequestDispatcher(dispatchLocation).forward(request, response);
