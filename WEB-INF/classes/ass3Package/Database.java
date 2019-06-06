@@ -12,35 +12,8 @@ public class Database {
 	private static Statement stmt = null;
 	private static PreparedStatement ps = null; 
 	private static ResultSet rs = null;
-	
-	// Check if a specific database exists
-	public static boolean checkDBExists(String dbName) {
-		try{
-			connect();
-			
-			if(conn != null) {
-				rs = conn.getMetaData().getCatalogs();
-				while(rs.next()){
-					String catalogs = rs.getString(1);
-					
-					if(dbName.equals(catalogs)){
-						System.out.println("LOG: Database " + dbName + " exists");
-						return true;
-					}
-				}
-			}
-		} 
-		catch(Exception ex) {
-			ex.printStackTrace();
-		} 
-		finally {
-			try { rs.close(); } catch (Exception e) { /* ignored */ }
-		    try { stmt.close(); } catch (Exception e) { /* ignored */ }
-		    try { conn.close(); } catch (Exception e) { /* ignored */ }
-		}
-		return false;
-	}
-	
+
+	// Check if a table exists
 	public static boolean checkTableExists(String tableName) {
 		try {
 			connect();
@@ -76,6 +49,7 @@ public class Database {
 		
 		System.out.println("LOG: creating table: \n" + createStatement);
 		try {
+			// Connect and query
 			connect();
 			stmt.executeUpdate(createStatement);
 		} catch(Exception e) {
@@ -98,6 +72,7 @@ public class Database {
 	// Set id = 1, colName = ReportID, tableName = reports
 	public static void deleteEntry(int id, String colName, String tableName) {
 		try {
+			// Connect and query
 			connect();
 			ps = conn.prepareStatement("DELETE FROM " + tableName + " WHERE " + colName + " = ?");
 			ps.setInt(1, id);
@@ -115,6 +90,7 @@ public class Database {
 	// Remove an entry
 	public static void deleteEntry(String entry, String colName, String tableName) {
 		try {
+			// Connect and query
 			connect();
 			ps = conn.prepareStatement("DELETE FROM " + tableName + " WHERE " + colName + " = ?");
 			ps.setString(1, entry);
@@ -129,11 +105,12 @@ public class Database {
 		}
 	}
 
-	// View a specific report
+	// View a specific report using userid and title
 	public static Report viewSpecificReport(String uid, String title) {
 		Report report = null;
 		User user = null;
-		try {	
+		try {
+			// connect and query
 			connect();
 			ps = conn.prepareStatement("SELECT * FROM reports WHERE UserID = ? AND Title = ?");
 			ps.setString(1, uid);
@@ -164,11 +141,12 @@ public class Database {
 		}
 		return report;
 	}
-
+	// Return a specific report using 
 	public static Report viewSpecificReport(int reportid) {
 		Report report = null;
 		User user = null;
-		try {	
+		try {
+			// Connect and query
 			connect();
 			ps = conn.prepareStatement("SELECT * FROM reports WHERE ReportID = ?");
 			ps.setInt(1, reportid);
@@ -212,8 +190,10 @@ public class Database {
 		}
 	}
 	
+	// Num of entries matching reportid
 	public static int numOfEntrys(String tableName, int reportid) {
 		try {
+			// Connect and query
 			connect();
 			ps = conn.prepareStatement("SELECT COUNT(*) FROM " + tableName + " WHERE ReportID = ?");
 			ps.setInt(1, reportid);
@@ -233,8 +213,10 @@ public class Database {
 		return 0;
 	}
 	
+	// Num of database entrys
 	public static int numOfEntrys(String tableName) {
 		try {
+			// Connect and query
 			connect();
 			rs = stmt.executeQuery("SELECT COUNT(*) FROM " + tableName);
 			while(rs.next()) {
@@ -251,8 +233,10 @@ public class Database {
 		return 0;
 	}
 	
+	// Find max int from tables
 	public static int max(String tableName, String colName) {
 		try {
+			// Connect and query database
 			connect();
 			rs = stmt.executeQuery("SELECT MAX(" + colName + ") FROM " + tableName);
 			
@@ -270,6 +254,7 @@ public class Database {
 		return 0;
 	}
 	
+	// Just a try catch template
 	public static void tryCatchTemplate() {
 		try {
 			//Try something
