@@ -31,5 +31,18 @@
 	<p><c:out value="${specificReport.reportContent}"/><p>
 	
 	Need to show comments here
+	
+	<table>
+		<tr>
+			<th>comment number<th>
+			<th>Author</th>
+			<th>time</th>
+			<th>date</th>
+		<tr>
+		<tr>
+			<td colspan="4"> Comment Message</td>
+		</tr>
+		
+	</table>
 </body>
 </html>
