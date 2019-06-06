@@ -4,6 +4,12 @@ th {
   border-bottom: 1px solid black;
   height: 20px;
 }
+tr {
+  border-bottom: 1px solid lightgray;
+}
+tr:last-child {
+ border-bottom: none;
+}
 table {
   border: 1px solid black;
   border-bottom: 1px solid black;
@@ -16,4 +22,8 @@ table {
 
 div.bottom {
 	padding-bottom: 15px;
+}
+
+.content {
+	
 }
