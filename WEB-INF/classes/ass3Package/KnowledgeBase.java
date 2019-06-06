@@ -38,6 +38,8 @@ public class KnowledgeBase extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		response.getWriter().append("Knowledge base served at: ").append(request.getContextPath());
+		
+		//TODO view knowledgebase and forward to reports.jsp
 	}
 
 }

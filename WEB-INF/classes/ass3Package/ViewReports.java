@@ -39,7 +39,7 @@ public class ViewReports extends HttpServlet {
 		//doGet(request, response);
 		response.getWriter().append("View Reports served at: ").append(request.getContextPath());
 		
-		//get reports and then forward to reports.jsp
+		//TODO get reports and then forward to reports.jsp
 	}
 
 }
