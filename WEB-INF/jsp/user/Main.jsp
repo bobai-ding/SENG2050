@@ -43,7 +43,11 @@
 		
 		</table>
 	</div>
-	
+	<br>
+	<hr>
+		<form action="Logout" method="POST">
+				<input type="submit" value="Logout" name="submit" class="bigbutton">
+		</form>
 	<br>
 	<hr>	
 	<form action="Controller" method="POST">
