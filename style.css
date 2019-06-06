@@ -1,5 +1,21 @@
 @charset "utf-8";
 
+h1 {
+	color:Black; text-align: center; text-shadow: 3px 2px red;
+}
+
+h3 {
+	color:Black; text-align: left;
+}
+
+h4 {
+	color:Black; text-align: center;
+}
+
+hr {
+	border-top: 1px solid blue;
+}
+
 th {
   border-bottom: 1px solid black;
   height: 20px;
@@ -18,8 +34,7 @@ td:last-child {
  border-right:none;
 }
 table {
-  border: 1px solid black;
-  border-bottom: 1px solid black;
+  border: 3px solid black;
   width:100%;
   overflow:auto;
 }

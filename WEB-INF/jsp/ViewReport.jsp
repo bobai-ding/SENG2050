@@ -9,7 +9,9 @@
 </head>
 <body>
 	<h1> View Report </h1>
-	Logged in as: <c:out value="${user.getName()}"/>
+	<h4>Logged in as: <c:out value="${user.getName()}"/> </h4>
+	<hr>
+	<h3>Original Post </h3>
 	<table>
 		<tr>
 			<th>Report ID</th>
@@ -31,9 +33,12 @@
 			</tr>
 	</table>
 	
+		
 	<h3> Report message </h3>
 	<p><c:out value="${specificReport.reportContent}"/><p>
 	
+	<hr>
+		
 	<h3> Add Comment </h3>
 	
 	<form action="Controller" method="POST">
@@ -42,6 +47,7 @@
 			<input type="hidden" name="reportid" value="<c:out value="${specificReport.reportid}"/>">
 			<input type="submit" value="ADD COMMENT" name="submit">
 	</form>
+	
 	
 	<h3> Comments </h3>
 	<c:forEach var="comment" items="${comments}">
@@ -67,6 +73,8 @@
 				</tr>
 		</table>
 		</div>
+		<hr>
+		<br>
 	</c:forEach>
 </body>
 </html>
