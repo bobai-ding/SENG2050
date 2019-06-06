@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1> View Report </h1>
-	Logged in user: <c:out value="${user.getName()}"/>
+	Logged in as: <c:out value="${user.getName()}"/>
 	<table>
 		<tr>
 			<th>Report ID</th>

@@ -9,15 +9,19 @@ tr {
 }
 tr:last-child {
  border-bottom: none;
- broder-right:none;
 }
 td {
 	text-align:center;
+	border-right: 1px solid lightgray;
+}
+td:last-child {
+ border-right:none;
 }
 table {
   border: 1px solid black;
   border-bottom: 1px solid black;
-  width:100%
+  width:100%;
+  overflow:auto;
 }
 
 table {

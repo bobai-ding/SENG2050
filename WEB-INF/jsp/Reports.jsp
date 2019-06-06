@@ -16,7 +16,7 @@
 	</form>
 	</div>
 	<div class="bottom">
-	Logged in user: <c:out value="${user.getName()}"/>
+	Logged in as: <c:out value="${user.getName()}"/>
 	User roles: <c:out value="${userRoles[0]}"/>
 	<form action="Controller" method="POST">
 			<input type="hidden" name="uid" value="<c:out value="${user.getName()}"/>">
@@ -42,7 +42,7 @@
 			<th></th>
 		</tr>
 		<c:forEach var="report" items="${reports}">
-			<tr onclick="document.form${report.reportid}.submit();">
+			<tr>
 				<td> 
 					<form action="Controller" method="POST">
 						<input type="submit" value="OPEN" name="submit">
@@ -52,7 +52,7 @@
 				<td><c:out value="${report.reportid}"/></td>
 				<td><c:out value="${report.author.uid}"/></td>
 				<td><c:out value="${report.title}"/></td>
-				<td><c:out value="${report.reportContent}"/></td>
+				<td><p><c:out value="${report.reportContent}"/></p></td>
 				<td><c:out value="${report.type}"/></td>
 				<td><c:out value="${report.time}"/></td>
 				<td><c:out value="${report.date}"/></td>
