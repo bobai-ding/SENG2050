@@ -40,5 +40,12 @@
 		
 		</table>
 	</div>
+	
+	<br>
+	<hr>	
+	<form action="Controller" method="POST">
+		<input type="submit" value="DEBUG" name="submit" class="bigbutton2">
+	</form>
+				
 </body>
 </html>
