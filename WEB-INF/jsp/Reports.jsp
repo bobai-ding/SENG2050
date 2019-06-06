@@ -5,6 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Reports Page</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
