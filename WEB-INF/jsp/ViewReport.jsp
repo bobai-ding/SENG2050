@@ -5,6 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>View Report</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<h1> View Report </h1>
@@ -40,28 +41,29 @@
 	</form>
 	
 	<h3> Comments </h3>
-	
-	<table>
-		<tr>
-			<th>comment number<th>
-			<th>Author</th>
-			<th>time</th>
-			<th>date</th>
-		<tr>
-		<c:forEach var="comment" items="${comments}">
-			<tr>
-				<th><c:out value="${comment.commentNum}"/></th>
-				<th><c:out value="${comment.reportid}"/></th>
-				<th><c:out value="${comment.author}"/></th>
-				<th><c:out value="${comment.time}"/></th>
-				<th><c:out value="${comment.date}"/></th>
-			</tr>
-			<tr>
-				<td> Comment Message: <td>
-				<td colspan="4"><c:out value="${comment.comment}"/></td>
-			</tr>
-		</c:forEach>
-		
-	</table>
+	<c:forEach var="comment" items="${comments}">
+		<div class="bottom">
+		<table>
+				<tr>
+					<th>Comment number</th>
+					<th>ReportID</th>
+					<th>Author</th>
+					<th>time</th>
+					<th>date</th>
+				<tr>
+				<tr>
+					<td><c:out value="${comment.commentNum}"/></td>
+					<td><c:out value="${comment.reportid}"/></td>
+					<td><c:out value="${comment.author}"/></td>
+					<td><c:out value="${comment.time}"/></td>
+					<td><c:out value="${comment.date}"/></td>
+				</tr>
+				<tr>
+					<td>Comment Message:</td>
+					<td colspan="4"><c:out value="${comment.comment}"/></td>
+				</tr>
+		</table>
+		</div>
+	</c:forEach>
 </body>
 </html>
