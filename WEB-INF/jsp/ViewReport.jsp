@@ -18,6 +18,7 @@
 			<th>Type</th>
 			<th>Time</th>
 			<th>Date</th>
+			<th>Status</th>
 		</tr>
 			<tr>
 				<td><c:out value="${specificReport.reportid}"/></td>
@@ -26,6 +27,7 @@
 				<td><c:out value="${specificReport.type}"/></td>
 				<td><c:out value="${specificReport.time}"/></td>
 				<td><c:out value="${specificReport.date}"/></td>
+				<td><c:out value="${specificReport.status}"/></td>
 			</tr>
 	</table>
 	

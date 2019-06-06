@@ -152,6 +152,7 @@ public class Database {
 				report.setType(rs.getString(5));
 				report.setTime(rs.getTime(6).toLocalTime());
 				report.setDate(rs.getDate(7).toLocalDate());
+				report.setStatus(rs.getString(8));
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());
@@ -185,6 +186,7 @@ public class Database {
 				report.setType(rs.getString(5));
 				report.setTime(rs.getTime(6).toLocalTime());
 				report.setDate(rs.getDate(7).toLocalDate());
+				report.setStatus(rs.getString(8));
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());

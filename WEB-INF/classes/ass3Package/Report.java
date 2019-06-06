@@ -17,6 +17,7 @@ public class Report implements Serializable{
     private String reportContent;
     private String title;
     private String type;
+    private String status;
     private int reportid;
     
     private LocalTime time;
@@ -169,10 +170,16 @@ public class Report implements Serializable{
 	public void setReportid(int reportid) {
 		this.reportid = reportid;
 	}
-	//have an array list of the comment shiz
+	
+    public String getStatus() {
+		return status;
+	}
 
-    
-    // Database
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	// Database
     // Return all reports as a list
 	public static List<Report> getAllReports(){		
 		String query = "SELECT * FROM reports";
@@ -200,6 +207,7 @@ public class Report implements Serializable{
 				report.setType(result.getString(5));
 				report.setTime(result.getTime(6).toLocalTime());
 				report.setDate(result.getDate(7).toLocalDate());
+				report.setStatus(result.getString(8));
 				reports.add(0, report);
 			}
 		}
@@ -216,7 +224,7 @@ public class Report implements Serializable{
 	}
 	
 	// Add a new report to database
-	public static void addReport(String uid, String title, String reportContent, String type) {
+	public static void addReport(String uid, String title, String reportContent, String type, String status) {
 		Connection con = null;
 		PreparedStatement ps = null;
 		Time tempTime = Time.valueOf(LocalTime.now());
@@ -227,7 +235,7 @@ public class Report implements Serializable{
 		
 		try {
 			con = Config.getConnection();
-			ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?,?,?,?,?)");
 			ps.setInt(1, reportid);
 			ps.setString(2, uid);
 			ps.setString(3, title);
@@ -235,6 +243,7 @@ public class Report implements Serializable{
 			ps.setString(5, type);
 			ps.setTime(6, tempTime);
 			ps.setDate(7, tempDate);
+			ps.setString(8, status);
 			ps.executeUpdate();
 		} catch(Exception e){
 			System.err.println(e.getMessage());
@@ -247,8 +256,8 @@ public class Report implements Serializable{
 	
 	// Create table in database for reports
 	public static void createReportTable() {
-		String varNames[] = {"ReportID", "UserID", "Title", "ReportContent", "Type", "Time", "Date"};
-		String varType[] = {"INT", "VARCHAR(80)", "VARCHAR(80)", "VARCHAR(1000)", "VARCHAR(80)", "TIME", "DATE"};
+		String varNames[] = {"ReportID", "UserID", "Title", "ReportContent", "Type", "Time", "Date", "Status"};
+		String varType[] = {"INT", "VARCHAR(80)", "VARCHAR(80)", "VARCHAR(1000)", "VARCHAR(80)", "TIME", "DATE", "VARCHAR(80)"};
 		
 		Database.createTableString("reports", varNames, varType);
 	}

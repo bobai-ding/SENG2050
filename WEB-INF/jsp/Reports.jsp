@@ -39,6 +39,7 @@
 			<th>Type</th>
 			<th>Time</th>
 			<th>Date</th>
+			<th>Status</th>
 			<th></th>
 		</tr>
 		<c:forEach var="report" items="${reports}">
@@ -56,6 +57,7 @@
 				<td><c:out value="${report.type}"/></td>
 				<td><c:out value="${report.time}"/></td>
 				<td><c:out value="${report.date}"/></td>
+				<td><c:out value="${report.status}"/></td>
 				<td> 
 					<form action="Controller" method="POST">
 						<input type="submit" value="DELETE" name="submit">

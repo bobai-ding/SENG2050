@@ -24,6 +24,7 @@ public class TempController extends HttpServlet {
 		String type = request.getParameter("type");
 		String title = request.getParameter("title");
 		String comment = request.getParameter("comment");
+		String status = request.getParameter("status");
 		int reportid = 0;
 		
 		String dispatchLocation = "/WEB-INF/jsp/Reports.jsp";
@@ -32,7 +33,7 @@ public class TempController extends HttpServlet {
 			if (request.getParameter("reportid") != null)  reportid = Integer.parseInt(request.getParameter("reportid"));
 			if (submit.equals("ADD")) {
 				System.out.println("LOG: Adding new entry under UserID: " + uid + " with Title: " + title);
-				Report.addReport(uid, title, content, type);
+				Report.addReport(uid, title, content, type, "temp");
 			} 
 			else if (submit.equals("DELETE")) {
 				System.out.println("LOG: Removing entry under ReportID: " + reportid);
