@@ -43,6 +43,19 @@
 			<td colspan="4"> Comment Message</td>
 		</tr>
 		
+		<c:forEach var="comment" items="${comments}">
+			<tr>
+				<th><c:out value="${comment.commentNum}"/>	</th>
+				<th><c:out value="${comment.reportid}"/>	</th>
+				<th><c:out value="${comment.author.uid}"/>	</th>
+				<th><c:out value="${comment.time}"/>		</th>
+				<th><c:out value="${comment.date}"/>		</th>
+			</tr>
+			<tr>
+				<td colspan="4"><c:out value="${comment.comment}"/></td>
+			</tr>
+		</c:forEach>
+		
 	</table>
 </body>
 </html>

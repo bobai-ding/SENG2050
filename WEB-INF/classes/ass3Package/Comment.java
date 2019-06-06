@@ -204,7 +204,7 @@ public class Comment implements Serializable {
 		
 	}
     // Return all comments as a list
-	public static List<Comment> getAllCommentsForReport(int reportid){
+	public static List<Comment> getSpecificComments(int reportid){
 		// Temp variables
 		String query = "SELECT * FROM comments WHERE ReportID = " + reportid;
 		List<Comment> comments = new LinkedList<>();

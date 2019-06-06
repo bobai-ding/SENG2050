@@ -46,9 +46,7 @@ public class TempController extends HttpServlet {
 			else if (submit.equals("OPEN")) {
 				System.out.println("LOG: Opening entry under ReportID: " + reportid);
 				request.setAttribute("specificReport", Database.viewSpecificReport(reportid));
-				
-				// Will be a list of comments
-				//request.setAttribute("comments", Database.getComments(ReportID));
+				request.setAttribute("comments", Comment.getSpecificComments(reportid));
 				
 				dispatchLocation = "/WEB-INF/jsp/ViewReport.jsp";
 			}
