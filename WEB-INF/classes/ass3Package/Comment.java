@@ -236,7 +236,6 @@ public class Comment implements Serializable {
 				comment.setReportid(result.getInt(2));
 				// TODO check this against other users
 				user.setUid(result.getString(3));
-				System.out.println("TESTING: userid: " + user.getUid());
 				comment.setAuthor(user);
 				comment.setComment(result.getString(4));
 				comment.setTime(result.getTime(5).toLocalTime());

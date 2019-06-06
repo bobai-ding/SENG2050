@@ -74,7 +74,7 @@ public class Database {
 		}
 		createStatement += ")";
 		
-		System.out.println("TESTING: creating table: \n" + createStatement);
+		System.out.println("LOG: creating table: \n" + createStatement);
 		try {
 			connect();
 			stmt.executeUpdate(createStatement);
