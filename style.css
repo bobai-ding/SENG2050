@@ -1,11 +1,13 @@
 @charset "utf-8";
 
 th {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid black;
+  height: 20px;
 }
 table {
   border: 1px solid black;
   border-bottom: 1px solid black;
+  width:100%
 }
 
 table {

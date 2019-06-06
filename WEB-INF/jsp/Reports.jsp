@@ -9,11 +9,13 @@
 </head>
 
 <body>
+	<div class="bottom">
 	<form action="Controller" method="POST">
 			<input type="submit" value="LOAD" name="submit">
 			<input type="submit" value="REMOVE TABLE" name="submit">
 	</form>
-	
+	</div>
+	<div class="bottom">
 	<form action="Controller" method="POST">
 			<input type="text" name="uid" placeholder="UserID">
 			<input type="text" name="title" placeholder="Report Title">
@@ -22,7 +24,9 @@
 			<input type="radio" name="type" value="testing" checked> testing
 			<input type="submit" value="ADD" name="submit">
 	</form>
+	</div>
 	
+	<div class="bottom">
 	<table>
 		<tr>
 			<th></th>
@@ -33,6 +37,7 @@
 			<th>Type</th>
 			<th>Time</th>
 			<th>Date</th>
+			<th></th>
 		</tr>
 		<c:forEach var="report" items="${reports}">
 			<tr onclick="document.form${report.reportid}.submit();">
@@ -58,6 +63,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 		
 </body>
 </html>
