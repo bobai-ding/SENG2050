@@ -21,8 +21,8 @@ public class Report implements Serializable{
     private String type;
     private int reportid;
     
-    private java.time.LocalTime time;
-    private java.time.LocalDate date;
+    private LocalTime time;
+    private LocalDate date;
 
     private LinkedList<Comment> comments = new LinkedList<>();
 
@@ -34,8 +34,8 @@ public class Report implements Serializable{
 
         //create a new report with a report string and user object
 
-        setTime(LocalTime.now());
-        setDate(LocalDate.now());
+        time = LocalTime.now();
+        date = LocalDate.now();
         this.reportContent = report;
         this.author = author;
 

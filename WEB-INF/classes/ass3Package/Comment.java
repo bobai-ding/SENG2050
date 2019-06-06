@@ -14,12 +14,12 @@ public class Comment implements Serializable {
     private LocalTime time;
     private LocalDate date;
     private boolean edited = false;
-
-    private int commentNum;
+    
+    private int reportid;
+	private int commentNum;
 
     Comment(){
-
-
+    	
     }
 
     Comment(String comment, User author){
@@ -49,6 +49,19 @@ public class Comment implements Serializable {
         //returns a comment
         return this.comment;
     }
+    
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+	
+    public void editComment(String newComment){
+
+        //edit the comment with new text
+
+
+        this.edited = true;
+        this.comment = newComment;
+    }
 
     public Date getTime(){
 
@@ -71,15 +84,10 @@ public class Comment implements Serializable {
         //format the date + time to make one string
         //need this for sorting the linked list
     }
-
-    public void editComment(String newComment){
-
-        //edit the comment with new text
-
-
-        this.edited = true;
-        this.comment = newComment;
-    }
+    
+	public void setTime(LocalTime time) {
+		this.time = time;
+	}
 
     public void setAuthor(User author){
 
@@ -111,4 +119,40 @@ public class Comment implements Serializable {
         //return the user as an object
         return author;
     }
+    
+    public LocalDate getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+
+	public boolean isEdited() {
+		return edited;
+	}
+
+	public void setEdited(boolean edited) {
+		this.edited = edited;
+	}
+
+	public int getReportid() {
+		return reportid;
+	}
+
+	public void setReportid(int reportid) {
+		this.reportid = reportid;
+	}
+
+	public int getCommentNum() {
+		return commentNum;
+	}
+
+	public void setCommentNum(int commentNum) {
+		this.commentNum = commentNum;
+	}
+
+
+
+
 }
