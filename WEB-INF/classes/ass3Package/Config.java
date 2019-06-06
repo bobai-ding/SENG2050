@@ -8,7 +8,7 @@ import javax.naming.NamingException;
 public class Config {
 	public static Connection getConnection() throws NamingException, SQLException {
 		try {
-			DataSource datasource = (DataSource)new InitialContext().lookup("java:/comp/env/SENG2050");
+			DataSource datasource = (DataSource)new InitialContext().lookup("java:/comp/env/jdbc/SENG2050");
 				
 			Connection connection = datasource.getConnection();
 			return connection;

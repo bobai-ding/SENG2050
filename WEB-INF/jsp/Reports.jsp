@@ -16,8 +16,12 @@
 	</form>
 	</div>
 	<div class="bottom">
+	Logged in user: <c:out value="${user.getName()}"/>
+	<c:forEach var="roles" items="userRoles"> 
+		User roles: <c:out value="${roles.toString()}"/>
+	</c:forEach>
 	<form action="Controller" method="POST">
-			<input type="text" name="uid" placeholder="UserID">
+			<input type="hidden" name="uid" value="<c:out value="${user.getName()}"/>">
 			<input type="text" name="title" placeholder="Report Title">
 			<input type="text" name="content" placeholder="Write report here">
 			Type
