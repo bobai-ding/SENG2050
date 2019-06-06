@@ -15,11 +15,11 @@ public class TempController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String submit = request.getParameter("submit");
-		//request.getAttribute("submit");
 		String uid = request.getParameter("uid");
 		String content = request.getParameter("content");
 		String type = request.getParameter("type");
 		String title = request.getParameter("title");
+		String comment = request.getParameter("comment");
 		int reportid = 0;
 		
 		String dispatchLocation = "/WEB-INF/jsp/Reports.jsp";
@@ -58,7 +58,7 @@ public class TempController extends HttpServlet {
 				// Need UserID
 				
 				System.out.println("LOG: Adding comment for ReportID: " + reportid);
-				// Comment.addComment(reportid, comment, uid);
+				Comment.addComment(reportid, comment, uid, false);
 				dispatchLocation = "/WEB-INF/jsp/ViewReport.jsp";
 			}
 		}

@@ -1,17 +1,15 @@
 package ass3Package;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 import java.io.Serializable;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.sql.Time;
-import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Report implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -182,14 +180,13 @@ public class Report implements Serializable{
 		Connection con = null;
 		try { 
 			con = Config.getConnection();
-			Statement statement = con.createStatement();
-			
 			// Check table exists
 			if(!(Database.checkTableExists("reports"))){
 				createReportTable();
 			}
 			
-			ResultSet result = statement.executeQuery(query); //step 3 and 4
+			ResultSet result = con.createStatement().executeQuery(query);
+			
 			while(result.next()){ //step 5
 				Report report = new Report();
 				User user = new User();

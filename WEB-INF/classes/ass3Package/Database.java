@@ -208,6 +208,24 @@ public class Database {
 		}
 	}
 	
+	public static int numOfEntrys(String tableName, int reportid) {
+		try {
+			connect();
+			rs = stmt.executeQuery("SELECT COUNT(*) FROM " + tableName + "WHERE ReportID = " + reportid);
+			while(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch(Exception e) {
+			System.err.println(e.getMessage());
+		} finally {
+			try { rs.close(); } catch (Exception e) { /* ignored */ }
+		    try { stmt.close(); } catch (Exception e) { /* ignored */ }
+		    try { ps.close(); } catch (Exception e) { /* ignored */ }
+		    try { conn.close(); } catch (Exception e) { /* ignored */ }
+		}
+		return 0;
+	}
+	
 	public static int numOfEntrys(String tableName) {
 		try {
 			connect();
