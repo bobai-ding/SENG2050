@@ -21,21 +21,21 @@
 		<table>
 			<tr>
 				<td>
-					<form action="KnowledgeBase" method="POST">
+					<form action="KnowledgeBase" method="GET">
 						<input type="submit" value="Knowledge Base" name="submit" class="bigbutton">
 					</form>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<form action="CreateReport" method="POST">
+					<form action="CreateReport" method="GET">
 						<input type="submit" value="Create Report" name="submit" class="bigbutton">
 					</form>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<form action="ViewReports" method="POST">
+					<form action="ViewReports" method="GET">
 						<input type="submit" value="View Reports" name="submit" class="bigbutton">
 					</form>
 				</td>
