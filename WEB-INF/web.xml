@@ -32,4 +32,6 @@
   <security-role>
     <role-name>staff</role-name>
   </security-role>
+  <welcome-file-list>
+   </welcome-file-list>
 </web-app>
