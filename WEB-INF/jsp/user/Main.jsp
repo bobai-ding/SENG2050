@@ -12,6 +12,7 @@
 	<h1>Welcome to the UoN IT Issue Reporting System!</h1>
 	<h4>Logged in as: <c:out value="${user.getName()}"/> </h4>
 	<h4>What would you like to do?</h4>
+	
 	<hr>
 	<br>
 	<br>
@@ -46,7 +47,7 @@
 	<br>
 	<hr>	
 	<form action="Controller" method="POST">
-		<input type="submit" value="DEBUG" name="submit" class="bigbutton2">
+		<input type="submit" value="DEBUG THE SHIT OUT OF EVERYTHING" name="submit" class="bigbutton2">
 	</form>
 				
 </body>
