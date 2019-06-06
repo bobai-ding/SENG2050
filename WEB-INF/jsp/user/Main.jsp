@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,7 @@
 
 <body>
 	<h1>Welcome to the UoN IT Issue Reporting System!</h1>
+	<h4>Logged in as: <c:out value="${user.getName()}"/> </h4>
 	<h4>What would you like to do?</h4>
 	<hr>
 	<br>
@@ -40,5 +42,12 @@
 		
 		</table>
 	</div>
+	
+	<br>
+	<hr>	
+	<form action="Controller" method="POST">
+		<input type="submit" value="DEBUG" name="submit" class="bigbutton2">
+	</form>
+				
 </body>
 </html>

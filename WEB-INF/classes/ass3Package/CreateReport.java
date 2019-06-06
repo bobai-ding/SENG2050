@@ -38,6 +38,8 @@ public class CreateReport extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		response.getWriter().append("create report served at: ").append(request.getContextPath());
+		
+		//TODO create report and forward to viewReport.jsp
 	}
 
 }
