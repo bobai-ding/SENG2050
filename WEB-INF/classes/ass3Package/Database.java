@@ -215,7 +215,6 @@ public class Database {
 			connect();
 			ps = conn.prepareStatement("SELECT COUNT(*) FROM " + tableName + " WHERE ReportID = ?");
 			ps.setInt(1, reportid);
-			System.out.println("TESTING: " + ps);
 			rs = ps.executeQuery(); 
 			
 			while(rs.next()) {

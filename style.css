@@ -9,6 +9,7 @@ tr {
 }
 tr:last-child {
  border-bottom: none;
+ broder-right:none;
 }
 table {
   border: 1px solid black;
