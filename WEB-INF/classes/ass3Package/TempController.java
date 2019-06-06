@@ -15,6 +15,7 @@ public class TempController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String submit = request.getParameter("submit");
+		//request.getAttribute("submit");
 		String uid = request.getParameter("uid");
 		String content = request.getParameter("content");
 		String type = request.getParameter("type");
@@ -42,8 +43,24 @@ public class TempController extends HttpServlet {
 				request.setAttribute("specificReport", Database.viewSpecificReport(reportid));
 				dispatchLocation = "/WEB-INF/jsp/ViewReport.jsp";
 			}
-		} else {
-			request.setAttribute("hideIfUserIsNotFound", "hidden");
+			else if (submit.equals("OPEN")) {
+				System.out.println("LOG: Opening entry under ReportID: " + reportid);
+				request.setAttribute("specificReport", Database.viewSpecificReport(reportid));
+				
+				// Will be a list of comments
+				//request.setAttribute("comments", Database.getComments(ReportID));
+				
+				dispatchLocation = "/WEB-INF/jsp/ViewReport.jsp";
+			}
+			else if (submit.equals("ADD COMMENT")) {
+				// Need reportid
+				// Need message contents
+				// Need UserID
+				
+				System.out.println("LOG: Adding comment for ReportID: " + reportid);
+				// Comment.addComment(reportid, comment, uid);
+				dispatchLocation = "/WEB-INF/jsp/ViewReport.jsp";
+			}
 		}
 		
 		submit = null;
