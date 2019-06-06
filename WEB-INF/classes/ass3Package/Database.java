@@ -94,21 +94,23 @@ public class Database {
 	}
 	
 	// Remove an entry
-		public static void deleteEntry(int entry, String colName, String tableName) {
-			try {
-				connect();
-				ps = conn.prepareStatement("DELETE FROM " + tableName + " WHERE " + colName + " = ?");
-				ps.setInt(1, entry);
-				ps.executeUpdate();
-			} catch(Exception e) {
-				System.err.println(e.getMessage());
-			} finally {
-				try { rs.close(); } catch (Exception e) { /* ignored */ }
-			    try { stmt.close(); } catch (Exception e) { /* ignored */ }
-			    try { ps.close(); } catch (Exception e) { /* ignored */ }
-			    try { conn.close(); } catch (Exception e) { /* ignored */ }
-			}
+	// eg. to delete report: 1
+	// Set id = 1, colName = ReportID, tableName = reports
+	public static void deleteEntry(int id, String colName, String tableName) {
+		try {
+			connect();
+			ps = conn.prepareStatement("DELETE FROM " + tableName + " WHERE " + colName + " = ?");
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch(Exception e) {
+			System.err.println(e.getMessage());
+		} finally {
+			try { rs.close(); } catch (Exception e) { /* ignored */ }
+		    try { stmt.close(); } catch (Exception e) { /* ignored */ }
+		    try { ps.close(); } catch (Exception e) { /* ignored */ }
+		    try { conn.close(); } catch (Exception e) { /* ignored */ }
 		}
+	}
 	
 	// Remove an entry
 	public static void deleteEntry(String entry, String colName, String tableName) {

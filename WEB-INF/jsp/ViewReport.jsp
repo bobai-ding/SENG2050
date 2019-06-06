@@ -30,7 +30,16 @@
 	<h3> Report message </h3>
 	<p><c:out value="${specificReport.reportContent}"/><p>
 	
-	Need to show comments here
+	<h3> Add Comment </h3>
+	
+	<form action="Controller" method="POST">
+			<input type="text" name="uid" placeholder="UserID">
+			<input type="text" name="comment" placeholder="Write Comment here">
+			<input type="hidden" name="reportid" value="<c:out value="${specificReport.reportid}"/>">
+			<input type="submit" value="ADD COMMENT" name="submit">
+	</form>
+	
+	<h3> Comments </h3>
 	
 	<table>
 		<tr>
@@ -39,19 +48,16 @@
 			<th>time</th>
 			<th>date</th>
 		<tr>
-		<tr>
-			<td colspan="4"> Comment Message</td>
-		</tr>
-		
 		<c:forEach var="comment" items="${comments}">
 			<tr>
-				<th><c:out value="${comment.commentNum}"/>	</th>
-				<th><c:out value="${comment.reportid}"/>	</th>
-				<th><c:out value="${comment.author.uid}"/>	</th>
-				<th><c:out value="${comment.time}"/>		</th>
-				<th><c:out value="${comment.date}"/>		</th>
+				<th><c:out value="${comment.commentNum}"/></th>
+				<th><c:out value="${comment.reportid}"/></th>
+				<th><c:out value="${comment.author}"/></th>
+				<th><c:out value="${comment.time}"/></th>
+				<th><c:out value="${comment.date}"/></th>
 			</tr>
 			<tr>
+				<td> Comment Message: <td>
 				<td colspan="4"><c:out value="${comment.comment}"/></td>
 			</tr>
 		</c:forEach>

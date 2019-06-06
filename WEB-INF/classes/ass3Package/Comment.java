@@ -69,7 +69,7 @@ public class Comment implements Serializable {
         this.comment = newComment;
     }
 
-    public Date getTime(){
+    public Date getTimeParsed(){
 
         Date date = null;
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm");
@@ -89,6 +89,10 @@ public class Comment implements Serializable {
         return null;
         //format the date + time to make one string
         //need this for sorting the linked list
+    }
+    
+    public LocalTime getTime() {
+    	return time;
     }
     
 	public void setTime(LocalTime time) {
@@ -165,7 +169,7 @@ public class Comment implements Serializable {
 		String query = "SELECT * FROM comments";
 		List<Comment> comments = new LinkedList<>();
 		Connection con = null;
-		
+		ResultSet result = null;
 		// Try getting comments from database
 		try { 
 			// Connect to db
@@ -176,7 +180,7 @@ public class Comment implements Serializable {
 				createCommentTable();
 			}
 			// Query database for comments
-			ResultSet result = con.createStatement().executeQuery(query);
+			result = con.createStatement().executeQuery(query);
 			while(result.next()){ //step 5
 				Comment comment = new Comment();
 				User user = new User();
@@ -199,6 +203,7 @@ public class Comment implements Serializable {
 		}
 		finally {
 			try { con.close(); } catch (Exception e) { /* ignored */ }
+			try { result.close(); } catch (Exception e) { /* ignored */ }
 		}
 		return comments;
 		
@@ -209,6 +214,7 @@ public class Comment implements Serializable {
 		String query = "SELECT * FROM comments WHERE ReportID = " + reportid;
 		List<Comment> comments = new LinkedList<>();
 		Connection con = null;
+		ResultSet result = null;
 		
 		// Try getting comments from database
 		try { 
@@ -219,7 +225,7 @@ public class Comment implements Serializable {
 				createCommentTable();
 			}
 			// Query database for comments
-			ResultSet result = con.createStatement().executeQuery(query);
+			result = con.createStatement().executeQuery(query);
 			while(result.next()){
 				// Temp variables
 				Comment comment = new Comment();
@@ -230,6 +236,7 @@ public class Comment implements Serializable {
 				comment.setReportid(result.getInt(2));
 				// TODO check this against other users
 				user.setUid(result.getString(3));
+				System.out.println("TESTING: userid: " + user.getUid());
 				comment.setAuthor(user);
 				comment.setComment(result.getString(4));
 				comment.setTime(result.getTime(5).toLocalTime());
@@ -243,6 +250,7 @@ public class Comment implements Serializable {
 		}
 		finally {
 			try { con.close(); } catch (Exception e) { /* ignored */ }
+			try { result.close(); } catch (Exception e) { /* ignored */ }
 		}
 		return comments;
 		
@@ -252,6 +260,7 @@ public class Comment implements Serializable {
 	public static void addComment(int reportid, String comment, String uid, boolean edited) {
 		// Set temp values
 		Connection con = null;
+		PreparedStatement ps = null;
 		Time tempTime = Time.valueOf(LocalTime.now());
 		Date tempDate = Date.valueOf(LocalDate.now());
 		int commentNum = Database.numOfEntrys("comments", reportid);
@@ -261,7 +270,7 @@ public class Comment implements Serializable {
 			// Get connection to database
 			con = Config.getConnection();
 			// Prepare db request
-			PreparedStatement ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO comments VALUES (?,?,?,?,?,?,?)");
 			// Set request values
 			ps.setInt(1, commentNum);
 			ps.setInt(2, reportid);
@@ -274,11 +283,15 @@ public class Comment implements Serializable {
 		} catch(Exception e){
 			System.err.println(e.getMessage());
 		}
+		finally {
+			try { con.close(); } catch (Exception e) { /* ignored */ }
+			try { ps.close(); } catch (Exception e) { /* ignored */ }
+		}
 	}
 	
 	// Create table in database for reports
 	public static void createCommentTable() {
-		String varNames[] = {"Comment Num", "ReportID", "UserID", "ReportContent", "Time", "Date", "Edited"};
+		String varNames[] = {"CommentNum", "ReportID", "UserID", "ReportContent", "Time", "Date", "Edited"};
 		String varType[] = {"INT","INT", "VARCHAR(80)", "VARCHAR(200)", "TIME", "DATE", "BOOLEAN"};
 		
 		Database.createTableString("comments", varNames, varType);
