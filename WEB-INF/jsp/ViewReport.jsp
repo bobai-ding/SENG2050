@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h1> View Report </h1>
+	Logged in user: <c:out value="${user.getName()}"/>
 	<table>
 		<tr>
 			<th>Report ID</th>
@@ -34,7 +35,7 @@
 	<h3> Add Comment </h3>
 	
 	<form action="Controller" method="POST">
-			<input type="text" name="uid" placeholder="UserID">
+			<input type="hidden" name="uid" value="<c:out value="${user.getName()}"/>">
 			<input type="text" name="comment" placeholder="Write Comment here">
 			<input type="hidden" name="reportid" value="<c:out value="${specificReport.reportid}"/>">
 			<input type="submit" value="ADD COMMENT" name="submit">

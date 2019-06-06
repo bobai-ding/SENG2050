@@ -178,6 +178,7 @@ public class Report implements Serializable{
 		String query = "SELECT * FROM reports";
 		List<Report> reports = new LinkedList<>();
 		Connection con = null;
+		ResultSet result = null;
 		try { 
 			con = Config.getConnection();
 			// Check table exists
@@ -185,7 +186,7 @@ public class Report implements Serializable{
 				createReportTable();
 			}
 			
-			ResultSet result = con.createStatement().executeQuery(query);
+			result = con.createStatement().executeQuery(query);
 			
 			while(result.next()){ //step 5
 				Report report = new Report();
@@ -208,6 +209,7 @@ public class Report implements Serializable{
 		}
 		finally {
 			try { con.close(); } catch (Exception e) { /* ignored */ }
+			try { result.close(); } catch (Exception e) { /* ignored */ }
 		}
 		return reports;
 		
@@ -216,12 +218,16 @@ public class Report implements Serializable{
 	// Add a new report to database
 	public static void addReport(String uid, String title, String reportContent, String type) {
 		Connection con = null;
+		PreparedStatement ps = null;
 		Time tempTime = Time.valueOf(LocalTime.now());
 		Date tempDate = Date.valueOf(LocalDate.now());
-		int reportid = Database.numOfEntrys("reports");
+		
+		Integer reportid = Database.max("reports", "ReportID");
+		reportid++;
+		
 		try {
 			con = Config.getConnection();
-			PreparedStatement ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?,?,?,?)");
 			ps.setInt(1, reportid);
 			ps.setString(2, uid);
 			ps.setString(3, title);
@@ -232,6 +238,10 @@ public class Report implements Serializable{
 			ps.executeUpdate();
 		} catch(Exception e){
 			System.err.println(e.getMessage());
+		}
+		finally {
+			try { con.close(); } catch (Exception e) { /* ignored */ }
+			try { ps.close(); } catch (Exception e) { /* ignored */ }
 		}
 	}
 	

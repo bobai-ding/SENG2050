@@ -11,6 +11,9 @@ tr:last-child {
  border-bottom: none;
  broder-right:none;
 }
+td {
+	text-align:center;
+}
 table {
   border: 1px solid black;
   border-bottom: 1px solid black;

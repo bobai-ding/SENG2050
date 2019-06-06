@@ -249,6 +249,25 @@ public class Database {
 		return 0;
 	}
 	
+	public static int max(String tableName, String colName) {
+		try {
+			connect();
+			rs = stmt.executeQuery("SELECT MAX(" + colName + ") FROM " + tableName);
+			
+			while(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch(Exception e) {
+			System.err.println(e.getMessage());
+		} finally {
+			try { rs.close(); } catch (Exception e) { /* ignored */ }
+		    try { stmt.close(); } catch (Exception e) { /* ignored */ }
+		    try { ps.close(); } catch (Exception e) { /* ignored */ }
+		    try { conn.close(); } catch (Exception e) { /* ignored */ }
+		}
+		return 0;
+	}
+	
 	public static void tryCatchTemplate() {
 		try {
 			//Try something
