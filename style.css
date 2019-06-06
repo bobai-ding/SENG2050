@@ -47,6 +47,15 @@ div.bottom {
 	padding-bottom: 15px;
 }
 
+div.main{
+	width:33%;
+	margin:auto;
+}
+
+.bigbutton{
+	width: 100%; height:45px; font-size:2em
+}
+
 .content {
 	
 }

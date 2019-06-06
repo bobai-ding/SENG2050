@@ -13,7 +13,7 @@
 		<auth-constraint>
 			<!-- The following users can access the above resources -->
 			<role-name>staff</role-name>
-			<role-name>user</role-name>
+			<!-- <role-name>user</role-name>  get rid of when needed -->
 		</auth-constraint>
 	</security-constraint>
 	<security-constraint>
