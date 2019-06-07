@@ -15,18 +15,9 @@
 	<div class="bottom">
 	<form action="Controller" method="POST">
 			<input type="submit" value="LOAD" name="submit">
+			<%if(request.isUserInRole("staff")){ //remove button only exists for staff%>
 			<input type="submit" value="REMOVE TABLE" name="submit">
-	</form>
-	</div>
-	<div class="bottom">
-	Logged in as: <c:out value="${user.getName()}"/>
-	User roles: <c:out value="${userRoles[0]}"/>
-	<form action="Controller" method="POST">
-			<input type="text" name="title" placeholder="Report Title">
-			<input type="text" name="content" placeholder="Write report here">
-			Type
-			<input type="radio" name="type" value="testing" checked> testing
-			<input type="submit" value="ADD" name="submit">
+			<%} %>
 	</form>
 	</div>
 	

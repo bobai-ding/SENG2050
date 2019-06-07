@@ -62,7 +62,11 @@ public class CreateReport extends HttpServlet {
 			dispatchLocation = "/WEB-INF/jsp/user/Main.jsp";
 		}
 		
-		request.setAttribute("reports", Report.getUserReports(uid));
+		if(request.isUserInRole("staff")) {
+			request.setAttribute("reports", Report.getAllReports());
+		} else {
+			request.setAttribute("reports", Report.getUserReports(uid));
+		}
 		
 		getServletContext().getRequestDispatcher(dispatchLocation).forward(request, response);
 		//TODO create report from data recieved from jsp and forward to viewReport.jsp

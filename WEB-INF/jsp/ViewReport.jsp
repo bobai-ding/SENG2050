@@ -123,6 +123,10 @@
 	<Form action="redirect" method="GET"> 
 		<%request.setAttribute("user", request.getUserPrincipal()); %>
 		<input class="largebutton" type="submit" value="Return to Main Menu" name="submit">
-		</form>
+	</form>
+	<Form action="ViewReports" method="GET"> 
+		<%request.setAttribute("user", request.getUserPrincipal()); %>
+		<input class="largebutton" type="submit" value="Back to Reports" name="submit">
+	</form>
 </body>
 </html>
