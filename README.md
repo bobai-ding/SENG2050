@@ -12,9 +12,35 @@ General stuff (and in no specific order);
 1. Make it look nice
 2. User login w/ verification
     - Look into tomcat users
-3. 
-4.
+    
+3. Need to intergrate files into create report
+    - Also need to be displayed when viewing a report
+    
+3. Jsp still to make
+    - Knowledge base
+        -Filter this by status in report ("Completed" or "Resolved")
+    - View open reports
+        -Filter this by status in report ("inprogress" or "new")
+        -User should only see report related to them (Probably name)
+    - View all reports
+        -Should only be viewable by staff
+        -Need to have a way to sort this list or grouped by status
+    - Mark as completed
+        Staff need a way to mark a report as completed
+    - 
 
+4. Bugs to fix
+    - currently refreshing resend the form
+    - a bug with user permissions
+    
+5. Need to add to report db
+    - date time resolved
+    
+6. Need to add to user db
+    - Name
+    - surname
+    - email
+    - contact number
 Will;
 
 1. Database stuff _
