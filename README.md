@@ -22,7 +22,7 @@ General stuff (and in no specific order);
 3. [ ] Jsp still to make
     - [x] Knowledge base
         - [ ] Filter this by status in report ("Completed" or "Resolved")
-    - [ ] View open reports
+    - [X] View open reports
         - [ ] Filter this by status in report ("inprogress" or "new")
         - [x] User should only see report related to them (Probably name)
     - [x] View all reports 
@@ -48,8 +48,8 @@ General stuff (and in no specific order);
     - [x] contact number
 
 7. [ ] Servlets!!!
-    - [ ] CreateReport.java needs to take data from createReport.jsp and add to database
-    - [ ] editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
+    - [x] CreateReport.java needs to take data from createReport.jsp and add to database
+    - [x] editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
     - 
     - [ ] ALL SERVLETS NEED TO HANDLE IMAGES
 8. Will;
@@ -67,5 +67,5 @@ General stuff (and in no specific order);
 10. Simi;
 
     1. jsp
-    2. 
+    2. servlets
     3. 
