@@ -46,6 +46,8 @@
 		<br>			
 		<input class="largebutton" type="submit" value="Submit Report" name="submit">
 	</form>
-
+	<Form action="redirect" method="GET"> 
+		<input class="largebutton" type="submit" value="Return to Main Menu" name="submit">
+	</form>
 </body>
 </html>

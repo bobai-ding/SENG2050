@@ -58,7 +58,7 @@
 				<td><c:out value="${report.reportid}"/></td>
 				<td><c:out value="${report.author.uid}"/></td>
 				<td><c:out value="${report.title}"/></td>
-				<td><p><c:out value="${report.reportContent}"/></p></td>
+				<td><p class="limited"><c:out value="${report.reportContent}"/></p></td>
 				<td><c:out value="${report.type}"/></td>
 				<td><c:out value="${report.time}"/></td>
 				<td><c:out value="${report.date}"/></td>
@@ -101,6 +101,8 @@
 			
 	</table>
 	</div>
-		
+		<Form action="redirect" method="GET"> 
+		<input class="largebutton" type="submit" value="Return to Main Menu" name="submit">
+		</form>
 </body>
 </html>
