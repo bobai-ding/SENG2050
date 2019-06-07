@@ -1,6 +1,15 @@
 package ass3Package;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.LinkedList;
+import java.util.List;
 
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -62,7 +71,37 @@ public class User implements Serializable {
 		return "User [uid=" + uid + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", phoneNum=" + phoneNum + "]";
 	}
-
 	
-    
+	// Return a specific user using uid
+	public static User getSpecificUser(String uid){
+		// Temp variables
+		String query = "SELECT * FROM tomcat_users WHERE user_name = " + uid;
+		User user = new User();
+		Connection con = null;
+		ResultSet result = null;
+		
+		// Try getting user from database
+		try { 
+			// Connect to db
+			con = Config.getConnection();
+			
+			// Query database for user
+			result = con.createStatement().executeQuery(query);
+			while(result.next()){
+				user.setUid(result.getString(1));
+				user.setFirstName(result.getString(2));
+				user.setLastName(result.getString(3));
+				user.setEmail(result.getString(4));
+				user.setPhoneNum(result.getInt(5));
+			}
+		}
+		catch(Exception e){
+			System.err.println(e.getMessage());
+		}
+		finally {
+			try { con.close(); } catch (Exception e) { /* ignored */ }
+			try { result.close(); } catch (Exception e) { /* ignored */ }
+		}
+		return user;
+	}
 }
