@@ -6,6 +6,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Servlet implementation class redirect
@@ -23,7 +28,22 @@ public class redirect extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+		//List<Report> reports = request.getParameter("reportList");
+		List<Report> reports = (List<Report>) request.getAttribute("reportList");
+		String type = request.getParameter("order");
+		
+		if(reports == null) {
+			//redirect
+		}
+		
+		if(type.equals("categories")) {
+			
+		} else if(type.equals("date")) {
+			
+		} else {
+			
+		}
 	}
 
 }
