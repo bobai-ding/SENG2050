@@ -206,11 +206,9 @@ public class Report implements Serializable{
 			
 			while(result.next()){ //step 5
 				Report report = new Report();
-				User user = new User();
 				
 				report.setReportid(result.getInt(1));
-				user.setUid(result.getString(2));
-				report.setAuthor(user);
+				report.setAuthor(User.getSpecificUser(result.getString(2)));
 				report.setTitle(result.getString(3));
 				report.setReportContent(result.getString(4));
 				report.setType(result.getString(5));
@@ -254,11 +252,9 @@ public class Report implements Serializable{
 			
 			while(result.next()){ //step 5
 				Report report = new Report();
-				User user = new User();
 				
 				report.setReportid(result.getInt(1));
-				user.setUid(result.getString(2));
-				report.setAuthor(user);
+				report.setAuthor(User.getSpecificUser(result.getString(2)));
 				report.setTitle(result.getString(3));
 				report.setReportContent(result.getString(4));
 				report.setType(result.getString(5));
@@ -303,11 +299,9 @@ public class Report implements Serializable{
 			
 			while(result.next()){ //step 5
 				Report report = new Report();
-				User user = new User();
 				
 				report.setReportid(result.getInt(1));
-				user.setUid(result.getString(2));
-				report.setAuthor(user);
+				report.setAuthor(User.getSpecificUser(result.getString(2)));
 				report.setTitle(result.getString(3));
 				report.setReportContent(result.getString(4));
 				report.setType(result.getString(5));
