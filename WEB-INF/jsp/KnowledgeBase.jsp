@@ -76,10 +76,12 @@
 				<td><c:out value="${report.date}"/></td>
 				<td><c:out value="${report.status}"/></td>
 				<td> 
+					<%if(request.isUserInRole("staff")){ %>
 					<form action="Controller" method="POST">
 						<input type="submit" value="DELETE" name="submit">
 						<input type="hidden" value="${report.reportid}" name="reportid">
 					</form>
+					<%} %>
 				</td>
 			</tr>
 		</c:forEach>
