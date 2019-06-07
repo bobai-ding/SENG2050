@@ -89,10 +89,10 @@ public class User implements Serializable {
 			result = con.createStatement().executeQuery(query);
 			while(result.next()){
 				user.setUid(result.getString(1));
-				user.setFirstName(result.getString(2));
-				user.setLastName(result.getString(3));
-				user.setEmail(result.getString(4));
-				user.setPhoneNum(result.getInt(5));
+				user.setFirstName(result.getString(3));
+				user.setLastName(result.getString(4));
+				user.setEmail(result.getString(5));
+				user.setPhoneNum(result.getInt(6));
 			}
 		}
 		catch(Exception e){
