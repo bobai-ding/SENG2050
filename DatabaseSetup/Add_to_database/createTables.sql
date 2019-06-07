@@ -9,7 +9,7 @@ CREATE TABLE tomcat_users (
 	firstName varchar(32),
 	lastName varchar(32),
 	email varchar(32),
-	phoneNum int,
+	phoneNum int
 );
 CREATE TABLE tomcat_roles (
 	role_name varchar(20) NOT NULL PRIMARY KEY
