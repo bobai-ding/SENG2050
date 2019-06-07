@@ -2,6 +2,9 @@ package ass3Package;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalTime;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -108,6 +111,8 @@ public class Database {
 	// View a specific report using userid and title
 	public static Report viewSpecificReport(String uid, String title) {
 		Report report = null;
+		Time tempTime = null;
+		Date tempDate = null;
 		try {
 			// connect and query
 			connect();
@@ -128,8 +133,20 @@ public class Database {
 				report.setDate(rs.getDate(7).toLocalDate());
 				report.setStatus(rs.getString(8));
 				report.setInKnowledge(rs.getBoolean(9));
-				report.setTime(rs.getTime(10).toLocalTime());
-				report.setDate(rs.getDate(11).toLocalDate());
+				
+				tempTime = rs.getTime(10);
+				if (tempTime != null) {
+					report.setTime(tempTime.toLocalTime());	
+				} else {
+					report.setTime(null);
+				}
+				
+				tempDate = rs.getDate(11);
+				if (tempDate != null) {
+					report.setDate(tempDate.toLocalDate());
+				} else {
+					report.setDate(null);
+				}
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());
@@ -145,6 +162,8 @@ public class Database {
 	public static Report viewSpecificReport(int reportid) {
 		Report report = null;
 		User user = null;
+		Time tempTime = null;
+		Date tempDate = null;
 		try {
 			// Connect and query
 			connect();
@@ -165,8 +184,20 @@ public class Database {
 				report.setDate(rs.getDate(7).toLocalDate());
 				report.setStatus(rs.getString(8));
 				report.setInKnowledge(rs.getBoolean(9));
-				report.setTime(rs.getTime(10).toLocalTime());
-				report.setDate(rs.getDate(11).toLocalDate());
+				
+				tempTime = rs.getTime(10);
+				if (tempTime != null) {
+					report.setTime(tempTime.toLocalTime());	
+				} else {
+					report.setTime(null);
+				}
+				
+				tempDate = rs.getDate(11);
+				if (tempDate != null) {
+					report.setDate(tempDate.toLocalDate());
+				} else {
+					report.setDate(null);
+				}
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());
@@ -181,7 +212,8 @@ public class Database {
 	
 	public static Report viewUserReports(String userID) {
 		Report report = null;
-		
+		Time tempTime = null;
+		Date tempDate = null;
 		try {
 			// Connect and query
 			connect();
@@ -201,8 +233,21 @@ public class Database {
 				report.setDate(rs.getDate(7).toLocalDate());
 				report.setStatus(rs.getString(8));
 				report.setInKnowledge(rs.getBoolean(9));
-				report.setTime(rs.getTime(10).toLocalTime());
-				report.setDate(rs.getDate(11).toLocalDate());
+				
+				tempTime = rs.getTime(10);
+				if (tempTime != null) {
+					report.setTime(tempTime.toLocalTime());	
+				} else {
+					report.setTime(null);
+				}
+				
+				tempDate = rs.getDate(11);
+				if (tempDate != null) {
+					report.setDate(tempDate.toLocalDate());
+				} else {
+					report.setDate(null);
+				}
+				
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());

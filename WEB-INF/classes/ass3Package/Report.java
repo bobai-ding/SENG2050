@@ -190,6 +190,8 @@ public class Report implements Serializable{
 		List<Report> reports = new LinkedList<>();
 		Connection con = null;
 		ResultSet result = null;
+		Time tempTime = null;
+		Date tempDate = null;
 		try { 
 			con = Config.getConnection();
 			// Check table exists
@@ -211,8 +213,20 @@ public class Report implements Serializable{
 				report.setDate(result.getDate(7).toLocalDate());
 				report.setStatus(result.getString(8));
 				report.setInKnowledge(result.getBoolean(9));
-				report.setTime(result.getTime(10).toLocalTime());
-				report.setDate(result.getDate(11).toLocalDate());
+				tempTime = result.getTime(10);
+				if (tempTime != null) {
+					report.setTime(tempTime.toLocalTime());	
+				} else {
+					report.setTime(null);
+				}
+				
+				tempDate = result.getDate(11);
+				if (tempDate != null) {
+					report.setDate(tempDate.toLocalDate());
+				} else {
+					report.setDate(null);
+				}
+				reports.add(0, report);
 				reports.add(0, report);
 			}
 		}
@@ -236,6 +250,8 @@ public class Report implements Serializable{
 		List<Report> reports = new LinkedList<>();
 		Connection con = null;
 		ResultSet result = null;
+		Time tempTime = null;
+		Date tempDate = null;
 		try { 
 			con = Config.getConnection();
 			// Check table exists
@@ -259,8 +275,20 @@ public class Report implements Serializable{
 				report.setDate(result.getDate(7).toLocalDate());
 				report.setStatus(result.getString(8));
 				report.setInKnowledge(result.getBoolean(9));
-				report.setTime(result.getTime(10).toLocalTime());
-				report.setDate(result.getDate(11).toLocalDate());
+				tempTime = result.getTime(10);
+				if (tempTime != null) {
+					report.setTime(tempTime.toLocalTime());	
+				} else {
+					report.setTime(null);
+				}
+				
+				tempDate = result.getDate(11);
+				if (tempDate != null) {
+					report.setDate(tempDate.toLocalDate());
+				} else {
+					report.setDate(null);
+				}
+				reports.add(0, report);
 				reports.add(0, report);
 			}
 		}
@@ -271,6 +299,7 @@ public class Report implements Serializable{
 		finally {
 			try { con.close(); } catch (Exception e) { /* ignored */ }
 			try { result.close(); } catch (Exception e) { /* ignored */ }
+			try { ps.close(); } catch (Exception e) { /* ignored */ }
 		}
 		return reports;
 		
@@ -279,12 +308,11 @@ public class Report implements Serializable{
 		
 	public static List<Report> getKnowledgeReports(){
 		PreparedStatement ps = null;
-		
-		
-		//String query = "SELECT * FROM reports WHERE = \'" + userID + "\'";
 		List<Report> reports = new LinkedList<>();
 		Connection con = null;
 		ResultSet result = null;
+		Time tempTime = null;
+		Date tempDate = null;
 		try { 
 			con = Config.getConnection();
 			// Check table exists
@@ -308,8 +336,19 @@ public class Report implements Serializable{
 				report.setDate(result.getDate(7).toLocalDate());
 				report.setStatus(result.getString(8));
 				report.setInKnowledge(result.getBoolean(9));
-				report.setTime(result.getTime(10).toLocalTime());
-				report.setDate(result.getDate(11).toLocalDate());
+				tempTime = result.getTime(10);
+				if (tempTime != null) {
+					report.setTime(tempTime.toLocalTime());	
+				} else {
+					report.setTime(null);
+				}
+				
+				tempDate = result.getDate(11);
+				if (tempDate != null) {
+					report.setDate(tempDate.toLocalDate());
+				} else {
+					report.setDate(null);
+				}
 				reports.add(0, report);
 			}
 		}
@@ -320,6 +359,7 @@ public class Report implements Serializable{
 		finally {
 			try { con.close(); } catch (Exception e) { /* ignored */ }
 			try { result.close(); } catch (Exception e) { /* ignored */ }
+			try { ps.close(); } catch (Exception e) { /* ignored */ }
 		}
 		return reports;
 		
@@ -347,8 +387,8 @@ public class Report implements Serializable{
 			ps.setDate(7, tempDate);
 			ps.setString(8, status);
 			ps.setBoolean(9, false);
-			ps.setTime(6, null);
-			ps.setDate(7, null);
+			ps.setTime(10, null);
+			ps.setDate(11, null);
 			ps.executeUpdate();
 		} catch(Exception e){
 			System.err.println(e.getMessage());
