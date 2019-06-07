@@ -9,46 +9,46 @@ CURRENT TODO by the 9th
 
 General stuff (and in no specific order);
 
-1. Make it look nice
-2. User login w/ verification
-    - Look into tomcat users
+1. [ ] Make it look nice
+2. [x] User login w/ verification
+    - [x] Look into tomcat users
     
-3. Need to intergrate files into create report!!!
-    - Also need to be displayed when viewing a report
+3. [ ] Need to intergrate files into create report!!!
+    - [ ] Also need to be displayed when viewing a report
     
-3. Jsp still to make
-    - Knowledge base _/
-        -Filter this by status in report ("Completed" or "Resolved")
-    - View open reports
-        -Filter this by status in report ("inprogress" or "new")
-        -User should only see report related to them (Probably name) _/
-    - View all reports _/
-        -Should only be viewable by staff _/
-        -Need to have a way to sort this list or grouped by status
-    - Mark as completed _/
-        Staff need a way to mark a report as completed _/
-    - Add completed reports to knowledge base_/
-        Staff only_/
-    - User accepts completed report _/
+3. [ ] Jsp still to make
+    - [x] Knowledge base _/
+        - [ ] Filter this by status in report ("Completed" or "Resolved")
+    - [ ] View open reports
+        - [ ] Filter this by status in report ("inprogress" or "new")
+        - [x] User should only see report related to them (Probably name) _/
+    - [x] View all reports _/
+        - [x] Should only be viewable by staff _/
+        - [ ] Need to have a way to sort this list or grouped by status
+    - [x] Mark as completed _/
+        - [x] Staff need a way to mark a report as completed _/
+    - [x] Add completed reports to knowledge base_/
+        - [x] Staff only_/
+    - [x] User accepts completed report _/
 
-4. Bugs to fix
-    - currently refreshing resend the form
-    - a bug with user permissions
+4. [ ] Bugs to fix
+    - [ ] currently refreshing resend the form
+    - [ ] a bug with user permissions
     
-5. Need to add to report db
-    - date time resolved
+5. [ ] Need to add to report db
+    - [ ] date time resolved
     
-6. Need to add to user db
-    - Name
-    - surname
-    - email
-    - contact number
+6. [x] Need to add to user db
+    - [x] Name
+    - [x] surname
+    - [x] email
+    - [x] contact number
     
-7. Servlets!!!
-    - CreateReport.java needs to take data from createReport.jsp and add to database
-    - editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
+7. [ ] Servlets!!!
+    - [ ] CreateReport.java needs to take data from createReport.jsp and add to database
+    - [ ] editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
     - 
-    - ALL SERVLETS NEED TO HANDLE IMAGES
+    - [ ] ALL SERVLETS NEED TO HANDLE IMAGES
 8. Will;
 
     1. Database stuff _
