@@ -175,6 +175,22 @@ public class Report implements Serializable{
 		this.inKnowledge = inKnowledge;
 	}
 	
+	public LocalTime getTimeResolved() {
+		return timeResolved;
+	}
+
+	public void setTimeResolved(LocalTime timeResolved) {
+		this.timeResolved = timeResolved;
+	}
+
+	public LocalDate getDateResolved() {
+		return dateResolved;
+	}
+
+	public void setDateResolved(LocalDate dateResolved) {
+		this.dateResolved = dateResolved;
+	}
+
 	@Override
 	public String toString() {
 		return "Report [author=" + author + ", reportContent=" + reportContent + ", title=" + title + ", type=" + type
