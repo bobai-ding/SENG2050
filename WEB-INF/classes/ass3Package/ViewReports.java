@@ -33,6 +33,9 @@ public class ViewReports extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		response.getWriter().append("View Reports served at: ").append(request.getContextPath());
+		doGet(request, response);
+		
+		
 		
 		//TODO get reports and then forward to reports.jsp
 	}

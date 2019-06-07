@@ -34,8 +34,23 @@ public class editReport extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO edit a report's status and knowledgebase
-		doGet(request, response);
+		String state = request.getParameter("state");
+		Boolean knowledge = Boolean.parseBoolean(request.getParameter("knowledge"));
+		int reportID = Integer.parseInt(request.getParameter("reportID"));
+		
+		System.out.println("Editing Report: " + reportID);
+		
+		if(state != null && knowledge != null) {
+			Database.updateWhere("reports", "Status", state, "ReportID", reportID);
+			Database.updateWhere("reports", "inKnowledge", knowledge, "ReportID", reportID);
+		}else if(state == null && knowledge != null) {
+			Database.updateWhere("reports", "inKnowledge", knowledge, "ReportID", reportID);
+		} else {
+			System.out.println("ERROR NULL");
+		}
+		
+		request.getRequestDispatcher("/ViewReports").forward(request, response); //redirect to main page
+		
 	}
 
 }

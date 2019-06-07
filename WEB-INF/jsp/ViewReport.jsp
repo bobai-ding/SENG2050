@@ -19,22 +19,28 @@
 			<input type="radio" name="state" value="completed">Completed<br>
 			<input type="radio" name="state" value="resolved">Resolved<br>
 			<input type="hidden" name="knowledge" value="false">
+			<input type="hidden" name="reportID" value="${specificReport.reportid}">
+			<input type="submit" name="submit">
 		</form>
-		<c:if test = "${specificReport.status == 'temp'}" >
+		<c:if test = "${specificReport.status == 'resolved'}" >
 			<form action="editReport" method="POST">
 			<p> Please choose if the report should be added to the knowledge base: </p>
 			<input type="radio" name="knowledge" value="false">No<br>
 			<input type="radio" name="knowledge" value="true">Yes<br>
+			<input type="hidden" name="reportID" value="${specificReport.reportid}">
+			<input type="submit" name="submit">
 			</form>
 		</c:if>
 		<hr>
 	<% } else { %>
-		<c:if test = "${specificReport.status == 'temp'}">
+		<c:if test = "${specificReport.status == 'completed'}">
 		<h3>Please select if the the issue has been resolved:</h3>
 		<form action="editReport" method="POST">
 			<input type="radio" name="state" value="inProgress">No<br>
 			<input type="radio" name="state" value="resolved">Yes<br>
+			<input type="hidden" name="reportID" value="${specificReport.reportid}">
 			<input type="hidden" name="knowledge" value="false">
+			<input type="submit" name="submit">
 		</form>
 		</c:if>		
 	<%} %>
