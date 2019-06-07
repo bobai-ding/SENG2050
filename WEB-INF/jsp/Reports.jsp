@@ -21,6 +21,18 @@
 	</form>
 	</div>
 	
+	<div class="left">
+		<form action="redirect" method="POST">
+			Sort by: <input type="radio" name="order" value="status" required checked>By status <input type="radio" name="order" value="categories">By category <input type="radio" name="order" value="date">By date
+			<input type="submit" value="Sort!">
+			<input type="hidden" name="sender" value="/WEB-INF/jsp/Reports.jsp">
+			<!--  <input type="hidden" name="reportList" value="${reports}"> -->
+			<c:set var="reportList" value="${reports}" scope="session"/>
+			
+		</form>
+	</div>
+	<h3>List of Reports</h3>
+		
 	<div class="bottom">
 	<table>
 		<tr>
