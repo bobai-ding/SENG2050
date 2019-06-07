@@ -59,7 +59,7 @@
 			</tr>
 		</c:forEach>
 		<% } else { %>
-			<c:forEach var="report" items="${userReports}">
+			<c:forEach var="report" items="${reports}">
 			<tr>
 				<td> 
 					<form action="Controller" method="POST">

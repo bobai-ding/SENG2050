@@ -19,7 +19,7 @@ public class TempController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String submit = request.getParameter("submit");
-		String uid = request.getParameter("uid");
+		String uid = request.getUserPrincipal().getName();
 		String content = request.getParameter("content");
 		String type = request.getParameter("type");
 		String title = request.getParameter("title");
@@ -33,6 +33,7 @@ public class TempController extends HttpServlet {
 			if (request.getParameter("reportid") != null)  reportid = Integer.parseInt(request.getParameter("reportid"));
 			if (submit.equals("ADD")) {
 				System.out.println("LOG: Adding new entry under UserID: " + uid + " with Title: " + title);
+				// TODO Set status properly
 				Report.addReport(uid, title, content, type, "temp");
 			} 
 			else if (submit.equals("DELETE")) {
@@ -68,7 +69,6 @@ public class TempController extends HttpServlet {
 		submit = null;
 		request.setAttribute("reports", Report.getAllReports());
 		request.setAttribute("user", request.getUserPrincipal());
-		
 		request.setAttribute("userReports", Report.getUserReports(uid));
 		System.out.println("user id: " + uid + " is getting their reports");
 		

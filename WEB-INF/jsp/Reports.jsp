@@ -22,7 +22,6 @@
 	Logged in as: <c:out value="${user.getName()}"/>
 	User roles: <c:out value="${userRoles[0]}"/>
 	<form action="Controller" method="POST">
-			<input type="hidden" name="uid" value="<c:out value="${user.getName()}"/>">
 			<input type="text" name="title" placeholder="Report Title">
 			<input type="text" name="content" placeholder="Write report here">
 			Type
