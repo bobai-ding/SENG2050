@@ -1,7 +1,9 @@
 <xml>	
 	<!-- Change -->
-	<Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+	<Realm className="org.apache.catalina.realm.LockOutRealm">
+		<Realm className="org.apache.catalina.realm.UserDatabaseRealm"
 	               resourceName="UserDatabase"/>
+	</Realm>
 	
 	<!-- To -->
 	<Realm className="org.apache.catalina.realm.LockOutRealm">
