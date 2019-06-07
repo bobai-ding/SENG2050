@@ -7,25 +7,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class KnowledgeBase
- */
 @WebServlet("/KnowledgeBase")
 public class KnowledgeBase extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		request.setAttribute("reports", Report.getKnowledgeReports());
-		request.getRequestDispatcher("/WEB-INF/jsp/KnowledgeBase.jsp").forward(request, response); //redirect to main page
+		String submit = request.getParameter("submit");
+		String searchVal = request.getParameter("searchVal");
+		String dispactchLocation = "/WEB-INF/jsp/KnowledgeBase.jsp";
+		
+		System.out.println("TESTING: search val "+submit);
+		if (submit != null) {
+			if (submit.equals("SEARCH")) {
+				System.out.println("TESTING TO TO SEARCH");
+				Report.searchReports(searchVal);
+				request.setAttribute("reports", Report.searchReports(searchVal));
+			} else {
+				request.setAttribute("reports", Report.getKnowledgeReports());
+			}
+		} else {
+			request.setAttribute("reports", Report.getKnowledgeReports());
+		}
+		
+		request.getRequestDispatcher(dispactchLocation).forward(request, response); //redirect to main page
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
-		response.getWriter().append("Knowledge base served at: ").append(request.getContextPath());
 		doGet(request, response);
-		//TODO view knowledgebase and forward to reports.jsp
 	}
 
 }

@@ -244,53 +244,6 @@ public class Database {
 		return report;
 	}
 	
-//	public static Report searchReports(String keyword) {
-//		Report report = null;
-//		try {
-//			// Connect and query
-//			connect();
-//			ps = conn.prepareStatement("SELECT * FROM reports WHERE UserID = ?");
-//			ps.setString(1, userID);
-//			rs = ps.executeQuery();
-//			
-//			while(rs.next()) {
-//				report = new Report();
-//				
-//				report.setReportid(rs.getInt(1));
-//				report.setAuthor(User.getSpecificUser(rs.getString(2)));
-//				report.setTitle(rs.getString(3));
-//				report.setReportContent(rs.getString(4));
-//				report.setType(rs.getString(5));
-//				report.setTime(rs.getTime(6).toLocalTime());
-//				report.setDate(rs.getDate(7).toLocalDate());
-//				report.setStatus(rs.getString(8));
-//				report.setInKnowledge(rs.getBoolean(9));
-//				
-//				if (rs.getTime(10) != null) {
-//					report.setTimeResolved(rs.getTime(10).toLocalTime());	
-//				} else {
-//					report.setTimeResolved(null);
-//				}
-//				
-//				if (rs.getDate(11) != null) {
-//					report.setDateResolved(rs.getDate(11).toLocalDate());
-//				} else {
-//					report.setDateResolved(null);
-//				}
-//				
-//			}
-//		} catch(Exception e) {
-//			System.err.println(e.getMessage());
-//		} finally {
-//			try { rs.close(); } catch (Exception e) { /* ignored */ }
-//		    try { stmt.close(); } catch (Exception e) { /* ignored */ }
-//		    try { ps.close(); } catch (Exception e) { /* ignored */ }
-//		    try { conn.close(); } catch (Exception e) { /* ignored */ }
-//		}
-//		return report;
-//	}
-
-
 	// Delete entire table
 	public static void removeTable(String tableName) {
 		try {
