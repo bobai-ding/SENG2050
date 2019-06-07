@@ -13,7 +13,7 @@
 	<h4>Logged in as: <c:out value="${user.getName()}"/> </h4>
 	<hr>
 	<div class="bottom">
-	<form action="Controller" method="POST">
+	<form action="KnowledgeBase" method="POST">
 			<input type="submit" value="LOAD" name="submit">
 	</form>
 	</div>
