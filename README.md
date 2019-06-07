@@ -25,10 +25,11 @@ General stuff (and in no specific order);
     - View all reports _/
         -Should only be viewable by staff _/
         -Need to have a way to sort this list or grouped by status
-    - Mark as completed
-        Staff need a way to mark a report as completed
-    - Add completed reports to knowledge base
-        Staff only
+    - Mark as completed _/
+        Staff need a way to mark a report as completed _/
+    - Add completed reports to knowledge base_/
+        Staff only_/
+    - User accepts completed report _/
 
 4. Bugs to fix
     - currently refreshing resend the form
