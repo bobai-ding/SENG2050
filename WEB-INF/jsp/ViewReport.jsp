@@ -80,24 +80,24 @@
 	<c:forEach var="comment" items="${comments}">
 		<div class="bottom">
 		<table>
-				<tr>
-					<th>Comment number</th>
-					<th>ReportID</th>
-					<th>Author</th>
-					<th>time</th>
-					<th>date</th>
-				<tr>
-				<tr>
-					<td><c:out value="${comment.commentNum}"/></td>
-					<td><c:out value="${comment.reportid}"/></td>
-					<td><c:out value="${comment.author}"/></td>
-					<td><c:out value="${comment.time}"/></td>
-					<td><c:out value="${comment.date}"/></td>
-				</tr>
-				<tr>
-					<td>Comment Message:</td>
-					<td colspan="4"><c:out value="${comment.comment}"/></td>
-				</tr>
+			<tr>
+				<td colspan="5"><c:out value="${comment.comment}"/></td>
+			</tr>
+			<tr>
+				<th>Comment number</th>
+				<th>ReportID</th>
+				<th>Author</th>
+				<th>time</th>
+				<th>date</th>
+			<tr>
+			<tr>
+				<td><c:out value="${comment.commentNum}"/></td>
+				<td><c:out value="${comment.reportid}"/></td>
+				<td><c:out value="${comment.author}"/></td>
+				<td><c:out value="${comment.time}"/></td>
+				<td><c:out value="${comment.date}"/></td>
+			</tr>
+				
 		</table>
 		</div>
 		<hr>

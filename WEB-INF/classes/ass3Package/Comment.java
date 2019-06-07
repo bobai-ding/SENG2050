@@ -291,7 +291,7 @@ public class Comment implements Serializable {
 	// Create table in database for reports
 	public static void createCommentTable() {
 		String varNames[] = {"CommentNum", "ReportID", "UserID", "ReportContent", "Time", "Date", "Edited"};
-		String varType[] = {"INT","INT", "VARCHAR(80)", "VARCHAR(200)", "TIME", "DATE", "BOOLEAN"};
+		String varType[] = {"INT","INT", "VARCHAR(80)", "VARCHAR(500)", "TIME", "DATE", "BOOLEAN"};
 		
 		Database.createTableString("comments", varNames, varType);
 	}
