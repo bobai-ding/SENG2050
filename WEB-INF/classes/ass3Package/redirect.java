@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class KnowledgeBase
+ * Servlet implementation class redirect
  */
-@WebServlet("/KnowledgeBase")
-public class KnowledgeBase extends HttpServlet {
+@WebServlet("/redirect")
+public class redirect extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public KnowledgeBase() {
+    public redirect() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +28,7 @@ public class KnowledgeBase extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		request.getRequestDispatcher("/WEB-INF/jsp/KnowledgeBase.jsp").forward(request, response); //redirect to main page
+		request.getRequestDispatcher("/WEB-INF/jsp/user/Main.jsp").forward(request, response); //redirect to main page
 	}
 
 	/**
@@ -36,10 +36,7 @@ public class KnowledgeBase extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-		response.getWriter().append("Knowledge base served at: ").append(request.getContextPath());
-		
-		//TODO view knowledgebase and forward to reports.jsp
+		doGet(request, response);
 	}
 
 }

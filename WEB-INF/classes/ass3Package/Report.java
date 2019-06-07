@@ -281,6 +281,100 @@ public class Report implements Serializable{
 		
 	}
 	
+	public static List<Report> getUserReports(String userID){
+		PreparedStatement ps = null;
+		
+		
+		//String query = "SELECT * FROM reports WHERE = \'" + userID + "\'";
+		List<Report> reports = new LinkedList<>();
+		Connection con = null;
+		ResultSet result = null;
+		try { 
+			con = Config.getConnection();
+			// Check table exists
+			if(!(Database.checkTableExists("reports"))){
+				createReportTable();
+			}
+			ps = con.prepareStatement("SELECT * FROM reports WHERE UserID = ?");
+			ps.setString(1, userID);
+			result = ps.executeQuery();
+			//result = con.createStatement().executeQuery(query);
+			
+			while(result.next()){ //step 5
+				Report report = new Report();
+				User user = new User();
+				
+				report.setReportid(result.getInt(1));
+				user.setUid(result.getString(2));
+				report.setAuthor(user);
+				report.setTitle(result.getString(3));
+				report.setReportContent(result.getString(4));
+				report.setType(result.getString(5));
+				report.setTime(result.getTime(6).toLocalTime());
+				report.setDate(result.getDate(7).toLocalDate());
+				report.setStatus(result.getString(8));
+				report.setInKnowledge(result.getBoolean(9));
+				reports.add(0, report);
+			}
+		}
+		catch(Exception e){
+			System.err.println(e.getMessage());
+			System.err.println(e.getStackTrace());
+		}
+		finally {
+			try { con.close(); } catch (Exception e) { /* ignored */ }
+			try { result.close(); } catch (Exception e) { /* ignored */ }
+		}
+		return reports;
+		
+	}public static List<Report> getKnowledgeReports(){
+		PreparedStatement ps = null;
+		
+		
+		//String query = "SELECT * FROM reports WHERE = \'" + userID + "\'";
+		List<Report> reports = new LinkedList<>();
+		Connection con = null;
+		ResultSet result = null;
+		try { 
+			con = Config.getConnection();
+			// Check table exists
+			if(!(Database.checkTableExists("reports"))){
+				createReportTable();
+			}
+			ps = con.prepareStatement("SELECT * FROM reports WHERE inKnowledge = ?");
+			ps.setBoolean(1, true);
+			result = ps.executeQuery();
+			//result = con.createStatement().executeQuery(query);
+			
+			while(result.next()){ //step 5
+				Report report = new Report();
+				User user = new User();
+				
+				report.setReportid(result.getInt(1));
+				user.setUid(result.getString(2));
+				report.setAuthor(user);
+				report.setTitle(result.getString(3));
+				report.setReportContent(result.getString(4));
+				report.setType(result.getString(5));
+				report.setTime(result.getTime(6).toLocalTime());
+				report.setDate(result.getDate(7).toLocalDate());
+				report.setStatus(result.getString(8));
+				report.setInKnowledge(result.getBoolean(9));
+				reports.add(0, report);
+			}
+		}
+		catch(Exception e){
+			System.err.println(e.getMessage());
+			System.err.println(e.getStackTrace());
+		}
+		finally {
+			try { con.close(); } catch (Exception e) { /* ignored */ }
+			try { result.close(); } catch (Exception e) { /* ignored */ }
+		}
+		return reports;
+		
+	}
+	
 	// Add a new report to database
 	public static void addReport(String uid, String title, String reportContent, String type, String status) {
 		Connection con = null;
