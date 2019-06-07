@@ -22,6 +22,7 @@
 			<tr>
 				<td>
 					<form action="KnowledgeBase" method="GET">
+						<%request.setAttribute("user", request.getUserPrincipal()); %>
 						<input type="submit" value="Knowledge Base" name="submit" class="bigbutton">
 					</form>
 				</td>
@@ -29,6 +30,7 @@
 			<tr>
 				<td>
 					<form action="CreateReport" method="GET">
+						<%request.setAttribute("user", request.getUserPrincipal()); %>
 						<input type="submit" value="Create Report" name="submit" class="bigbutton">
 					</form>
 				</td>
@@ -36,6 +38,7 @@
 			<tr>
 				<td>
 					<form action="ViewReports" method="GET">
+						<%request.setAttribute("user", request.getUserPrincipal()); %>
 						<input type="submit" value="View Reports" name="submit" class="bigbutton">
 					</form>
 				</td>

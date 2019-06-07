@@ -44,9 +44,11 @@
 		<p>Please fill in any relevant information below: </p>
 		<textarea name="content" cols="80" rows="10"><%=text %></textarea>
 		<br>			
+		<%request.setAttribute("user", request.getUserPrincipal()); %>
 		<input class="largebutton" type="submit" value="Submit Report" name="submit">
 	</form>
 	<Form action="redirect" method="GET"> 
+	<%request.setAttribute("user", request.getUserPrincipal()); %>
 		<input class="largebutton" type="submit" value="Return to Main Menu" name="submit">
 	</form>
 </body>

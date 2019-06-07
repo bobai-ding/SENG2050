@@ -104,6 +104,7 @@
 		<br>
 	</c:forEach>
 	<Form action="redirect" method="GET"> 
+		<%request.setAttribute("user", request.getUserPrincipal()); %>
 		<input class="largebutton" type="submit" value="Return to Main Menu" name="submit">
 		</form>
 </body>

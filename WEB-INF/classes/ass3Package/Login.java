@@ -13,7 +13,7 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("user", request.getUserPrincipal());
 		request.setAttribute("reports", Report.getAllReports());
-		request.setAttribute("user", request.getUserPrincipal());
+		getServletConfig().getServletContext().setAttribute("user", request.getUserPrincipal());
 		request.getRequestDispatcher("/WEB-INF/jsp/user/Main.jsp").forward(request, response); //redirect to main page
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
