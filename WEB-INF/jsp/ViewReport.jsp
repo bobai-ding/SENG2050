@@ -38,11 +38,28 @@
 		</form>
 		</c:if>		
 	<%} %>
+	<h3>Author </h3>
+	<table>
+		<tr>
+			<th>UserId</th>
+			<th>first name</th>
+			<th>Last name</th>
+			<th>email</th>
+			<th>Phone number</th>
+		</tr>
+			<tr>
+				<td><c:out value="${specificReport.author.uid}"/></td>
+				<td><c:out value="${specificReport.author.firstName}"/></td>
+				<td><c:out value="${specificReport.author.lastName}"/></td>
+				<td><c:out value="${specificReport.author.email}"/></td>
+				<td><c:out value="${specificReport.author.phoneNum}"/></td>
+			</tr>
+	</table>
+	
 	<h3>Original Post </h3>
 	<table>
 		<tr>
 			<th>Report ID</th>
-			<th>UserID</th>
 			<th>Title</th>
 			<th>Type</th>
 			<th>Time</th>
@@ -51,7 +68,6 @@
 		</tr>
 			<tr>
 				<td><c:out value="${specificReport.reportid}"/></td>
-				<td><c:out value="${specificReport.author.uid}"/></td>
 				<td><c:out value="${specificReport.title}"/></td>
 				<td><c:out value="${specificReport.type}"/></td>
 				<td><c:out value="${specificReport.time}"/></td>
@@ -59,6 +75,7 @@
 				<td><c:out value="${specificReport.status}"/></td>
 			</tr>
 	</table>
+	
 	
 		
 	<h3> Report message </h3>

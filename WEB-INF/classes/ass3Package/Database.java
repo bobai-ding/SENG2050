@@ -108,7 +108,6 @@ public class Database {
 	// View a specific report using userid and title
 	public static Report viewSpecificReport(String uid, String title) {
 		Report report = null;
-		User user = null;
 		try {
 			// connect and query
 			connect();
@@ -119,11 +118,9 @@ public class Database {
 			
 			while(rs.next()) {
 				report = new Report();
-				user = new User();
 				
 				report.setReportid(rs.getInt(1));
-				user.setUid(rs.getString(2));
-				report.setAuthor(user);
+				report.setAuthor(User.getSpecificUser(rs.getString(2)));
 				report.setTitle(rs.getString(3));
 				report.setReportContent(rs.getString(4));
 				report.setType(rs.getString(5));
@@ -158,8 +155,7 @@ public class Database {
 				user = new User();
 				
 				report.setReportid(rs.getInt(1));
-				user.setUid(rs.getString(2));
-				report.setAuthor(user);
+				report.setAuthor(User.getSpecificUser(rs.getString(2)));
 				report.setTitle(rs.getString(3));
 				report.setReportContent(rs.getString(4));
 				report.setType(rs.getString(5));
@@ -181,7 +177,7 @@ public class Database {
 	
 	public static Report viewUserReports(String userID) {
 		Report report = null;
-		User user = null;
+		
 		try {
 			// Connect and query
 			connect();
@@ -191,11 +187,9 @@ public class Database {
 			
 			while(rs.next()) {
 				report = new Report();
-				user = new User();
 				
 				report.setReportid(rs.getInt(1));
-				user.setUid(rs.getString(2));
-				report.setAuthor(user);
+				report.setAuthor(User.getSpecificUser(rs.getString(2)));
 				report.setTitle(rs.getString(3));
 				report.setReportContent(rs.getString(4));
 				report.setType(rs.getString(5));
