@@ -13,21 +13,22 @@ General stuff (and in no specific order);
 2. User login w/ verification
     - Look into tomcat users
     
-3. Need to intergrate files into create report
+3. Need to intergrate files into create report!!!
     - Also need to be displayed when viewing a report
     
 3. Jsp still to make
-    - Knowledge base
+    - Knowledge base _/
         -Filter this by status in report ("Completed" or "Resolved")
     - View open reports
         -Filter this by status in report ("inprogress" or "new")
-        -User should only see report related to them (Probably name)
-    - View all reports
-        -Should only be viewable by staff
+        -User should only see report related to them (Probably name) _/
+    - View all reports _/
+        -Should only be viewable by staff _/
         -Need to have a way to sort this list or grouped by status
     - Mark as completed
         Staff need a way to mark a report as completed
-    - 
+    - Add completed reports to knowledge base
+        Staff only
 
 4. Bugs to fix
     - currently refreshing resend the form
