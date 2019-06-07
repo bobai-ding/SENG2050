@@ -62,6 +62,6 @@ General stuff (and in no specific order);
 
 10. Simi;
 
-    1.jsp
-    2.
-    3.
+    1. jsp
+    2. 
+    3. 
