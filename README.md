@@ -5,6 +5,10 @@ assignment 3 stuff with the things and the stuff
 google doc w/ site planning
 https://docs.google.com/document/d/150ViThCGTeSyuNGluRY9Wxn13LGmbo5C23dWn6JjlFc/edit?usp=sharing
 
+EXTRA REQUIREMENTS COMPLETED
+“Sometimes the language that IT staff use is complicated, maybe users should be able to add comments to the Knowledge-Base articles to help other users.” (weight 10) 
+
+
 CURRENT TODO by the 9th
 
 General stuff (and in no specific order);
