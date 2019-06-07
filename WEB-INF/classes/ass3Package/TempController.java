@@ -2,7 +2,6 @@ package ass3Package;
 
 import java.io.IOException;
 import java.security.Principal;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +23,6 @@ public class TempController extends HttpServlet {
 		String type = request.getParameter("type");
 		String title = request.getParameter("title");
 		String comment = request.getParameter("comment");
-		String status = request.getParameter("status");
 		int reportid = 0;
 		
 		String dispatchLocation = "/WEB-INF/jsp/Reports.jsp";
