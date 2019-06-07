@@ -16,7 +16,13 @@ public class ViewReports extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("view - role = staff: " + request.isUserInRole("staff") + " | name = " + request.getUserPrincipal().getName() + " | Principal = " + request.getUserPrincipal());
+		String submit = request.getParameter("submit");
 		
+		if (submit.equals("REMOVE TABLE")) {
+			System.out.println("LOG: Removing table");
+			Database.removeTable("reports");
+			Database.removeTable("comments");
+		}
 		
 		if(request.isUserInRole("staff")) {
 			request.setAttribute("reports", Report.getAllReports());

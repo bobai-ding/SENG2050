@@ -13,7 +13,7 @@
 	<h4>Logged in as: <c:out value="${user.getName()}"/> </h4>
 	<hr>
 	<div class="bottom">
-	<form action="Controller" method="POST">
+	<form action="ViewReports" method="POST">
 			<input type="submit" value="LOAD" name="submit">
 			<%if(request.isUserInRole("staff")){ //remove button only exists for staff%>
 			<input type="submit" value="REMOVE TABLE" name="submit">
