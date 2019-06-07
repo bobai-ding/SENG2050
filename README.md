@@ -9,46 +9,49 @@ CURRENT TODO by the 9th
 
 General stuff (and in no specific order);
 
-1. Make it look nice
-2. User login w/ verification
-    - Look into tomcat users
-    
-3. Need to intergrate files into create report!!!
-    - Also need to be displayed when viewing a report
-    
-3. Jsp still to make
-    - Knowledge base _/
-        -Filter this by status in report ("Completed" or "Resolved")
-    - View open reports
-        -Filter this by status in report ("inprogress" or "new")
-        -User should only see report related to them (Probably name) _/
-    - View all reports _/
-        -Should only be viewable by staff _/
-        -Need to have a way to sort this list or grouped by status
-    - Mark as completed _/
-        Staff need a way to mark a report as completed _/
-    - Add completed reports to knowledge base_/
-        Staff only_/
-    - User accepts completed report _/
+1. [ ] Make it look nice
 
-4. Bugs to fix
-    - currently refreshing resend the form
-    - a bug with user permissions
+2. [x] User login w/ verification
+    - [x] Look into tomcat users
+
+1. [ ] Need to have userfeed back when interacting with stuff 
+
+3. [ ] Need to intergrate files into create report!!!
+    - [ ] Also need to be displayed when viewing a report
     
-5. Need to add to report db
-    - date time resolved
+3. [ ] Jsp still to make
+    - [x] Knowledge base
+        - [ ] Filter this by status in report ("Completed" or "Resolved")
+    - [X] View open reports
+        - [ ] Filter this by status in report ("inprogress" or "new")
+        - [x] User should only see report related to them (Probably name)
+    - [x] View all reports 
+        - [x] Should only be viewable by staff 
+        - [ ] Need to have a way to sort this list or grouped by status
+    - [x] Mark as completed 
+        - [x] Staff need a way to mark a report as completed 
+    - [x] Add completed reports to knowledge base
+        - [x] Staff only
+    - [x] User accepts completed report 
+
+4. [ ] Bugs to fix
+    - [ ] currently refreshing resend the form
+    - [ ] a bug with user permissions
     
-6. Need to add to user db
-    - Name
-    - surname
-    - email
-    - contact number
+5. [ ] Need to add to report db
+    - [ ] date time resolved
     
-7. Servlets!!!
-    - CreateReport.java needs to take data from createReport.jsp and add to database
-    - editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
+6. [x] Need to add to user db
+    - [x] Name
+    - [x] surname
+    - [x] email
+    - [x] contact number
+
+7. [ ] Servlets!!!
+    - [x] CreateReport.java needs to take data from createReport.jsp and add to database
+    - [x] editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
     - 
-    - ALL SERVLETS NEED TO HANDLE IMAGES
+    - [ ] ALL SERVLETS NEED TO HANDLE IMAGES
 8. Will;
 
     1. Database stuff _
@@ -64,5 +67,5 @@ General stuff (and in no specific order);
 10. Simi;
 
     1. jsp
-    2. 
+    2. servlets
     3. 
