@@ -48,20 +48,20 @@ General stuff (and in no specific order);
     - editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
     - 
     - ALL SERVLETS NEED TO HANDLE IMAGES
-Will;
+8. Will;
 
-1. Database stuff _
-2. 
-3.
+    1. Database stuff _
+    2. 
+    3.
 
-Lachlan;
+9. Lachlan;
 
-1. Objects _
-2.
-3.
+    1. Objects _
+    2.
+    3.
 
-Simi;
+10.Simi;
 
-1. Basic Mockup of jsp
-2.
-3.
+    1.jsp
+    2.
+    3.
