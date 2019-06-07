@@ -75,18 +75,18 @@ public class User implements Serializable {
 	// Return a specific user using uid
 	public static User getSpecificUser(String uid){
 		// Temp variables
-		String query = "SELECT * FROM tomcat_users WHERE user_name = " + uid;
 		User user = new User();
 		Connection con = null;
 		ResultSet result = null;
+		PreparedStatement ps = null;
 		
 		// Try getting user from database
 		try { 
 			// Connect to db
 			con = Config.getConnection();
-			
-			// Query database for user
-			result = con.createStatement().executeQuery(query);
+			ps = con.prepareStatement("SELECT * FROM tomcat_users WHERE user_name = ?");
+			ps.setString(1, uid);
+			result = ps.executeQuery();
 			while(result.next()){
 				user.setUid(result.getString(1));
 				user.setFirstName(result.getString(3));
