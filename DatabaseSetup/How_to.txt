@@ -1,7 +1,7 @@
 1. First need to use sql version 5.1.36
     - https://downloads.mysql.com/archives/community/
 
-2. Make sure to click add to firewall and add windows PATH stuff
+2. Make sure to click add to firewall and add windows PATH stuff (leave everything else as default)
 
 3. Set the root password of the sql to 'pass'
     - Make sure it is the root password being set (should ask for it during install)
