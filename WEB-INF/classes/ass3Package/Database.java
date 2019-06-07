@@ -130,6 +130,7 @@ public class Database {
 				report.setTime(rs.getTime(6).toLocalTime());
 				report.setDate(rs.getDate(7).toLocalDate());
 				report.setStatus(rs.getString(8));
+				report.setInKnowledge(rs.getBoolean(9));
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());
@@ -165,6 +166,7 @@ public class Database {
 				report.setTime(rs.getTime(6).toLocalTime());
 				report.setDate(rs.getDate(7).toLocalDate());
 				report.setStatus(rs.getString(8));
+				report.setInKnowledge(rs.getBoolean(9));
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());
@@ -200,6 +202,7 @@ public class Database {
 				report.setTime(rs.getTime(6).toLocalTime());
 				report.setDate(rs.getDate(7).toLocalDate());
 				report.setStatus(rs.getString(8));
+				report.setInKnowledge(rs.getBoolean(9));
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());
