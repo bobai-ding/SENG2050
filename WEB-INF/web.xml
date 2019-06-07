@@ -3,31 +3,61 @@
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>Must be logged in</web-resource-name>
-      <url-pattern>/*</url-pattern>
+  	    <url-pattern>/WEB-INF/jsp/user/*</url-pattern>
+  	    <http-method>GET</http-method> 
+		<http-method>POST</http-method> 
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>user</role-name>
+      <role-name>staff</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Must be logged in</web-resource-name>
+      	<url-pattern></url-pattern>
+      	<http-method>GET</http-method> 
+		<http-method>POST</http-method> 
+    </web-resource-collection>
+    <auth-constraint>
+  		<role-name>user</role-name>
+    	<role-name>staff</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Must be logged in</web-resource-name>
+      	<url-pattern>/CreateReport</url-pattern>
+      	<http-method>GET</http-method> 
+		<http-method>POST</http-method> 
+    </web-resource-collection>
+    <auth-constraint>
+  		<role-name>user</role-name>
+    	<role-name>staff</role-name>
+    </auth-constraint>
+  </security-constraint>
+  
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Must be logged in</web-resource-name>
+      	<url-pattern>/*</url-pattern>
+      	<http-method>GET</http-method> 
+		<http-method>POST</http-method> 
     </web-resource-collection>
     <auth-constraint>
       <role-name>staff</role-name>
     </auth-constraint>
-    <user-data-constraint>
-      <transport-guarantee>NONE</transport-guarantee>
-    </user-data-constraint>
   </security-constraint>
+  
   <security-constraint>
     <web-resource-collection>
-      <web-resource-name>Must be logged in</web-resource-name>
-      <url-pattern>/WEB-INF/jsp/user/*</url-pattern>
-      <url-pattern>/Login</url-pattern>
-      <url-pattern>/Logout</url-pattern>
-      <url-pattern>/style.css</url-pattern>
-      <url-pattern></url-pattern>
+    <web-resource-name>Unprotected</web-resource-name>
+      	<url-pattern>/Logout</url-pattern>
     </web-resource-collection>
-    <auth-constraint>
-      <role-name>user</role-name>
-    </auth-constraint>
-    <user-data-constraint>
-      <transport-guarantee>NONE</transport-guarantee>
-    </user-data-constraint>
   </security-constraint>
+  
   <login-config>
     <auth-method>FORM</auth-method>
     <realm-name>jdbcRealm</realm-name>
