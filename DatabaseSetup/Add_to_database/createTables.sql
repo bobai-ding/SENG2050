@@ -4,7 +4,12 @@ USE will_simi_lachlan;
 
 CREATE TABLE tomcat_users (
 	user_name varchar(20) NOT NULL PRIMARY KEY,
-	password varchar(32) NOT NULL
+	password varchar(32) NOT NULL,
+
+	firstName varchar(32),
+	lastName varchar(32),
+	email varchar(32),
+	phoneNum int,
 );
 CREATE TABLE tomcat_roles (
 	role_name varchar(20) NOT NULL PRIMARY KEY
