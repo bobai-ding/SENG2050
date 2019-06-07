@@ -128,6 +128,8 @@ public class Database {
 				report.setDate(rs.getDate(7).toLocalDate());
 				report.setStatus(rs.getString(8));
 				report.setInKnowledge(rs.getBoolean(9));
+				report.setTime(rs.getTime(10).toLocalTime());
+				report.setDate(rs.getDate(11).toLocalDate());
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());
@@ -163,6 +165,8 @@ public class Database {
 				report.setDate(rs.getDate(7).toLocalDate());
 				report.setStatus(rs.getString(8));
 				report.setInKnowledge(rs.getBoolean(9));
+				report.setTime(rs.getTime(10).toLocalTime());
+				report.setDate(rs.getDate(11).toLocalDate());
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());
@@ -197,6 +201,8 @@ public class Database {
 				report.setDate(rs.getDate(7).toLocalDate());
 				report.setStatus(rs.getString(8));
 				report.setInKnowledge(rs.getBoolean(9));
+				report.setTime(rs.getTime(10).toLocalTime());
+				report.setDate(rs.getDate(11).toLocalDate());
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());
@@ -287,7 +293,7 @@ public class Database {
 		return 0;
 	}
 	
-	// Return a specific report using 
+	// Update 
 	public static void update(String tableName, String colName, Object setValue) {
 		try {
 			// Connect and query

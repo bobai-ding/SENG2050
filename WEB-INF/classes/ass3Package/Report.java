@@ -23,29 +23,16 @@ public class Report implements Serializable{
     
     private LocalTime time;
     private LocalDate date;
+    
+    private LocalTime timeResolved;
+    private LocalDate dateResolved;
 
     private LinkedList<Comment> comments = new LinkedList<>();
 
     Report(){
 
     }
-
-    public void newReport(String report, User author){
-
-        //create a new report with a report string and user object
-
-        time = LocalTime.now();
-        date = LocalDate.now();
-        this.reportContent = report;
-        this.author = author;
-
-        System.out.println(time);
-        System.out.println(date);
-
-        System.out.println(report);
-        System.out.println(author.getUid());
-    }
-
+    
     public void editReport(String report){
 
         // TODO need to format the time to remove the ms
@@ -187,6 +174,14 @@ public class Report implements Serializable{
 	public void setInKnowledge(Boolean inKnowledge) {
 		this.inKnowledge = inKnowledge;
 	}
+	
+	@Override
+	public String toString() {
+		return "Report [author=" + author + ", reportContent=" + reportContent + ", title=" + title + ", type=" + type
+				+ ", status=" + status + ", reportid=" + reportid + ", inKnowledge=" + inKnowledge + ", time=" + time
+				+ ", date=" + date + ", timeResolved=" + timeResolved + ", dateResolved=" + dateResolved + ", comments="
+				+ comments + "]";
+	}
 
 	// Database
     // Return all reports as a list
@@ -216,6 +211,8 @@ public class Report implements Serializable{
 				report.setDate(result.getDate(7).toLocalDate());
 				report.setStatus(result.getString(8));
 				report.setInKnowledge(result.getBoolean(9));
+				report.setTime(result.getTime(10).toLocalTime());
+				report.setDate(result.getDate(11).toLocalDate());
 				reports.add(0, report);
 			}
 		}
@@ -262,6 +259,8 @@ public class Report implements Serializable{
 				report.setDate(result.getDate(7).toLocalDate());
 				report.setStatus(result.getString(8));
 				report.setInKnowledge(result.getBoolean(9));
+				report.setTime(result.getTime(10).toLocalTime());
+				report.setDate(result.getDate(11).toLocalDate());
 				reports.add(0, report);
 			}
 		}
@@ -309,6 +308,8 @@ public class Report implements Serializable{
 				report.setDate(result.getDate(7).toLocalDate());
 				report.setStatus(result.getString(8));
 				report.setInKnowledge(result.getBoolean(9));
+				report.setTime(result.getTime(10).toLocalTime());
+				report.setDate(result.getDate(11).toLocalDate());
 				reports.add(0, report);
 			}
 		}
@@ -336,7 +337,7 @@ public class Report implements Serializable{
 		
 		try {
 			con = Config.getConnection();
-			ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?,?,?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setInt(1, reportid);
 			ps.setString(2, uid);
 			ps.setString(3, title);
@@ -346,6 +347,8 @@ public class Report implements Serializable{
 			ps.setDate(7, tempDate);
 			ps.setString(8, status);
 			ps.setBoolean(9, false);
+			ps.setTime(6, null);
+			ps.setDate(7, null);
 			ps.executeUpdate();
 		} catch(Exception e){
 			System.err.println(e.getMessage());
@@ -358,8 +361,8 @@ public class Report implements Serializable{
 	
 	// Create table in database for reports
 	public static void createReportTable() {
-		String varNames[] = {"ReportID", "UserID", "Title", "ReportContent", "Type", "Time", "Date", "Status", "inKnowledge"};
-		String varType[] = {"INT", "VARCHAR(80)", "VARCHAR(80)", "VARCHAR(1000)", "VARCHAR(80)", "TIME", "DATE", "VARCHAR(80)", "BOOLEAN"};
+		String varNames[] = {"ReportID", "UserID", "Title", "ReportContent", "Type", "Time", "Date", "Status", "inKnowledge", "TimeResolved", "DateResolved"};
+		String varType[] = {"INT", "VARCHAR(80)", "VARCHAR(80)", "VARCHAR(1000)", "VARCHAR(80)", "TIME", "DATE", "VARCHAR(80)", "BOOLEAN", "TIME", "DATE"};
 		
 		Database.createTableString("reports", varNames, varType);
 	}
