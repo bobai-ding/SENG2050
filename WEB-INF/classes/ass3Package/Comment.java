@@ -161,8 +161,14 @@ public class Comment implements Serializable {
 	public void setCommentNum(int commentNum) {
 		this.commentNum = commentNum;
 	}
+	
+    @Override
+	public String toString() {
+		return "Comment [comment=" + comment + ", author=" + author + ", time=" + time + ", date=" + date + ", edited="
+				+ edited + ", reportid=" + reportid + ", commentNum=" + commentNum + "]";
+	}
 
-    // Database
+	// Database
     // Return all comments as a list
 	public static List<Comment> getAllComments(){
 		// Temp variables
