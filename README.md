@@ -42,6 +42,12 @@ General stuff (and in no specific order);
     - surname
     - email
     - contact number
+    
+7. Servlets!!!
+    - CreateReport.java needs to take data from createReport.jsp and add to database
+    - editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
+    - 
+    - ALL SERVLETS NEED TO HANDLE IMAGES
 Will;
 
 1. Database stuff _
