@@ -10,26 +10,29 @@ CURRENT TODO by the 9th
 General stuff (and in no specific order);
 
 1. [ ] Make it look nice
+
 2. [x] User login w/ verification
     - [x] Look into tomcat users
-    
+
+1. [ ] Need to have userfeed back when interacting with stuff 
+
 3. [ ] Need to intergrate files into create report!!!
     - [ ] Also need to be displayed when viewing a report
     
 3. [ ] Jsp still to make
-    - [x] Knowledge base _/
+    - [x] Knowledge base
         - [ ] Filter this by status in report ("Completed" or "Resolved")
     - [ ] View open reports
         - [ ] Filter this by status in report ("inprogress" or "new")
-        - [x] User should only see report related to them (Probably name) _/
-    - [x] View all reports _/
-        - [x] Should only be viewable by staff _/
+        - [x] User should only see report related to them (Probably name)
+    - [x] View all reports 
+        - [x] Should only be viewable by staff 
         - [ ] Need to have a way to sort this list or grouped by status
-    - [x] Mark as completed _/
-        - [x] Staff need a way to mark a report as completed _/
-    - [x] Add completed reports to knowledge base_/
-        - [x] Staff only_/
-    - [x] User accepts completed report _/
+    - [x] Mark as completed 
+        - [x] Staff need a way to mark a report as completed 
+    - [x] Add completed reports to knowledge base
+        - [x] Staff only
+    - [x] User accepts completed report 
 
 4. [ ] Bugs to fix
     - [ ] currently refreshing resend the form
@@ -43,7 +46,7 @@ General stuff (and in no specific order);
     - [x] surname
     - [x] email
     - [x] contact number
-    
+
 7. [ ] Servlets!!!
     - [ ] CreateReport.java needs to take data from createReport.jsp and add to database
     - [ ] editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
