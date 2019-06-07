@@ -51,6 +51,7 @@
 	<br>
 	<hr>	
 	<form action="Controller" method="POST">
+		<input type="hidden" value="<c:out value="${user.getName()}"/>" name="uid">
 		<input type="submit" value="DEBUG THE SHIT OUT OF EVERYTHING" name="submit" class="bigbutton2">
 	</form>
 				

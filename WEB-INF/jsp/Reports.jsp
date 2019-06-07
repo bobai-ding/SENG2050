@@ -45,7 +45,7 @@
 			<th>Status</th>
 			<th></th>
 		</tr>
-		<c:forEach var="report" items="${reports}">
+		<c:forEach var="report" items="${userReports}">
 			<tr>
 				<td> 
 					<form action="Controller" method="POST">

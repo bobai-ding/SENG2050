@@ -176,6 +176,42 @@ public class Database {
 		}
 		return report;
 	}
+	
+	public static Report viewUserReports(String userID) {
+		Report report = null;
+		User user = null;
+		try {
+			// Connect and query
+			connect();
+			ps = conn.prepareStatement("SELECT * FROM reports WHERE UserID = ?");
+			ps.setString(1, userID);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				report = new Report();
+				user = new User();
+				
+				report.setReportid(rs.getInt(1));
+				user.setUid(rs.getString(2));
+				report.setAuthor(user);
+				report.setTitle(rs.getString(3));
+				report.setReportContent(rs.getString(4));
+				report.setType(rs.getString(5));
+				report.setTime(rs.getTime(6).toLocalTime());
+				report.setDate(rs.getDate(7).toLocalDate());
+				report.setStatus(rs.getString(8));
+			}
+		} catch(Exception e) {
+			System.err.println(e.getMessage());
+		} finally {
+			try { rs.close(); } catch (Exception e) { /* ignored */ }
+		    try { stmt.close(); } catch (Exception e) { /* ignored */ }
+		    try { ps.close(); } catch (Exception e) { /* ignored */ }
+		    try { conn.close(); } catch (Exception e) { /* ignored */ }
+		}
+		return report;
+	}
+
 
 	// Delete entire table
 	public static void removeTable(String tableName) {
