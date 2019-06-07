@@ -287,6 +287,45 @@ public class Database {
 		return 0;
 	}
 	
+	// Return a specific report using 
+	public static void update(String tableName, String colName, Object setValue) {
+		try {
+			// Connect and query
+			connect();
+			ps = conn.prepareStatement("UPDATE " + tableName + " SET " + colName + " = ?");
+			ps.setObject(1, setValue);
+			ps.executeUpdate();
+			
+		} catch(Exception e) {
+			System.err.println(e.getMessage());
+		} finally {
+			try { rs.close(); } catch (Exception e) { /* ignored */ }
+		    try { stmt.close(); } catch (Exception e) { /* ignored */ }
+		    try { ps.close(); } catch (Exception e) { /* ignored */ }
+		    try { conn.close(); } catch (Exception e) { /* ignored */ }
+		}
+	}
+	
+	// Return a specific report using 
+	public static void updateWhere(String tableName, String colName, Object setValue, String whereType, Object whereValue) {
+		try {
+			// Connect and query
+			connect();
+			ps = conn.prepareStatement("UPDATE " + tableName + " SET " + colName + " = ? WHERE " + whereType + " = ?");
+			ps.setObject(1, setValue);
+			ps.setObject(2, whereValue);
+			ps.executeUpdate();
+			
+		} catch(Exception e) {
+			System.err.println(e.getMessage());
+		} finally {
+			try { rs.close(); } catch (Exception e) { /* ignored */ }
+		    try { stmt.close(); } catch (Exception e) { /* ignored */ }
+		    try { ps.close(); } catch (Exception e) { /* ignored */ }
+		    try { conn.close(); } catch (Exception e) { /* ignored */ }
+		}
+	}
+	
 	// Just a try catch template
 	public static void tryCatchTemplate() {
 		try {
