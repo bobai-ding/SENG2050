@@ -45,7 +45,9 @@
 			<th>Status</th>
 			<th></th>
 		</tr>
-		<c:forEach var="report" items="${userReports}">
+		
+		<%if(request.isUserInRole("staff")){ %>
+			<c:forEach var="report" items="${reports}">
 			<tr>
 				<td> 
 					<form action="Controller" method="POST">
@@ -69,6 +71,34 @@
 				</td>
 			</tr>
 		</c:forEach>
+		<% } else { %>
+			<c:forEach var="report" items="${userReports}">
+			<tr>
+				<td> 
+					<form action="Controller" method="POST">
+						<input type="submit" value="OPEN" name="submit">
+						<input type="hidden" value="${report.reportid}" name="reportid">
+					</form>
+				</td>
+				<td><c:out value="${report.reportid}"/></td>
+				<td><c:out value="${report.author.uid}"/></td>
+				<td><c:out value="${report.title}"/></td>
+				<td><p><c:out value="${report.reportContent}"/></p></td>
+				<td><c:out value="${report.type}"/></td>
+				<td><c:out value="${report.time}"/></td>
+				<td><c:out value="${report.date}"/></td>
+				<td><c:out value="${report.status}"/></td>
+				<td> 
+					<form action="Controller" method="POST">
+						<input type="submit" value="DELETE" name="submit">
+						<input type="hidden" value="${report.reportid}" name="reportid">
+					</form>
+				</td>
+			</tr>
+		</c:forEach>
+		<% } %>
+		
+			
 	</table>
 	</div>
 		

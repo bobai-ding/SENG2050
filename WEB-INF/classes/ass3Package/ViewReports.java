@@ -28,7 +28,7 @@ public class ViewReports extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		request.getRequestDispatcher("/WEB-INF/jsp/user/Main.jsp").forward(request, response); //redirect to main page
+		request.getRequestDispatcher("/WEB-INF/jsp/Reports.jsp").forward(request, response); //redirect to main page
 	}
 
 	/**
