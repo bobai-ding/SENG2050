@@ -1,5 +1,5 @@
 # SENG2050
-assignment 3 stuff with the things
+assignment 3 stuff with the things and the stuff
 
 
 google doc w/ site planning
