@@ -206,8 +206,6 @@ public class Report implements Serializable{
 		List<Report> reports = new LinkedList<>();
 		Connection con = null;
 		ResultSet result = null;
-		Time tempTime = null;
-		Date tempDate = null;
 		try { 
 			con = Config.getConnection();
 			// Check table exists
@@ -229,20 +227,18 @@ public class Report implements Serializable{
 				report.setDate(result.getDate(7).toLocalDate());
 				report.setStatus(result.getString(8));
 				report.setInKnowledge(result.getBoolean(9));
-				tempTime = result.getTime(10);
-				if (tempTime != null) {
-					report.setTime(tempTime.toLocalTime());	
+				
+				if (result.getTime(10) != null) {
+					report.setTimeResolved(result.getTime(10).toLocalTime());	
 				} else {
-					report.setTime(null);
+					report.setTimeResolved(null);
 				}
 				
-				tempDate = result.getDate(11);
-				if (tempDate != null) {
-					report.setDate(tempDate.toLocalDate());
+				if (result.getDate(11) != null) {
+					report.setDateResolved(result.getDate(11).toLocalDate());
 				} else {
-					report.setDate(null);
+					report.setDateResolved(null);
 				}
-				reports.add(0, report);
 				reports.add(0, report);
 			}
 		}
@@ -266,8 +262,6 @@ public class Report implements Serializable{
 		List<Report> reports = new LinkedList<>();
 		Connection con = null;
 		ResultSet result = null;
-		Time tempTime = null;
-		Date tempDate = null;
 		try { 
 			con = Config.getConnection();
 			// Check table exists
@@ -291,20 +285,19 @@ public class Report implements Serializable{
 				report.setDate(result.getDate(7).toLocalDate());
 				report.setStatus(result.getString(8));
 				report.setInKnowledge(result.getBoolean(9));
-				tempTime = result.getTime(10);
-				if (tempTime != null) {
-					report.setTime(tempTime.toLocalTime());	
+
+				if (result.getTime(10) != null) {
+					report.setTimeResolved(result.getTime(10).toLocalTime());	
 				} else {
-					report.setTime(null);
+					report.setTimeResolved(null);
 				}
 				
-				tempDate = result.getDate(11);
-				if (tempDate != null) {
-					report.setDate(tempDate.toLocalDate());
+				if (result.getDate(11) != null) {
+					report.setDateResolved(result.getDate(11).toLocalDate());
 				} else {
-					report.setDate(null);
+					report.setDateResolved(null);
 				}
-				reports.add(0, report);
+				
 				reports.add(0, report);
 			}
 		}
@@ -327,8 +320,6 @@ public class Report implements Serializable{
 		List<Report> reports = new LinkedList<>();
 		Connection con = null;
 		ResultSet result = null;
-		Time tempTime = null;
-		Date tempDate = null;
 		try { 
 			con = Config.getConnection();
 			// Check table exists
@@ -352,19 +343,19 @@ public class Report implements Serializable{
 				report.setDate(result.getDate(7).toLocalDate());
 				report.setStatus(result.getString(8));
 				report.setInKnowledge(result.getBoolean(9));
-				tempTime = result.getTime(10);
-				if (tempTime != null) {
-					report.setTime(tempTime.toLocalTime());	
+
+				if (result.getTime(10) != null) {
+					report.setTimeResolved(result.getTime(10).toLocalTime());	
 				} else {
-					report.setTime(null);
+					report.setTimeResolved(null);
 				}
 				
-				tempDate = result.getDate(11);
-				if (tempDate != null) {
-					report.setDate(tempDate.toLocalDate());
+				if (result.getDate(11) != null) {
+					report.setDateResolved(result.getDate(11).toLocalDate());
 				} else {
-					report.setDate(null);
+					report.setDateResolved(null);
 				}
+				
 				reports.add(0, report);
 			}
 		}
