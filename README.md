@@ -60,7 +60,7 @@ General stuff (and in no specific order);
     2.
     3.
 
-10.Simi;
+10. Simi;
 
     1.jsp
     2.
