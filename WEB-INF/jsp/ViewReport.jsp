@@ -11,13 +11,22 @@
 	<h1> View Report </h1>
 	<h4>Logged in as: <c:out value="${user.getName()}"/> </h4>
 	<hr>
+	<Form action="redirect" method="GET"> 
+		<%request.setAttribute("user", request.getUserPrincipal()); %>
+		<input class="largebutton" type="submit" value="Return to Main Menu" name="submit">
+	</form>
+	<br>
+	<Form action="ViewReports" method="GET"> 
+		<%request.setAttribute("user", request.getUserPrincipal()); %>
+		<input class="largebutton" type="submit" value="Back to Reports" name="submit">
+	</form>
 	<%if(request.isUserInRole("staff")){ %>
 		<form action="editReport" method="POST">
 			<p> Please choose the state of the report: </p>
 			<input type="radio" name="state" value="new">New<br>
 			<input type="radio" name="state" value="inProgress">In Progress<br>
 			<input type="radio" name="state" value="completed">Completed<br>
-			<input type="radio" name="state" value="resolved">Resolved<br>
+			<input type="radio" name="state" value="resolved" required>Resolved<br>
 			<input type="hidden" name="knowledge" value="false">
 			<input type="hidden" name="reportID" value="${specificReport.reportid}">
 			<input type="submit" name="submit">
@@ -26,7 +35,7 @@
 			<form action="editReport" method="POST">
 			<p> Please choose if the report should be added to the knowledge base: </p>
 			<input type="radio" name="knowledge" value="false">No<br>
-			<input type="radio" name="knowledge" value="true">Yes<br>
+			<input type="radio" name="knowledge" value="true" required>Yes<br>
 			<input type="hidden" name="reportID" value="${specificReport.reportid}">
 			<input type="submit" name="submit">
 			</form>
@@ -37,7 +46,7 @@
 		<h3>Please select if the the issue has been resolved:</h3>
 		<form action="editReport" method="POST">
 			<input type="radio" name="state" value="inProgress">No<br>
-			<input type="radio" name="state" value="resolved">Yes<br>
+			<input type="radio" name="state" value="resolved" required>Yes<br>
 			<input type="hidden" name="reportID" value="${specificReport.reportid}">
 			<input type="hidden" name="knowledge" value="false">
 			<input type="submit" name="submit">
@@ -99,6 +108,8 @@
 	</form>
 	
 	
+	
+	
 	<h3> Comments </h3>
 	<c:forEach var="comment" items="${comments}">
 		<div class="bottom">
@@ -126,13 +137,5 @@
 		<hr>
 		<br>
 	</c:forEach>
-	<Form action="redirect" method="GET"> 
-		<%request.setAttribute("user", request.getUserPrincipal()); %>
-		<input class="largebutton" type="submit" value="Return to Main Menu" name="submit">
-	</form>
-	<Form action="ViewReports" method="GET"> 
-		<%request.setAttribute("user", request.getUserPrincipal()); %>
-		<input class="largebutton" type="submit" value="Back to Reports" name="submit">
-	</form>
 </body>
 </html>
