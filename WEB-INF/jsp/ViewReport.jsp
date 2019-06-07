@@ -11,6 +11,33 @@
 	<h1> View Report </h1>
 	<h4>Logged in as: <c:out value="${user.getName()}"/> </h4>
 	<hr>
+	<%if(request.isUserInRole("staff")){ %>
+		<form action="editReport" method="POST">
+			<p> Please choose the state of the report: </p>
+			<input type="radio" name="state" value="new">New<br>
+			<input type="radio" name="state" value="inProgress">In Progress<br>
+			<input type="radio" name="state" value="completed">Completed<br>
+			<input type="radio" name="state" value="resolved">Resolved<br>
+			<input type="hidden" name="knowledge" value="false">
+		</form>
+		<c:if test = "${specificReport.status == 'temp'}" >
+			<form action="editReport" method="POST">
+			<p> Please choose if the report should be added to the knowledge base: </p>
+			<input type="radio" name="knowledge" value="false">No<br>
+			<input type="radio" name="knowledge" value="true">Yes<br>
+			</form>
+		</c:if>
+		<hr>
+	<% } else { %>
+		<c:if test = "${specificReport.status == 'temp'}">
+		<h3>Please select if the the issue has been resolved:</h3>
+		<form action="editReport" method="POST">
+			<input type="radio" name="state" value="inProgress">No<br>
+			<input type="radio" name="state" value="resolved">Yes<br>
+			<input type="hidden" name="knowledge" value="false">
+		</form>
+		</c:if>		
+	<%} %>
 	<h3>Original Post </h3>
 	<table>
 		<tr>
