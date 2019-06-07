@@ -28,8 +28,14 @@ INSERT INTO tomcat_roles (role_name) VALUES ('staff');
 INSERT INTO tomcat_roles (role_name) VALUES ('user');
 
 INSERT INTO tomcat_users (user_name, password) VALUES ('staff', 'staff');
-INSERT INTO tomcat_users (user_name, password) VALUES ('user', 'user');
+INSERT INTO tomcat_users (user_name, password) VALUES ('user1', 'user1');
+INSERT INTO tomcat_users (user_name, password) VALUES ('user2', 'user2');
+INSERT INTO tomcat_users (user_name, password) VALUES ('user3', 'user3');
+INSERT INTO tomcat_users (user_name, password) VALUES ('user4', 'user4');
 
 INSERT INTO tomcat_users_roles (user_name, role_name) VALUES ('staff', 'staff');
-INSERT INTO tomcat_users_roles (user_name, role_name) VALUES ('user', 'user');
+INSERT INTO tomcat_users_roles (user_name, role_name) VALUES ('user1', 'user');
+INSERT INTO tomcat_users_roles (user_name, role_name) VALUES ('user2', 'user');
+INSERT INTO tomcat_users_roles (user_name, role_name) VALUES ('user3', 'user');
+INSERT INTO tomcat_users_roles (user_name, role_name) VALUES ('user4', 'user');
 COMMIT;
