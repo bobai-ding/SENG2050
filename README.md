@@ -73,19 +73,19 @@ General stuff (and in no specific order);
     - [x] 17. “Not all incidents will make it to the Knowledge-Base right away. We need a useful way to search over the old incidents that aren’t in the Knowledge-Base” – IT staff. (weight 20)
     - [x] Total: 60/30
     
-8. Will;
+10. Will;
 
     1. Database stuff _
     2. 
     3.
 
-9. Lachlan;
+11. Lachlan;
 
     1. Objects _
     2. User feedback
     3.
 
-10. Simi;
+12. Simi;
 
     1. jsp
     2. servlets
