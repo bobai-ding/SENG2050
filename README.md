@@ -54,7 +54,7 @@ General stuff (and in no specific order);
     - [ ] Add resolution details to report
     - [x] staff can add to knowledge base when resolved AND completed
     - [ ] multi user safety
-    - [ ] HTML validity
+    - [x] HTML validity
     - [x] request parameter security? nah she'll be rite
     
 11. [x] Completed aditional requirements 
