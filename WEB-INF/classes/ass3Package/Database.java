@@ -13,7 +13,9 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 
 public class Database {
@@ -128,30 +130,7 @@ public class Database {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				report = new Report();
-				
-				// Get Values
-				report.setReportid(rs.getInt(1));
-				report.setAuthor(User.getSpecificUser(rs.getString(2)));
-				report.setTitle(rs.getString(3));
-				report.setReportContent(rs.getString(4));
-				report.setType(rs.getString(5));
-				report.setTime(rs.getTime(6).toLocalTime());
-				report.setDate(rs.getDate(7).toLocalDate());
-				report.setStatus(rs.getString(8));
-				report.setInKnowledge(rs.getBoolean(9));
-				
-				if (rs.getTime(10) != null) {
-					report.setTimeResolved(rs.getTime(10).toLocalTime());	
-				} else {
-					report.setTimeResolved(null);
-				}
-				
-				if (rs.getDate(11) != null) {
-					report.setDateResolved(rs.getDate(11).toLocalDate());
-				} else {
-					report.setDateResolved(null);
-				}
+				report = Database.reportResult(rs);
 				
 			}
 		} catch(Exception e) {
@@ -176,30 +155,7 @@ public class Database {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				report = new Report();
-				
-				// Get Values
-				report.setReportid(rs.getInt(1));
-				report.setAuthor(User.getSpecificUser(rs.getString(2)));
-				report.setTitle(rs.getString(3));
-				report.setReportContent(rs.getString(4));
-				report.setType(rs.getString(5));
-				report.setTime(rs.getTime(6).toLocalTime());
-				report.setDate(rs.getDate(7).toLocalDate());
-				report.setStatus(rs.getString(8));
-				report.setInKnowledge(rs.getBoolean(9));
-				
-				if (rs.getTime(10) != null) {
-					report.setTimeResolved(rs.getTime(10).toLocalTime());	
-				} else {
-					report.setTimeResolved(null);
-				}
-				
-				if (rs.getDate(11) != null) {
-					report.setDateResolved(rs.getDate(11).toLocalDate());
-				} else {
-					report.setDateResolved(null);
-				}
+				report = Database.reportResult(rs);
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());
@@ -223,31 +179,7 @@ public class Database {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				report = new Report();
-				
-				// Get Values
-				report.setReportid(rs.getInt(1));
-				report.setAuthor(User.getSpecificUser(rs.getString(2)));
-				report.setTitle(rs.getString(3));
-				report.setReportContent(rs.getString(4));
-				report.setType(rs.getString(5));
-				report.setTime(rs.getTime(6).toLocalTime());
-				report.setDate(rs.getDate(7).toLocalDate());
-				report.setStatus(rs.getString(8));
-				report.setInKnowledge(rs.getBoolean(9));
-				
-				if (rs.getTime(10) != null) {
-					report.setTimeResolved(rs.getTime(10).toLocalTime());	
-				} else {
-					report.setTimeResolved(null);
-				}
-				
-				if (rs.getDate(11) != null) {
-					report.setDateResolved(rs.getDate(11).toLocalDate());
-				} else {
-					report.setDateResolved(null);
-				}
-				
+				report = Database.reportResult(rs);
 			}
 		} catch(Exception e) {
 			System.err.println(e.getMessage());
@@ -259,6 +191,38 @@ public class Database {
 		}
 		return report;
 	}
+	
+	public static Report reportResult(ResultSet rs) throws SQLException {
+		Report report = new Report();
+		
+		// Set values
+		report.setReportid(rs.getInt(1));
+		report.setAuthor(User.getSpecificUser(rs.getString(2)));
+		report.setTitle(rs.getString(3));
+		report.setReportContent(rs.getString(4));
+		report.setType(rs.getString(5));
+		report.setTime(rs.getTime(6).toLocalTime());
+		report.setDate(rs.getDate(7).toLocalDate());
+		report.setStatus(rs.getString(8));
+		report.setInKnowledge(rs.getBoolean(9));
+
+		if (rs.getTime(10) != null) {
+			report.setTimeResolved(rs.getTime(10).toLocalTime());	
+		} else {
+			report.setTimeResolved(null);
+		}
+		
+		if (rs.getDate(11) != null) {
+			report.setDateResolved(rs.getDate(11).toLocalDate());
+		} else {
+			report.setDateResolved(null);
+		}
+		
+		report.setResolutionDetails(rs.getString(12));
+		
+		return report;
+	}
+	
 	
 	// Delete entire table
 	public static void removeTable(String tableName) {

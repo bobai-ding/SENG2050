@@ -27,6 +27,7 @@ public class Report implements Serializable{
     private String title;
     private String type;
     private String status;
+    private String resolutionDetails;
     private int reportid;
     private Boolean inKnowledge;
     
@@ -35,18 +36,12 @@ public class Report implements Serializable{
     
     private LocalTime timeResolved;
     private LocalDate dateResolved;
-
-    private LinkedList<Comment> comments = new LinkedList<>();
     
     // Zero Arg Constructor
     Report(){
 
     }
     
-    // Set comments
-	public void setComments(LinkedList<Comment> comments) {
-		this.comments = comments;
-	}
     
 	// Set Author
     public void setAuthor(User author){
@@ -157,13 +152,23 @@ public class Report implements Serializable{
 	public void setDateResolved(LocalDate dateResolved) {
 		this.dateResolved = dateResolved;
 	}
+	
+	// Get resolution details
+	public String getResolutionDetails() {
+		return resolutionDetails;
+	}
+	
+	// Set resolution details
+	public void setResolutionDetails(String resolutionDetails) {
+		this.resolutionDetails = resolutionDetails;
+	}
 
 	@Override
 	public String toString() {
 		return "Report [author=" + author + ", reportContent=" + reportContent + ", title=" + title + ", type=" + type
 				+ ", status=" + status + ", reportid=" + reportid + ", inKnowledge=" + inKnowledge + ", time=" + time
 				+ ", date=" + date + ", timeResolved=" + timeResolved + ", dateResolved=" + dateResolved + ", comments="
-				+ comments + "]";
+				+ "]";
 	}
 	
 	//TODO clean methods up
@@ -185,31 +190,7 @@ public class Report implements Serializable{
 			result = con.createStatement().executeQuery(query);
 			
 			while(result.next()){ //step 5
-				Report report = new Report();
-				
-				// Set values
-				report.setReportid(result.getInt(1));
-				report.setAuthor(User.getSpecificUser(result.getString(2)));
-				report.setTitle(result.getString(3));
-				report.setReportContent(result.getString(4));
-				report.setType(result.getString(5));
-				report.setTime(result.getTime(6).toLocalTime());
-				report.setDate(result.getDate(7).toLocalDate());
-				report.setStatus(result.getString(8));
-				report.setInKnowledge(result.getBoolean(9));
-				
-				if (result.getTime(10) != null) {
-					report.setTimeResolved(result.getTime(10).toLocalTime());	
-				} else {
-					report.setTimeResolved(null);
-				}
-				
-				if (result.getDate(11) != null) {
-					report.setDateResolved(result.getDate(11).toLocalDate());
-				} else {
-					report.setDateResolved(null);
-				}
-				reports.add(0, report);
+				reports.add(0, Database.reportResult(result));
 			}
 		}
 		catch(Exception e){
@@ -245,32 +226,7 @@ public class Report implements Serializable{
 			//result = con.createStatement().executeQuery(query);
 			
 			while(result.next()){ //step 5
-				Report report = new Report();
-				
-				// Set values
-				report.setReportid(result.getInt(1));
-				report.setAuthor(User.getSpecificUser(result.getString(2)));
-				report.setTitle(result.getString(3));
-				report.setReportContent(result.getString(4));
-				report.setType(result.getString(5));
-				report.setTime(result.getTime(6).toLocalTime());
-				report.setDate(result.getDate(7).toLocalDate());
-				report.setStatus(result.getString(8));
-				report.setInKnowledge(result.getBoolean(9));
-
-				if (result.getTime(10) != null) {
-					report.setTimeResolved(result.getTime(10).toLocalTime());	
-				} else {
-					report.setTimeResolved(null);
-				}
-				
-				if (result.getDate(11) != null) {
-					report.setDateResolved(result.getDate(11).toLocalDate());
-				} else {
-					report.setDateResolved(null);
-				}
-				
-				reports.add(0, report);
+				reports.add(0, Database.reportResult(result));
 			}
 		}
 		catch(Exception e){
@@ -304,32 +260,7 @@ public class Report implements Serializable{
 			//result = con.createStatement().executeQuery(query);
 			
 			while(result.next()){ //step 5
-				Report report = new Report();
-				
-				// Set values
-				report.setReportid(result.getInt(1));
-				report.setAuthor(User.getSpecificUser(result.getString(2)));
-				report.setTitle(result.getString(3));
-				report.setReportContent(result.getString(4));
-				report.setType(result.getString(5));
-				report.setTime(result.getTime(6).toLocalTime());
-				report.setDate(result.getDate(7).toLocalDate());
-				report.setStatus(result.getString(8));
-				report.setInKnowledge(result.getBoolean(9));
-
-				if (result.getTime(10) != null) {
-					report.setTimeResolved(result.getTime(10).toLocalTime());	
-				} else {
-					report.setTimeResolved(null);
-				}
-				
-				if (result.getDate(11) != null) {
-					report.setDateResolved(result.getDate(11).toLocalDate());
-				} else {
-					report.setDateResolved(null);
-				}
-				
-				reports.add(0, report);
+				reports.add(0, Database.reportResult(result));
 			}
 		}
 		catch(Exception e){
@@ -369,32 +300,7 @@ public class Report implements Serializable{
 			result = ps.executeQuery();
 			
 			while(result.next()) { //step 5
-				Report report = new Report();
-				
-				// Set values
-				report.setReportid(result.getInt(1));
-				report.setAuthor(User.getSpecificUser(result.getString(2)));
-				report.setTitle(result.getString(3));
-				report.setReportContent(result.getString(4));
-				report.setType(result.getString(5));
-				report.setTime(result.getTime(6).toLocalTime());
-				report.setDate(result.getDate(7).toLocalDate());
-				report.setStatus(result.getString(8));
-				report.setInKnowledge(result.getBoolean(9));
-
-				if (result.getTime(10) != null) {
-					report.setTimeResolved(result.getTime(10).toLocalTime());	
-				} else {
-					report.setTimeResolved(null);
-				}
-				
-				if (result.getDate(11) != null) {
-					report.setDateResolved(result.getDate(11).toLocalDate());
-				} else {
-					report.setDateResolved(null);
-				}
-				
-				reports.add(0, report);
+				reports.add(0, Database.reportResult(result));
 			}
 		}
 		catch(Exception e){
@@ -434,32 +340,7 @@ public class Report implements Serializable{
 			result = ps.executeQuery();
 			
 			while(result.next()) { //step 5
-				Report report = new Report();
-				
-				// Set values
-				report.setReportid(result.getInt(1));
-				report.setAuthor(User.getSpecificUser(result.getString(2)));
-				report.setTitle(result.getString(3));
-				report.setReportContent(result.getString(4));
-				report.setType(result.getString(5));
-				report.setTime(result.getTime(6).toLocalTime());
-				report.setDate(result.getDate(7).toLocalDate());
-				report.setStatus(result.getString(8));
-				report.setInKnowledge(result.getBoolean(9));
-
-				if (result.getTime(10) != null) {
-					report.setTimeResolved(result.getTime(10).toLocalTime());	
-				} else {
-					report.setTimeResolved(null);
-				}
-				
-				if (result.getDate(11) != null) {
-					report.setDateResolved(result.getDate(11).toLocalDate());
-				} else {
-					report.setDateResolved(null);
-				}
-				
-				reports.add(0, report);
+				reports.add(0, Database.reportResult(result));
 			}
 		}
 		catch(Exception e){
@@ -499,32 +380,7 @@ public class Report implements Serializable{
 				result = ps.executeQuery();
 				
 				while(result.next()) { //step 5
-					Report report = new Report();
-					
-					// Set values
-					report.setReportid(result.getInt(1));
-					report.setAuthor(User.getSpecificUser(result.getString(2)));
-					report.setTitle(result.getString(3));
-					report.setReportContent(result.getString(4));
-					report.setType(result.getString(5));
-					report.setTime(result.getTime(6).toLocalTime());
-					report.setDate(result.getDate(7).toLocalDate());
-					report.setStatus(result.getString(8));
-					report.setInKnowledge(result.getBoolean(9));
-
-					if (result.getTime(10) != null) {
-						report.setTimeResolved(result.getTime(10).toLocalTime());	
-					} else {
-						report.setTimeResolved(null);
-					}
-					
-					if (result.getDate(11) != null) {
-						report.setDateResolved(result.getDate(11).toLocalDate());
-					} else {
-						report.setDateResolved(null);
-					}
-					
-					reports.add(0, report);
+					reports.add(0, Database.reportResult(result));
 				}
 			}
 			catch(Exception e){
@@ -552,7 +408,7 @@ public class Report implements Serializable{
 		
 		try {
 			con = Config.getConnection();
-			ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setInt(1, reportid);
 			ps.setString(2, uid);
 			ps.setString(3, title);
@@ -564,6 +420,7 @@ public class Report implements Serializable{
 			ps.setBoolean(9, false);
 			ps.setTime(10, null);
 			ps.setDate(11, null);
+			ps.setString(12, null);
 			ps.executeUpdate();
 		} catch(Exception e){
 			System.err.println(e.getMessage());
@@ -576,8 +433,8 @@ public class Report implements Serializable{
 	
 	// Create table in database for reports
 	public static void createReportTable() {
-		String varNames[] = {"ReportID", "UserID", "Title", "ReportContent", "Type", "Time", "Date", "Status", "inKnowledge", "TimeResolved", "DateResolved"};
-		String varType[] = {"INT", "VARCHAR(80)", "VARCHAR(80)", "VARCHAR(1000)", "VARCHAR(80)", "TIME", "DATE", "VARCHAR(80)", "BOOLEAN", "TIME", "DATE"};
+		String varNames[] = {"ReportID", "UserID", "Title", "ReportContent", "Type", "Time", "Date", "Status", "inKnowledge", "TimeResolved", "DateResolved", "ResolutionDetails"};
+		String varType[] = {"INT", "VARCHAR(80)", "VARCHAR(80)", "VARCHAR(1000)", "VARCHAR(80)", "TIME", "DATE", "VARCHAR(80)", "BOOLEAN", "TIME", "DATE", "VARCHAR(500)"};
 		
 		Database.createTableString("reports", varNames, varType);
 	}
