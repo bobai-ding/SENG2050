@@ -25,6 +25,10 @@ public class Login extends HttpServlet {
 		
 		// Get UserID
 		getServletConfig().getServletContext().setAttribute("user", request.getUserPrincipal());
+		request.setAttribute("user", request.getUserPrincipal());
+		
+		// Used for a feedback message
+		request.getSession().setAttribute("newReport", false);
 		
 		// Load page
 		request.getRequestDispatcher("/WEB-INF/jsp/user/Main.jsp").forward(request, response); //redirect to main page

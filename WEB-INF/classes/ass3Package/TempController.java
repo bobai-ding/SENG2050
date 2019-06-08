@@ -37,7 +37,6 @@ public class TempController extends HttpServlet {
 			if (request.getParameter("reportid") != null)  reportid = Integer.parseInt(request.getParameter("reportid"));
 			if (submit.equals("ADD")) {
 				System.out.println("LOG: Adding new entry under UserID: " + uid + " with Title: " + title);
-				// TODO Set status properly
 				Report.addReport(uid, title, content, type, "temp");
 			} 
 			else if (submit.equals("DELETE")) {
