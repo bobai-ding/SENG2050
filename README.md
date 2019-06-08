@@ -65,7 +65,7 @@ General stuff (and in no specific order);
     - [ ] HTML validity
     - [ ] request parameter security?
     
-9. Completed aditional requirements
+9. [ ] Completed aditional requirements
     - [x] 3.“Sometimes the language that IT staff use is complicated, maybe users should be able to add comments to the Knowledge-Base articles to help other users.” (weight 10)
     - [x] 14. “We should be able to view Knowledge-Base articles sorted by their categories” – User. (weight 5)
     - [x] 15. “We should be able to sort the issues by the date that they were reported” – IT staff. (weight 5)
@@ -73,19 +73,19 @@ General stuff (and in no specific order);
     - [x] 17. “Not all incidents will make it to the Knowledge-Base right away. We need a useful way to search over the old incidents that aren’t in the Knowledge-Base” – IT staff. (weight 20)
     - [x] Total: 60/30
     
-10. Will;
+10. [ ] Will;
 
     1. Database stuff _
     2. 
     3.
 
-11. Lachlan;
+11. [ ] Lachlan;
 
     1. Objects _
     2. User feedback
     3.
 
-12. Simi;
+12. [ ] Simi;
 
     1. jsp
     2. servlets
