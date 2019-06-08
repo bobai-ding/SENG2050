@@ -4,7 +4,7 @@
 	Author: Lachlan McRae, c3283344
 	
 	Last Modified: 9/6/19
-	Description: Redirect servlet
+	Description: Redirect servlet, also acts as sorting for reports.jsp and knowledgeBase.jsp
 */
 
 package ass3Package;
