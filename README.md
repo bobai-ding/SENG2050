@@ -13,7 +13,7 @@ CURRENT TODO by the 9th
 
 General stuff (and in no specific order);
 
-1. [ ] Make it look nice
+1. [x] Make it look nice (or not...)
 
 2. [x] User login w/ verification
     - [x] Look into tomcat users
@@ -25,13 +25,13 @@ General stuff (and in no specific order);
     
 3. [ ] Jsp still to make
     - [x] Knowledge base
-        - [ ] Filter this by status in report ("Completed" or "Resolved")
+        - [x] Filter this by status in report ("Completed" or "Resolved")
     - [X] View open reports
-        - [ ] Filter this by status in report ("inprogress" or "new")
+        - [x] Filter this by status in report ("inprogress" or "new")
         - [x] User should only see report related to them (Probably name)
     - [x] View all reports 
         - [x] Should only be viewable by staff 
-        - [ ] Need to have a way to sort this list or grouped by status
+        - [x] Need to have a way to sort this list or grouped by status
     - [x] Mark as completed 
         - [x] Staff need a way to mark a report as completed 
     - [x] Add completed reports to knowledge base
@@ -51,7 +51,7 @@ General stuff (and in no specific order);
     - [x] email
     - [x] contact number
 
-7. [ ] Servlets!!!
+7. [x] Servlets!!!
     - [x] CreateReport.java needs to take data from createReport.jsp and add to database
     - [x] editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
     - 
@@ -65,7 +65,7 @@ General stuff (and in no specific order);
 9. Lachlan;
 
     1. Objects _
-    2.
+    2. User feedback
     3.
 
 10. Simi;
