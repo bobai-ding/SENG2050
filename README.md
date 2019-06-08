@@ -34,10 +34,6 @@ General stuff (and in no specific order);
     - [x] Add completed reports to knowledge base
         - [x] Staff only
     - [x] User accepts completed report 
-
-6. [ ] Bugs to fix 
-    - [ ] currently refreshing resend the form
-    - [ ] a bug with user permissions
     
 7. [X] Need to add to report db 
     - [X] date time resolved
