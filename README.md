@@ -52,7 +52,7 @@ General stuff (and in no specific order);
     - [ ] User's need to be able to change state of report
     - [x] No comments on resolved except if in knowledge base
     - [ ] Add resolution details to report
-    - [ ] staff can add to knowledge base when resolved AND completed
+    - [x] staff can add to knowledge base when resolved AND completed
     - [ ] multi user safety
     - [ ] HTML validity
     - [ ] request parameter security?

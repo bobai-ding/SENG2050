@@ -40,7 +40,7 @@
 			<input type="hidden" name="reportID" value="${specificReport.reportid}">
 			<input type="submit" name="submit">
 		</form>
-		<c:if test = "${specificReport.status == 'resolved'}" >
+		<c:if test = "${specificReport.status == 'resolved' || specificReport.status == 'completed'}" >
 			<form action="editReport" method="POST">
 			<p> Please choose if the report should be added to the knowledge base: </p>
 			<input type="radio" name="knowledge" value="false">No<br>
@@ -106,17 +106,7 @@
 	<p><c:out value="${specificReport.reportContent}"/><p>
 	
 	<hr>
-	<% /* 
-	<c:choose>
-		<c:when test="${(specificReport.status != 'completed' && specificReport.status != 'resolved') || specificReport.inKnowledge == 'true'}">
 		
-		</c:when>
-		
-	
-	
-	</c:choose>	
-	*/ %>
-	
 	<c:if test = "${(specificReport.status != 'resolved') || specificReport.inKnowledge == 'true'}">
 		
 		<h3> Add Comment </h3>
