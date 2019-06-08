@@ -54,8 +54,25 @@ General stuff (and in no specific order);
 7. [x] Servlets!!!
     - [x] CreateReport.java needs to take data from createReport.jsp and add to database
     - [x] editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
-    - 
     - [ ] ALL SERVLETS NEED TO HANDLE IMAGES
+    
+8. [ ] FINAL DEBUG / ADDITIONS:
+    - [ ] User's need to be able to change state of report
+    - [ ] No comments on resolved except if in knowledge base
+    - [ ] Add resolution details to report
+    - [ ] staff can add to knowledge base when resolved AND completed
+    - [ ] multi user safety
+    - [ ] HTML validity
+    - [ ] request parameter security?
+    
+9. Completed aditional requirements
+    - [x] 3.“Sometimes the language that IT staff use is complicated, maybe users should be able to add comments to the Knowledge-Base articles to help other users.” (weight 10)
+    - [x] 14. “We should be able to view Knowledge-Base articles sorted by their categories” – User. (weight 5)
+    - [x] 15. “We should be able to sort the issues by the date that they were reported” – IT staff. (weight 5)
+    - [x] 16. “It would be nice if we could have key-word search capabilities” – User. (weight 20)
+    - [x] 17. “Not all incidents will make it to the Knowledge-Base right away. We need a useful way to search over the old incidents that aren’t in the Knowledge-Base” – IT staff. (weight 20)
+    - [x] Total: 60/30
+    
 8. Will;
 
     1. Database stuff _
