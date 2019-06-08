@@ -36,13 +36,6 @@
 			<%} %>
 	</form>
 	</div>
-	<br>
-	<div class="bottom">
-	<form action="ViewReports" method="POST">
-			<input type="text" name="searchVal" placeholder="Type here to search">
-			<input type="submit" value="SEARCH" name="submit">
-	</form>
-	</div>
 	
 	<div class="left">
 		<form action="redirect" method="POST">

@@ -49,7 +49,7 @@ General stuff (and in no specific order);
     - [x] editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
     
 10. [ ]  FINAL DEBUG / ADDITIONS: 
-    - [ ] User's need to be able to change state of report
+    - [x] User's need to be able to change state of report
     - [x] No comments on resolved except if in knowledge base
     - [ ] Add resolution details to report
     - [x] staff can add to knowledge base when resolved AND completed
