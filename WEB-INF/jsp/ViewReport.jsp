@@ -106,18 +106,29 @@
 	<p><c:out value="${specificReport.reportContent}"/><p>
 	
 	<hr>
+	<% /* 
+	<c:choose>
+		<c:when test="${(specificReport.status != 'completed' && specificReport.status != 'resolved') || specificReport.inKnowledge == 'true'}">
 		
-	<h3> Add Comment </h3>
-	
-	<form action="Controller" method="POST">
-			<input type="hidden" name="uid" value="<c:out value="${user.getName()}"/>">
-			<input type="text" name="comment" placeholder="Write Comment here">
-			<input type="hidden" name="reportid" value="<c:out value="${specificReport.reportid}"/>">
-			<input type="submit" value="ADD COMMENT" name="submit">
-	</form>
+		</c:when>
+		
 	
 	
+	</c:choose>	
+	*/ %>
 	
+	<c:if test = "${(specificReport.status != 'resolved') || specificReport.inKnowledge == 'true'}">
+		
+		<h3> Add Comment </h3>
+		
+		<form action="Controller" method="POST">
+				<input type="hidden" name="uid" value="<c:out value="${user.getName()}"/>">
+				<input type="text" name="comment" placeholder="Write Comment here">
+				<input type="hidden" name="reportid" value="<c:out value="${specificReport.reportid}"/>">
+				<input type="submit" value="ADD COMMENT" name="submit">
+		</form>
+		
+	</c:if>
 	
 	<h3> Comments </h3>
 	<c:forEach var="comment" items="${comments}">

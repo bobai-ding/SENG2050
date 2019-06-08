@@ -47,11 +47,10 @@ General stuff (and in no specific order);
 9. [x] Servlets!!! 
     - [x] CreateReport.java needs to take data from createReport.jsp and add to database
     - [x] editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
-    - [ ] ALL SERVLETS NEED TO HANDLE IMAGES
     
 10. [ ]  FINAL DEBUG / ADDITIONS: 
     - [ ] User's need to be able to change state of report
-    - [ ] No comments on resolved except if in knowledge base
+    - [x] No comments on resolved except if in knowledge base
     - [ ] Add resolution details to report
     - [ ] staff can add to knowledge base when resolved AND completed
     - [ ] multi user safety
