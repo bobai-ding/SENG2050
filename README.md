@@ -18,7 +18,7 @@ General stuff (and in no specific order);
 2. [x] User login w/ verification 
     - [x] Look into tomcat users
 
-3. [ ] Need to have userfeed back when interacting with stuff 
+3. [ ] Need to have user feedback when interacting with stuff 
     
 5. [x] Jsp still to make 
     - [x] Knowledge base
@@ -58,7 +58,7 @@ General stuff (and in no specific order);
     - [ ] HTML validity
     - [ ] request parameter security?
     
-11. [ ] Completed aditional requirements 
+11. [x] Completed aditional requirements 
     - [x] 3.“Sometimes the language that IT staff use is complicated, maybe users should be able to add comments to the Knowledge-Base articles to help other users.” (weight 10)
     - [x] 14. “We should be able to view Knowledge-Base articles sorted by their categories” – User. (weight 5)
     - [x] 15. “We should be able to sort the issues by the date that they were reported” – IT staff. (weight 5)
