@@ -58,6 +58,9 @@ public class CreateReport extends HttpServlet {
 			// TODO Set status properly
 			Report.addReport(uid, title, content, type, "new");
 			
+			HttpSession session = request.getSession();
+            		session.setAttribute("newReport", true);
+			
 		} else {
 			dispatchLocation = "/WEB-INF/jsp/user/Main.jsp";
 		}
