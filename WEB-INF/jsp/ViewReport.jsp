@@ -34,22 +34,38 @@
 		<%if(request.isUserInRole("staff")){ %>
 			<form action="editReport" method="POST">
 				<p> Please choose the state of the report: </p>
-				<input type="radio" name="state" value="new">New<br>
-				<input type="radio" name="state" value="inProgress">In Progress<br>
-				<input type="radio" name="state" value="completed">Completed<br>
-				<input type="radio" name="state" value="resolved" required>Resolved<br>
+				
+				<div class="bottom">
+						<input type="radio" name="state" value="new" required>New<br>
+					<c:if test = "${specificReport.status != 'inProgress'}" >
+						<input type="radio" name="state" value="inProgress">In Progress<br>
+					</c:if>
+					<c:if test = "${specificReport.status != 'completed'}" >
+						<input type="radio" name="state" value="completed">Completed<br>
+					</c:if>
+					<c:if test = "${specificReport.status != 'resolved'}" >
+						<input type="radio" name="state" value="resolved" >Resolved<br>
+					</c:if>
+				</div>
+				
+				<c:if test = "${specificReport.status != 'resolved'}" >
+					<div class="bottom" ><input type="text" name="resolveDetails" placeholder="Enter Resolution Details Here"><br></div>
+				</c:if>
 				<input type="hidden" name="knowledge" value="false">
 				<input type="hidden" name="reportID" value="${specificReport.reportid}">
 				<input type="submit" name="submit">
 			</form>
+			
 			<c:if test = "${specificReport.status == 'resolved' || specificReport.status == 'completed'}" >
 				<form action="editReport" method="POST">
-				<hr>
-				<p> Please choose if the report should be added to the knowledge base: </p>
-				<input type="radio" name="knowledge" value="false">No<br>
-				<input type="radio" name="knowledge" value="true" required>Yes<br>
-				<input type="hidden" name="reportID" value="${specificReport.reportid}">
-				<input type="submit" name="submit">
+					<hr>
+					<p> Please choose if the report should be added to the knowledge base: </p>
+					<div class="bottom">
+						<input type="radio" name="knowledge" value="false">No<br>
+						<input type="radio" name="knowledge" value="true" required>Yes<br>
+						<input type="hidden" name="reportID" value="${specificReport.reportid}">
+					</div>
+					<input type="submit" name="submit">
 				</form>
 			</c:if>
 			
@@ -57,24 +73,36 @@
 			<c:if test = "${specificReport.status == 'completed'}">
 			<h3>Please select if the the issue has been resolved:</h3>
 			<form action="editReport" method="POST">
-				<input type="radio" name="state" value="inProgress">No<br>
-				<input type="radio" name="state" value="resolved" required>Yes<br>
-				<input type="hidden" name="reportID" value="${specificReport.reportid}">
-				<input type="hidden" name="knowledge" value="false">
+				<div class="bottom">
+					<input type="radio" name="state" value="inProgress">No<br>
+					<input type="radio" name="state" value="resolved" required>Yes<br>
+					<input type="hidden" name="reportID" value="${specificReport.reportid}">
+					<input type="hidden" name="knowledge" value="false">
+				</div>
 				<input type="submit" name="submit">
 			</form>
 			</c:if>
 		
 			<form action="editReport" method="POST">
 				<h3>Has the problem been solved?</h3>
-				<input type="checkbox" name="state" value="resolved" required>Yes 
-				<input type="hidden" name="reportID" value="${specificReport.reportid}">
-				<input type="hidden" name="knowledge" value="false">
+				<div class="bottom">
+					<input type="checkbox" name="state" value="resolved" required>Yes 
+					<input type="hidden" name="reportID" value="${specificReport.reportid}">
+					<input type="hidden" name="knowledge" value="false">
+				</div>
 				<input type="submit" name="submit">
 			</form>		
 		
 		<%} %>
 	</div>
+	
+	<c:if test = "${specificReport.status == 'resolved' || specificReport.status == 'completed'}" >
+	
+	<h3> Resolution Details </h3>
+	<p><c:out value="${specificReport.resolutionDetails}"/><p>
+	<hr>
+	
+	</c:if>
 	
 	<h3>Author </h3>
 	<table>
@@ -126,9 +154,11 @@
 		<h3> Add Comment </h3>
 		
 		<form action="Controller" method="POST">
-				<input type="hidden" name="uid" value="<c:out value="${user.getName()}"/>">
-				<input type="text" name="comment" placeholder="Write Comment here">
-				<input type="hidden" name="reportid" value="<c:out value="${specificReport.reportid}"/>">
+				<div class="bottom">
+					<input type="hidden" name="uid" value="<c:out value="${user.getName()}"/>">
+					<input type="text" name="comment" placeholder="Write Comment here">
+					<input type="hidden" name="reportid" value="<c:out value="${specificReport.reportid}"/>">
+				</div>
 				<input type="submit" value="ADD COMMENT" name="submit">
 		</form>
 		

@@ -35,7 +35,7 @@ public class editReport extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Temp Values
 		String state = request.getParameter("state");
-		
+		String resDetails = request.getParameter("resolveDetails");
 		Boolean knowledge = Boolean.parseBoolean(request.getParameter("knowledge"));
 		int reportID = Integer.parseInt(request.getParameter("reportID"));
 		
@@ -48,6 +48,7 @@ public class editReport extends HttpServlet {
 			// Update report status And if in knowledge base
 			Database.updateWhere("reports", "Status", state, "ReportID", reportID);
 			Database.updateWhere("reports", "inKnowledge", knowledge, "ReportID", reportID);
+			Database.updateWhere("reports", "ResolutionDetails", resDetails, "ReportID", reportID);
 			
 			// If report is solved, add time solved
 			if(state.equals("resolved")) {
