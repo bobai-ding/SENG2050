@@ -103,7 +103,7 @@ public class redirect extends HttpServlet {
 						LocalTime At = ((Report) arr[j]).getTime();
 						LocalTime Bt = ((Report) arr[j+1]).getTime();
 						LocalTime tempt = null;
-						if(At.compareTo(Bt) < 0) {
+						if(At.compareTo(Bt) > 0) {
 							tempRep = ((Report) arr[j]);
 							first = ((Report) arr[j+1]);
 							second = tempRep;
@@ -112,7 +112,7 @@ public class redirect extends HttpServlet {
 							arr[j+1] = second;	
 						}
 					}else {
-						if(A.compareTo(B) < 0) {
+						if(A.compareTo(B) > 0) {
 							tempRep = ((Report) arr[j]);
 							first = ((Report) arr[j+1]);
 							second = tempRep;
@@ -132,7 +132,7 @@ public class redirect extends HttpServlet {
 					A = ((Report) arr[j]).getStatus();
 					B = ((Report) arr[j+1]).getStatus();
 					//System.out.println("A = " + A + " | B = " + B + " | i = " + i + " | J = " + j);
-					if(A.compareTo(B) < 0) {
+					if(checkStatus(A) > checkStatus(B)) {
 						tempRep = ((Report) arr[j]);
 						first = ((Report) arr[j+1]);
 						second = tempRep;
@@ -151,6 +151,16 @@ public class redirect extends HttpServlet {
 		request.setAttribute("user", request.getUserPrincipal());
 		request.getRequestDispatcher(request.getParameter("sender")).forward(request, response); //redirect to main page
 		
+	}
+	
+	private int checkStatus(String status) {
+		int out = -1;
+		if(status.equals("new")) {out = 0;}
+		if(status.equals("inProgress")) {out = 1;}
+		if(status.equals("completed")) {out = 2;}
+		if(status.equals("resolved")) {out = 3;}
+		
+		return out;
 	}
 
 }
