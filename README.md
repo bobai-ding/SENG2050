@@ -47,7 +47,6 @@ General stuff (and in no specific order);
 9. [x] Servlets!!! 
     - [x] CreateReport.java needs to take data from createReport.jsp and add to database
     - [x] editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
-    - [ ] ALL SERVLETS NEED TO HANDLE IMAGES
     
 10. [ ]  FINAL DEBUG / ADDITIONS: 
     - [ ] User's need to be able to change state of report
