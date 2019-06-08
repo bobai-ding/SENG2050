@@ -68,8 +68,8 @@ General stuff (and in no specific order);
 12. [ ] README.TXT
     - [ ] how to setup database
     - [ ] how to setup tomcat
-    - [ ] detail completed additional requirements
-    - [ ] other stuff?
+    - [ ] detail completed additional requirements and how they we're implemented
+    - [ ] github link?
     
 12. [x] Will;
 
