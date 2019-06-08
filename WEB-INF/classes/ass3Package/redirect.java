@@ -32,7 +32,16 @@ public class redirect extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		//List<Report> reports = request.getParameter("reportList");
-		List<Object> reports =  (List<Object>) request.getAttribute("reportList");
+		//List<Object> reports =  (List<Object>) request.getAttribute("reportList");
+		
+		List<Report> reports = null;
+		
+		if(request.isUserInRole("staff")) {
+			reports = Report.getAllReports();
+		} else {
+			reports = Report.getUserReports(request.getParameter("user"));
+		}
+		
 		String type = request.getParameter("order");
 		
 		Object[] arr = null;
@@ -44,11 +53,22 @@ public class redirect extends HttpServlet {
 			request.setAttribute("user", request.getUserPrincipal());
 			request.getRequestDispatcher("/WEB-INF/jsp/user/Main.jsp").forward(request, response); //redirect to main page
 		} else {
-			arr = (Object[]) reports.toArray();
+			arr = reports.toArray();
 		}
 		
-		System.out.println("SORTING | Reports = " + reports + " | type = " + type + " | arr = " + arr);
+		//System.out.println("SORTING | Reports = " + reports + " | type = " + type + " | arr = " + arr);
+		System.out.println("SORTING | type = " + type + " | arr = " + arr);
+		//System.out.println("BEFORE: " + reports + "\r\n\r\n\r\n*****************************************************************************");
+		/*
+		for(int i = 0; i < arr.length;i++) {
+			System.out.println("i = " + i + " | val = " + arr[i]);
+		}
+		*/
 		
+		Report tempRep = null;
+		Report first = null;
+		Report second = null;
+				
 		if(type.equals("categories")) {
 			String temp = "";
 			String A = "";
@@ -58,9 +78,15 @@ public class redirect extends HttpServlet {
 					A = ((Report) arr[j]).getType();
 					B = ((Report) arr[j+1]).getType();
 					if(A.compareTo(B) > 0) {
-						temp = A;
-						A = B;
-						B = temp;
+						//first = ((Report) arr[j]);
+						//second = ((Report) arr[j+1]);
+						
+						tempRep = ((Report) arr[j]);
+						first = ((Report) arr[j+1]);
+						second = tempRep;
+						
+						arr[j] = first;
+						arr[j+1] = second;								
 					}
 				}
 			}
@@ -72,10 +98,28 @@ public class redirect extends HttpServlet {
 				for(int j = 0; j < (arr.length - 1);j++) {
 					A = ((Report) arr[j]).getDate();
 					B = ((Report) arr[j+1]).getDate();
-					if(A.compareTo(B) > 0) {
-						temp = A;
-						A = B;
-						B = temp;
+					//System.out.println("A = " + A + " | B = " + B + " | i = " + i + " | J = " + j);
+					if(A.equals(B)) {
+						LocalTime At = ((Report) arr[j]).getTime();
+						LocalTime Bt = ((Report) arr[j+1]).getTime();
+						LocalTime tempt = null;
+						if(At.compareTo(Bt) < 0) {
+							tempRep = ((Report) arr[j]);
+							first = ((Report) arr[j+1]);
+							second = tempRep;
+							
+							arr[j] = first;
+							arr[j+1] = second;	
+						}
+					}else {
+						if(A.compareTo(B) < 0) {
+							tempRep = ((Report) arr[j]);
+							first = ((Report) arr[j+1]);
+							second = tempRep;
+							
+							arr[j] = first;
+							arr[j+1] = second;	
+						}
 					}
 				}
 			}
@@ -87,17 +131,24 @@ public class redirect extends HttpServlet {
 				for(int j = 0; j < (arr.length - 1);j++) {
 					A = ((Report) arr[j]).getStatus();
 					B = ((Report) arr[j+1]).getStatus();
-					if(A.compareTo(B) > 0) {
-						temp = A;
-						A = B;
-						B = temp;
+					//System.out.println("A = " + A + " | B = " + B + " | i = " + i + " | J = " + j);
+					if(A.compareTo(B) < 0) {
+						tempRep = ((Report) arr[j]);
+						first = ((Report) arr[j+1]);
+						second = tempRep;
+						
+						arr[j] = first;
+						arr[j+1] = second;	
 					}
 				}
 			}
 		}
 		
-		reports = Arrays.asList(arr);
-		request.setAttribute("reports", reports);
+		List<Object> ordered = Arrays.asList(arr);
+		
+		//System.out.println("After: " + ordered + "\r\n\r\n\r\n*****************************************************************************");
+		request.setAttribute("reports", ordered);
+		request.setAttribute("user", request.getUserPrincipal());
 		request.getRequestDispatcher(request.getParameter("sender")).forward(request, response); //redirect to main page
 		
 	}
