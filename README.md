@@ -13,17 +13,14 @@ CURRENT TODO by the 9th
 
 General stuff (and in no specific order);
 
-1.  Make it look nice (or not...) [x]
+1. [x] Make it look nice (or not...) 
 
-2.  User login w/ verification [x]
+2. [x] User login w/ verification 
     - [x] Look into tomcat users
 
-3.  Need to have userfeed back when interacting with stuff [ ]
-
-4.  Need to intergrate files into create report!!! [ ]
-    - [ ] Also need to be displayed when viewing a report
+3. [ ] Need to have userfeed back when interacting with stuff 
     
-5.  Jsp still to make [ ]
+5. [x] Jsp still to make 
     - [x] Knowledge base
         - [x] Filter this by status in report ("Completed" or "Resolved")
     - [X] View open reports
@@ -38,25 +35,25 @@ General stuff (and in no specific order);
         - [x] Staff only
     - [x] User accepts completed report 
 
-6.  Bugs to fix [ ]
+6. [ ] Bugs to fix 
     - [ ] currently refreshing resend the form
     - [ ] a bug with user permissions
     
-7.  Need to add to report db [X]
+7. [X] Need to add to report db 
     - [X] date time resolved
     
-8.  Need to add to user db [x]
+8. [x] Need to add to user db 
     - [x] Name
     - [x] surname
     - [x] email
     - [x] contact number
 
-9.  Servlets!!! [x]
+9. [x] Servlets!!! 
     - [x] CreateReport.java needs to take data from createReport.jsp and add to database
     - [x] editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
     - [ ] ALL SERVLETS NEED TO HANDLE IMAGES
     
-10.  FINAL DEBUG / ADDITIONS: [ ]
+10. [ ]  FINAL DEBUG / ADDITIONS: 
     - [ ] User's need to be able to change state of report
     - [ ] No comments on resolved except if in knowledge base
     - [ ] Add resolution details to report
@@ -65,7 +62,7 @@ General stuff (and in no specific order);
     - [ ] HTML validity
     - [ ] request parameter security?
     
-11.  Completed aditional requirements [ ]
+11. [ ] Completed aditional requirements 
     - [x] 3.“Sometimes the language that IT staff use is complicated, maybe users should be able to add comments to the Knowledge-Base articles to help other users.” (weight 10)
     - [x] 14. “We should be able to view Knowledge-Base articles sorted by their categories” – User. (weight 5)
     - [x] 15. “We should be able to sort the issues by the date that they were reported” – IT staff. (weight 5)
