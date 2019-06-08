@@ -24,7 +24,19 @@
 			<input type="submit" value="SEARCH" name="submit">
 	</form>
 	</div>
+	
+	<div class="left">
+		<form action="redirect" method="POST">
+			Sort by: <input type="radio" name="order" value="categories">By category <input type="radio" name="order" value="date">By date
+			<input type="submit" value="Sort!">
+			<input type="hidden" name="sender" value="/WEB-INF/jsp/KnowledgeBase.jsp">
+			<input type="hidden" name="knowledge" value="true">
+			<input type="hidden" name="user" value="${user.getName()}">			
+		</form>
+	</div>
 		
+		
+	<h3>Knowledge Base Reports</h3>
 	<div class="bottom">
 	<table>
 		<tr>

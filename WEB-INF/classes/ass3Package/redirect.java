@@ -34,12 +34,19 @@ public class redirect extends HttpServlet {
 		//List<Report> reports = request.getParameter("reportList");
 		//List<Object> reports =  (List<Object>) request.getAttribute("reportList");
 		
+		Boolean inKnowledge = Boolean.parseBoolean(request.getParameter("knowledge"));
+		
 		List<Report> reports = null;
 		
+		if(inKnowledge) {
+			reports = Report.getKnowledgeReports();
+		} else {
+				
 		if(request.isUserInRole("staff")) {
 			reports = Report.getAllReports();
 		} else {
 			reports = Report.getUserReports(request.getParameter("user"));
+		}
 		}
 		
 		String type = request.getParameter("order");

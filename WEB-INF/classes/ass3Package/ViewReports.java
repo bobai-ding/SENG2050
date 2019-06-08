@@ -33,6 +33,7 @@ public class ViewReports extends HttpServlet {
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		request.setAttribute("user", request.getUserPrincipal());
+		request.getSession().setAttribute("newReport", false);
 		request.getRequestDispatcher("/WEB-INF/jsp/Reports.jsp").forward(request, response); //redirect to main page
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
