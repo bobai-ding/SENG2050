@@ -34,7 +34,7 @@ public class KnowledgeBase extends HttpServlet {
 		if (submit != null) {
 			if (submit.equals("SEARCH")) {
 				Report.searchReports(searchVal);
-				request.setAttribute("reports", Report.searchReports(searchVal));
+				request.setAttribute("reports", Report.searchReportsInKnowledge(searchVal));
 			} else {
 				request.setAttribute("reports", Report.getKnowledgeReports());
 			}

@@ -224,6 +224,7 @@ public class Report implements Serializable{
 		
 	}
 	
+	// Get user reports
 	public static List<Report> getUserReports(String userID){
 		PreparedStatement ps = null;
 		
@@ -285,7 +286,7 @@ public class Report implements Serializable{
 		
 	}
 	
-		
+	// Get knowledge base reports
 	public static List<Report> getKnowledgeReports(){
 		PreparedStatement ps = null;
 		List<Report> reports = new LinkedList<>();
@@ -344,6 +345,7 @@ public class Report implements Serializable{
 		
 	}
 	
+	// Search for reports in knowledge base
 	public static List<Report>	searchReports(String keyword){
 		List<Report> reports = new LinkedList<>();
 		Connection con = null;
@@ -364,6 +366,71 @@ public class Report implements Serializable{
 			ps.setString(1,"%" + keyword + "%");
 			ps.setString(2,"%" + keyword + "%");
 			System.out.println("TESTING: " + ps.toString());
+			result = ps.executeQuery();
+			
+			while(result.next()) { //step 5
+				Report report = new Report();
+				
+				// Set values
+				report.setReportid(result.getInt(1));
+				report.setAuthor(User.getSpecificUser(result.getString(2)));
+				report.setTitle(result.getString(3));
+				report.setReportContent(result.getString(4));
+				report.setType(result.getString(5));
+				report.setTime(result.getTime(6).toLocalTime());
+				report.setDate(result.getDate(7).toLocalDate());
+				report.setStatus(result.getString(8));
+				report.setInKnowledge(result.getBoolean(9));
+
+				if (result.getTime(10) != null) {
+					report.setTimeResolved(result.getTime(10).toLocalTime());	
+				} else {
+					report.setTimeResolved(null);
+				}
+				
+				if (result.getDate(11) != null) {
+					report.setDateResolved(result.getDate(11).toLocalDate());
+				} else {
+					report.setDateResolved(null);
+				}
+				
+				reports.add(0, report);
+			}
+		}
+		catch(Exception e){
+			System.err.println(e.getMessage());
+			System.err.println(e.getStackTrace());
+		}
+		finally {
+			try { con.close(); } catch (Exception e) { /* ignored */ }
+			try { result.close(); } catch (Exception e) { /* ignored */ }
+			try { ps.close(); } catch (Exception e) { /* ignored */ }
+		}
+		return reports;
+		
+	}
+	
+	// Search for reports in knowledge base
+	public static List<Report>	searchReportsInKnowledge(String keyword){
+		List<Report> reports = new LinkedList<>();
+		Connection con = null;
+		ResultSet result = null;
+		PreparedStatement ps = null;
+		try { 
+			con = Config.getConnection();
+			// Check table exists
+			if(!(Database.checkTableExists("reports"))){
+				createReportTable();
+			}
+			
+			System.out.println("LOG: Searching for: " + keyword);
+			
+			keyword = keyword.replace("!", "!!").replace("%", "!%").replace("_", "!_").replace("[", "![");
+			ps = con.prepareStatement( "SELECT * FROM reports WHERE ( ReportContent LIKE ? OR Title LIKE ? ) AND inKnowledge = ?");
+			
+			ps.setString(1,"%" + keyword + "%");
+			ps.setString(2,"%" + keyword + "%");
+			ps.setBoolean(3, true);
 			result = ps.executeQuery();
 			
 			while(result.next()) { //step 5
