@@ -18,7 +18,7 @@ General stuff (and in no specific order);
 2. [x] User login w/ verification 
     - [x] Look into tomcat users
 
-3. [ ] Need to have user feedback when interacting with stuff 
+3. [x] Need to have user feedback when interacting with stuff (or not...)
     
 5. [x] Jsp still to make 
     - [x] Knowledge base
@@ -48,10 +48,10 @@ General stuff (and in no specific order);
     - [x] CreateReport.java needs to take data from createReport.jsp and add to database
     - [x] editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
     
-10. [ ]  FINAL DEBUG / ADDITIONS: 
+10. [x]  FINAL DEBUG / ADDITIONS: 
     - [x] User's need to be able to change state of report
     - [x] No comments on resolved except if in knowledge base
-    - [ ] Add resolution details to report
+    - [x] Add resolution details to report
     - [x] staff can add to knowledge base when resolved AND completed
     - [x] multi user safety
     - [x] HTML validity
@@ -65,19 +65,19 @@ General stuff (and in no specific order);
     - [x] 17. “Not all incidents will make it to the Knowledge-Base right away. We need a useful way to search over the old incidents that aren’t in the Knowledge-Base” – IT staff. (weight 20)
     - [x] Total: 60/30
     
-12. [ ] Will;
+12. [x] Will;
 
-    1. Database stuff _
-    2. 
-    3.
+    1. Database stuff 
+    2. commenting
+    3. setup jsp skeletons
 
 13. [ ] Lachlan;
 
     1. Objects _
     2. User feedback
-    3.
+    3. Documentation
 
-14. [ ] Simi;
+14. [x] Simi;
 
     1. jsp
     2. servlets
