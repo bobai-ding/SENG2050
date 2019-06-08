@@ -23,6 +23,8 @@ public class ViewReports extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("view - role = staff: " + request.isUserInRole("staff") + " | name = " + request.getUserPrincipal().getName() + " | Principal = " + request.getUserPrincipal());
 		String submit = request.getParameter("submit");
+		String userid = request.getUserPrincipal().getName();
+		String searchVal =  request.getParameter("searchVal");
 		
 		if (submit != null) {
 			if (submit.equals("REMOVE TABLE")) {
@@ -31,16 +33,38 @@ public class ViewReports extends HttpServlet {
 				Database.removeTable("reports");
 				Database.removeTable("comments");
 			}
-		}
-		
-		// If is staff show all reports
-		if(request.isUserInRole("staff")) {
-			request.setAttribute("reports", Report.getAllReports());
-		} 
-		// If is user show only their reports
-		else {
-			String temperoono = request.getUserPrincipal().getName();
-			request.setAttribute("reports", Report.getUserReports(temperoono));
+			
+			if (submit.equals("SEARCH")) {
+				// If is staff show all reports
+				if(request.isUserInRole("staff")) {
+					request.setAttribute("reports", Report.searchReports(searchVal));
+				} 
+				// If is user show only their reports
+				else {
+					request.setAttribute("reports", Report.searchReportsUser(searchVal, userid));
+				}
+				
+			} else {
+				// If is staff show all reports
+				if(request.isUserInRole("staff")) {
+					request.setAttribute("reports", Report.getAllReports());
+				} 
+				// If is user show only their reports
+				else {
+					String temperoono = request.getUserPrincipal().getName();
+					request.setAttribute("reports", Report.getUserReports(temperoono));
+				}
+			}
+		} else {
+			// If is staff show all reports
+			if(request.isUserInRole("staff")) {
+				request.setAttribute("reports", Report.getAllReports());
+			} 
+			// If is user show only their reports
+			else {
+				String temperoono = request.getUserPrincipal().getName();
+				request.setAttribute("reports", Report.getUserReports(temperoono));
+			}
 		}
 		
 		// Set attributes
