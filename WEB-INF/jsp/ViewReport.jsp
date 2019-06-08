@@ -29,39 +29,53 @@
 		<%request.setAttribute("user", request.getUserPrincipal()); %>
 		<input class="largebutton" type="submit" value="Back to Reports" name="submit">
 	</form>
-	<%if(request.isUserInRole("staff")){ %>
-		<form action="editReport" method="POST">
-			<p> Please choose the state of the report: </p>
-			<input type="radio" name="state" value="new">New<br>
-			<input type="radio" name="state" value="inProgress">In Progress<br>
-			<input type="radio" name="state" value="completed">Completed<br>
-			<input type="radio" name="state" value="resolved" required>Resolved<br>
-			<input type="hidden" name="knowledge" value="false">
-			<input type="hidden" name="reportID" value="${specificReport.reportid}">
-			<input type="submit" name="submit">
-		</form>
-		<c:if test = "${specificReport.status == 'resolved'}" >
+	<br>
+	<div class=border>
+		<%if(request.isUserInRole("staff")){ %>
 			<form action="editReport" method="POST">
-			<p> Please choose if the report should be added to the knowledge base: </p>
-			<input type="radio" name="knowledge" value="false">No<br>
-			<input type="radio" name="knowledge" value="true" required>Yes<br>
-			<input type="hidden" name="reportID" value="${specificReport.reportid}">
-			<input type="submit" name="submit">
+				<p> Please choose the state of the report: </p>
+				<input type="radio" name="state" value="new">New<br>
+				<input type="radio" name="state" value="inProgress">In Progress<br>
+				<input type="radio" name="state" value="completed">Completed<br>
+				<input type="radio" name="state" value="resolved" required>Resolved<br>
+				<input type="hidden" name="knowledge" value="false">
+				<input type="hidden" name="reportID" value="${specificReport.reportid}">
+				<input type="submit" name="submit">
 			</form>
-		</c:if>
-		<hr>
-	<% } else { %>
-		<c:if test = "${specificReport.status == 'completed'}">
-		<h3>Please select if the the issue has been resolved:</h3>
-		<form action="editReport" method="POST">
-			<input type="radio" name="state" value="inProgress">No<br>
-			<input type="radio" name="state" value="resolved" required>Yes<br>
-			<input type="hidden" name="reportID" value="${specificReport.reportid}">
-			<input type="hidden" name="knowledge" value="false">
-			<input type="submit" name="submit">
-		</form>
-		</c:if>		
-	<%} %>
+			<c:if test = "${specificReport.status == 'resolved' || specificReport.status == 'completed'}" >
+				<form action="editReport" method="POST">
+				<hr>
+				<p> Please choose if the report should be added to the knowledge base: </p>
+				<input type="radio" name="knowledge" value="false">No<br>
+				<input type="radio" name="knowledge" value="true" required>Yes<br>
+				<input type="hidden" name="reportID" value="${specificReport.reportid}">
+				<input type="submit" name="submit">
+				</form>
+			</c:if>
+			
+		<% } else { %>
+			<c:if test = "${specificReport.status == 'completed'}">
+			<h3>Please select if the the issue has been resolved:</h3>
+			<form action="editReport" method="POST">
+				<input type="radio" name="state" value="inProgress">No<br>
+				<input type="radio" name="state" value="resolved" required>Yes<br>
+				<input type="hidden" name="reportID" value="${specificReport.reportid}">
+				<input type="hidden" name="knowledge" value="false">
+				<input type="submit" name="submit">
+			</form>
+			</c:if>
+		
+			<form action="editReport" method="POST">
+				<h3>Has the problem been solved?</h3>
+				<input type="checkbox" name="state" value="resolved" required>Yes 
+				<input type="hidden" name="reportID" value="${specificReport.reportid}">
+				<input type="hidden" name="knowledge" value="false">
+				<input type="submit" name="submit">
+			</form>		
+		
+		<%} %>
+	</div>
+	
 	<h3>Author </h3>
 	<table>
 		<tr>
@@ -106,17 +120,7 @@
 	<p><c:out value="${specificReport.reportContent}"/><p>
 	
 	<hr>
-	<% /* 
-	<c:choose>
-		<c:when test="${(specificReport.status != 'completed' && specificReport.status != 'resolved') || specificReport.inKnowledge == 'true'}">
 		
-		</c:when>
-		
-	
-	
-	</c:choose>	
-	*/ %>
-	
 	<c:if test = "${(specificReport.status != 'resolved') || specificReport.inKnowledge == 'true'}">
 		
 		<h3> Add Comment </h3>

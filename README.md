@@ -49,13 +49,13 @@ General stuff (and in no specific order);
     - [x] editReport.java needs to take data from ViewReport.jsp and edit the status / knowledge bool of a specific report
     
 10. [ ]  FINAL DEBUG / ADDITIONS: 
-    - [ ] User's need to be able to change state of report
+    - [x] User's need to be able to change state of report
     - [x] No comments on resolved except if in knowledge base
     - [ ] Add resolution details to report
-    - [ ] staff can add to knowledge base when resolved AND completed
-    - [ ] multi user safety
-    - [ ] HTML validity
-    - [ ] request parameter security?
+    - [x] staff can add to knowledge base when resolved AND completed
+    - [x] multi user safety
+    - [x] HTML validity
+    - [x] request parameter security? nah she'll be rite
     
 11. [x] Completed aditional requirements 
     - [x] 3.“Sometimes the language that IT staff use is complicated, maybe users should be able to add comments to the Knowledge-Base articles to help other users.” (weight 10)
