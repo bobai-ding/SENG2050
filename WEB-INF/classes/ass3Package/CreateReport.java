@@ -1,3 +1,12 @@
+/*
+	Author: William Paterson, c3280751
+	Author: Simeon Pento, c3282938
+	Author: Lachlan McRae, c3283344
+	
+	Last Modified: 9/6/19
+	Description: Create Report Servlet
+*/
+
 package ass3Package;
 
 import java.io.IOException;
@@ -6,74 +15,48 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class CreateReport
- */
 @WebServlet("/CreateReport")
 public class CreateReport extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CreateReport() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		request.getRequestDispatcher("/WEB-INF/jsp/user/CreateReport.jsp").forward(request, response); //redirect to main page
+		request.getRequestDispatcher("/WEB-INF/jsp/user/CreateReport.jsp").forward(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
-		response.getWriter().append("create report served at: ").append(request.getContextPath());
+		// Get user name from jdbc realm
 		request.setAttribute("user", request.getUserPrincipal());
+		// Temp variables
 		String submit = request.getParameter("submit");
 		String uid = request.getUserPrincipal().getName();
 		String content = request.getParameter("content");
 		String type = request.getParameter("category");
 		String title = request.getParameter("title");
-		String comment = request.getParameter("comment");
-		String status = request.getParameter("status");
-		int reportid = 0;
-		
-		String dispatchLocation = "/WEB-INF/jsp/Reports.jsp";
+		String dispatchLocation = "ViewReports";
 		
 		if (submit != null) {
-			if (request.getParameter("reportid") != null)  reportid = Integer.parseInt(request.getParameter("reportid"));
-		
+			// Add a new report
 			System.out.println("LOG: Adding new entry under UserID: " + uid + " with Title: " + title);
-			System.out.println("LOG: Adding new entry under UserID: " + uid + " with Title: " + title);
-			// TODO Set status properly
 			Report.addReport(uid, title, content, type, "new");
 			
-			HttpSession session = request.getSession();
-            		session.setAttribute("newReport", true);
+			request.getSession().setAttribute("newReport", true);
 			
 		} else {
 			dispatchLocation = "/WEB-INF/jsp/user/Main.jsp";
 		}
 		
+		// If user is staff show all reports
 		if(request.isUserInRole("staff")) {
 			request.setAttribute("reports", Report.getAllReports());
-		} else {
+		} 
+		// Else Show specific users report
+		else {
 			request.setAttribute("reports", Report.getUserReports(uid));
 		}
 		
-		getServletContext().getRequestDispatcher(dispatchLocation).forward(request, response);
-		//TODO create report from data recieved from jsp and forward to viewReport.jsp
+		// Redirect to next page 
+		response.sendRedirect(dispatchLocation);
 	}
 
 }

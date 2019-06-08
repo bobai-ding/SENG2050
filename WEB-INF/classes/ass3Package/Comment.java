@@ -1,3 +1,12 @@
+/*
+	Author: William Paterson, c3280751
+	Author: Simeon Pento, c3282938
+	Author: Lachlan McRae, c3283344
+	
+	Last Modified: 9/6/19
+	Description: Comment Object
+*/
+
 package ass3Package;
 
 import java.io.Serializable;
@@ -23,33 +32,13 @@ public class Comment implements Serializable {
     
     private int reportid;
 	private int commentNum;
-
+	
+	// Constructor
     Comment(){
     	
     }
-
-    Comment(String comment, User author){
-
-        //comment constructor w/ variables
-
-        //set the time on creation
-        time = LocalTime.now();
-        date = LocalDate.now();
-
-        //set values
-        this.comment = comment;
-        this.author = author;
-    }
-
-    public void setComment(String comment, User author) {
-        //set the variables of the object
-        //updates the time / date as what they were on creation
-        time = LocalTime.now();
-        date = LocalDate.now();
-        this.author = author;
-        this.comment = comment;
-    }
-
+    
+    // Getters and Setters
     public String getComment(){
 
         //returns a comment
@@ -57,45 +46,17 @@ public class Comment implements Serializable {
     }
     
 	public void setComment(String comment) {
+		// Set comment
 		this.comment = comment;
 	}
 	
-    public void editComment(String newComment){
-
-        //edit the comment with new text
-
-
-        this.edited = true;
-        this.comment = newComment;
-    }
-
-    public Date getTimeParsed(){
-
-        Date date = null;
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-        DateFormat d2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
-        DateFormat outputformat = new SimpleDateFormat("HH:mm dd-MM-yyyy");
-
-        try{
-            date = (Date) d2.parse(time.toString() + date.toString());
-            return date;
-        } catch (ParseException e){
-            e.printStackTrace();
-        }
-
-
-
-        return null;
-        //format the date + time to make one string
-        //need this for sorting the linked list
-    }
-    
     public LocalTime getTime() {
+    	// Return time
     	return time;
     }
     
 	public void setTime(LocalTime time) {
+		// Set time
 		this.time = time;
 	}
 
@@ -131,34 +92,42 @@ public class Comment implements Serializable {
     }
     
     public LocalDate getDate() {
+    	// Get date
 		return date;
 	}
 
 	public void setDate(LocalDate date) {
+		// Set date
 		this.date = date;
 	}
 
 	public boolean isEdited() {
+		// Get true if edited
 		return edited;
 	}
 
 	public void setEdited(boolean edited) {
+		// Set edited
 		this.edited = edited;
 	}
 
 	public int getReportid() {
+		// Get Report id
 		return reportid;
 	}
 
 	public void setReportid(int reportid) {
+		// Set Report id
 		this.reportid = reportid;
 	}
 
 	public int getCommentNum() {
+		// Get comment num
 		return commentNum;
 	}
 
 	public void setCommentNum(int commentNum) {
+		// Set comment num
 		this.commentNum = commentNum;
 	}
 	

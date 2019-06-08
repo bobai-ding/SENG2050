@@ -1,3 +1,12 @@
+/*
+	Author: William Paterson, c3280751
+	Author: Simeon Pento, c3282938
+	Author: Lachlan McRae, c3283344
+	
+	Last Modified: 9/6/19
+	Description: Redirect servlet
+*/
+
 package ass3Package;
 
 import java.io.IOException;
@@ -14,26 +23,20 @@ import java.util.List;
 import java.util.Collections;
 import java.util.Arrays;
 
-/**
- * Servlet implementation class redirect
- */
 @WebServlet("/redirect")
 public class redirect extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		request.setAttribute("user", request.getUserPrincipal());
 		request.getRequestDispatcher("/WEB-INF/jsp/user/Main.jsp").forward(request, response); //redirect to main page
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		//doGet(request, response);
 		//List<Report> reports = request.getParameter("reportList");
 		//List<Object> reports =  (List<Object>) request.getAttribute("reportList");
-		
 		Boolean inKnowledge = Boolean.parseBoolean(request.getParameter("knowledge"));
 		
 		List<Report> reports = null;
@@ -160,6 +163,7 @@ public class redirect extends HttpServlet {
 		
 	}
 	
+	// Check status of report
 	private int checkStatus(String status) {
 		int out = -1;
 		if(status.equals("new")) {out = 0;}

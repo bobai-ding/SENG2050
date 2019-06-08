@@ -1,3 +1,12 @@
+/*
+	Author: William Paterson, c3280751
+	Author: Simeon Pento, c3282938
+	Author: Lachlan McRae, c3283344
+	
+	Last Modified: 9/6/19
+	Description: Database main class
+*/
+
 package ass3Package;
 
 import java.sql.Connection;
@@ -104,7 +113,9 @@ public class Database {
 		    try { conn.close(); } catch (Exception e) { /* ignored */ }
 		}
 	}
-
+	
+	// TODO clean this up
+	
 	// View a specific report using userid and title
 	public static Report viewSpecificReport(String uid, String title) {
 		Report report = null;
@@ -119,6 +130,7 @@ public class Database {
 			while(rs.next()) {
 				report = new Report();
 				
+				// Get Values
 				report.setReportid(rs.getInt(1));
 				report.setAuthor(User.getSpecificUser(rs.getString(2)));
 				report.setTitle(rs.getString(3));
@@ -152,6 +164,7 @@ public class Database {
 		}
 		return report;
 	}
+	
 	// Return a specific report using 
 	public static Report viewSpecificReport(int reportid) {
 		Report report = null;
@@ -165,6 +178,7 @@ public class Database {
 			while(rs.next()) {
 				report = new Report();
 				
+				// Get Values
 				report.setReportid(rs.getInt(1));
 				report.setAuthor(User.getSpecificUser(rs.getString(2)));
 				report.setTitle(rs.getString(3));
@@ -198,6 +212,7 @@ public class Database {
 		return report;
 	}
 	
+	// Return all reports attached to a user id
 	public static Report viewUserReports(String userID) {
 		Report report = null;
 		try {
@@ -210,6 +225,7 @@ public class Database {
 			while(rs.next()) {
 				report = new Report();
 				
+				// Get Values
 				report.setReportid(rs.getInt(1));
 				report.setAuthor(User.getSpecificUser(rs.getString(2)));
 				report.setTitle(rs.getString(3));

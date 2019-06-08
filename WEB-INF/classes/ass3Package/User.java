@@ -1,3 +1,12 @@
+/*
+	Author: William Paterson, c3280751
+	Author: Simeon Pento, c3282938
+	Author: Lachlan McRae, c3283344
+	
+	Last Modified: 9/6/19
+	Description: User Object
+*/
+
 package ass3Package;
 
 import java.io.Serializable;
@@ -33,35 +42,43 @@ public class User implements Serializable {
         //set the uid
         this.uid = uid;
     }
-
+    
+    // Get first name
 	public String getFirstName() {
 		return firstName;
 	}
 
+	// Set first name
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
+	// Get last name
 	public String getLastName() {
 		return lastName;
 	}
 
+	// Set last name
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
+	// Get email
 	public String getEmail() {
 		return email;
 	}
 
+	// Set email
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	// Get phone number
 	public int getPhoneNum() {
 		return phoneNum;
 	}
 
+	// Set phone number
 	public void setPhoneNum(int phoneNum) {
 		this.phoneNum = phoneNum;
 	}
@@ -84,10 +101,13 @@ public class User implements Serializable {
 		try { 
 			// Connect to db
 			con = Config.getConnection();
+			// Query database
 			ps = con.prepareStatement("SELECT * FROM tomcat_users WHERE user_name = ?");
 			ps.setString(1, uid);
 			result = ps.executeQuery();
+			
 			while(result.next()){
+				// Set values
 				user.setUid(result.getString(1));
 				user.setFirstName(result.getString(3));
 				user.setLastName(result.getString(4));

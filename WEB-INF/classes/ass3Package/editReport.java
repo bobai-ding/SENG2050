@@ -1,3 +1,12 @@
+/*
+	Author: William Paterson, c3280751
+	Author: Simeon Pento, c3282938
+	Author: Lachlan McRae, c3283344
+	
+	Last Modified: 9/6/19
+	Description: Edit report servlet
+*/
+
 package ass3Package;
 
 import java.io.IOException;
@@ -18,52 +27,44 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/editReport")
 public class editReport extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public editReport() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("/WEB-INF/jsp/user/Main.jsp").forward(request, response);
 	}
-
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Temp Values
 		String state = request.getParameter("state");
+		
 		Boolean knowledge = Boolean.parseBoolean(request.getParameter("knowledge"));
 		int reportID = Integer.parseInt(request.getParameter("reportID"));
+		
 		Time tempTime = null;
 		Date tempDate = null;
 		
 		System.out.println("Editing Report: " + reportID);
 		
 		if(state != null && knowledge != null) {
+			// Update report status And if in knowledge base
 			Database.updateWhere("reports", "Status", state, "ReportID", reportID);
 			Database.updateWhere("reports", "inKnowledge", knowledge, "ReportID", reportID);
+			
+			// If report is solved, add time solved
 			if(state.equals("resolved")) {
 				tempTime = Time.valueOf(LocalTime.now());
 				tempDate = Date.valueOf(LocalDate.now());
 				Database.updateWhere("reports", "TimeResolved", tempTime, "ReportID", reportID);
 				Database.updateWhere("reports", "DateResolved", tempDate, "ReportID", reportID);
             }
-		}else if(state == null && knowledge != null) {
+		} else if(state == null && knowledge != null) {
+			// Only update if in knowledge base
 			Database.updateWhere("reports", "inKnowledge", knowledge, "ReportID", reportID);
 		} else {
 			System.out.println("ERROR NULL");
 		}
 		
-		request.getRequestDispatcher("/ViewReports").forward(request, response); //redirect to main page
+		// Redirect to view reports
+		response.sendRedirect("ViewReports");
 		
 	}
 

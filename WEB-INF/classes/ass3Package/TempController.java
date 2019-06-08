@@ -1,3 +1,12 @@
+/*
+	Author: William Paterson, c3280751
+	Author: Simeon Pento, c3282938
+	Author: Lachlan McRae, c3283344
+	
+	Last Modified: 9/6/19
+	Description: Temp (Not really) Controller servlet
+*/
+
 package ass3Package;
 
 import java.io.IOException;

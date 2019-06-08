@@ -1,3 +1,12 @@
+/*
+	Author: William Paterson, c3280751
+	Author: Simeon Pento, c3282938
+	Author: Lachlan McRae, c3283344
+	
+	Last Modified: 9/6/19
+	Description: Report Object
+*/
+
 package ass3Package;
 
 import java.io.Serializable;
@@ -28,165 +37,123 @@ public class Report implements Serializable{
     private LocalDate dateResolved;
 
     private LinkedList<Comment> comments = new LinkedList<>();
-
+    
+    // Zero Arg Constructor
     Report(){
 
     }
     
-    public void editReport(String report){
-
-        // TODO need to format the time to remove the ms
-    	// Can use .withNano(0) to remove
-    	
-        //probs need to format the date to aus standards
-
-    	setTime(LocalTime.now());
-        setDate(LocalDate.now());
-        this.reportContent = report;
-    }
-
-    public void newCommentObject(Comment comment){
-
-        //create a new comment with a comment object
-
-        //set the number of the comment to the total of the size of the array
-
-        comment.setCommentPos(comments.size()+1);
-
-        comments.add(comment);
-
-    }
-
-    public void newCommentString(String comment, User author){
-
-        //create a new comment with a user object and a string
-
-        Comment newComment = new Comment(comment, author);
-
-        newComment.setCommentPos(comments.size()+1);
-
-        comments.add(newComment);
-
-    }
-
-    public void editComment(int pos, String newComment) {
-        //searches the comment linked list for a comment base on a position given
-
-        for(Comment s : comments){
-            if(s.getCommentPos() == pos){
-
-                //when it finds the position, it changes the comment
-
-                s.editComment(newComment);
-            }
-        }
-    }
-
-    // Getter / Setters
-    public Comment[] getComments(){
-
-        //returns all the current comments that a report has in an array
-
-        Comment[] outputComments = new Comment[comments.size()];
-
-        int i = 0;
-
-        for(Comment s : comments){
-            outputComments[i] = s;
-            i++;
-        }
-
-        return outputComments;
-    }
-
+    // Set comments
 	public void setComments(LinkedList<Comment> comments) {
 		this.comments = comments;
 	}
     
+	// Set Author
     public void setAuthor(User author){
         this.author = author;
     }
 
+    // Get Author
     public User getAuthor(){
         return author;
     }
     
+    // Get time
 	public LocalTime getTime() {
 		return time;
 	}
-
+	
+	// Set time
 	public void setTime(LocalTime time) {
 		this.time = time;
 	}
-
+	
+	// Get date
 	public LocalDate getDate() {
 		return date;
 	}
-
+	
+	// Get date
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-
+	
+	// Get report content
 	public String getReportContent() {
 		return reportContent;
 	}
-
+	
+	// Set report content
     public void setReportContent(String content) {
     	this.reportContent = content;
     }
     
+    // Get report title
 	public String getTitle() {
 		return title;
 	}
-
+	
+	// Set report title
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
+	
+	// Get report type
 	public String getType() {
 		return type;
 	}
-
+	
+	// Set report type
 	public void setType(String type) {
 		this.type = type;
 	}
-
+	
+	// Get report id
 	public int getReportid() {
 		return reportid;
 	}
-
+	
+	// Set report id
 	public void setReportid(int reportid) {
 		this.reportid = reportid;
 	}
 	
+	// Get report status
     public String getStatus() {
 		return status;
 	}
-
+    
+    // Set report status
 	public void setStatus(String status) {
 		this.status = status;
 	}
 	
+	// Get if report is in knowledge base
 	public Boolean getInKnowledge() {
 		return inKnowledge;
 	}
-
+	
+	// Set if report is in knowledge base
 	public void setInKnowledge(Boolean inKnowledge) {
 		this.inKnowledge = inKnowledge;
 	}
 	
+	// Get time report was resolved
 	public LocalTime getTimeResolved() {
 		return timeResolved;
 	}
-
+	
+	// Set time report was solved
 	public void setTimeResolved(LocalTime timeResolved) {
 		this.timeResolved = timeResolved;
 	}
-
+	
+	// Get date resolved
 	public LocalDate getDateResolved() {
 		return dateResolved;
 	}
-
+	
+	// Set date resolved
 	public void setDateResolved(LocalDate dateResolved) {
 		this.dateResolved = dateResolved;
 	}
@@ -198,6 +165,8 @@ public class Report implements Serializable{
 				+ ", date=" + date + ", timeResolved=" + timeResolved + ", dateResolved=" + dateResolved + ", comments="
 				+ comments + "]";
 	}
+	
+	//TODO clean methods up
 
 	// Database
     // Return all reports as a list
@@ -218,6 +187,7 @@ public class Report implements Serializable{
 			while(result.next()){ //step 5
 				Report report = new Report();
 				
+				// Set values
 				report.setReportid(result.getInt(1));
 				report.setAuthor(User.getSpecificUser(result.getString(2)));
 				report.setTitle(result.getString(3));
@@ -276,6 +246,7 @@ public class Report implements Serializable{
 			while(result.next()){ //step 5
 				Report report = new Report();
 				
+				// Set values
 				report.setReportid(result.getInt(1));
 				report.setAuthor(User.getSpecificUser(result.getString(2)));
 				report.setTitle(result.getString(3));
@@ -334,6 +305,7 @@ public class Report implements Serializable{
 			while(result.next()){ //step 5
 				Report report = new Report();
 				
+				// Set values
 				report.setReportid(result.getInt(1));
 				report.setAuthor(User.getSpecificUser(result.getString(2)));
 				report.setTitle(result.getString(3));
@@ -397,6 +369,7 @@ public class Report implements Serializable{
 			while(result.next()) { //step 5
 				Report report = new Report();
 				
+				// Set values
 				report.setReportid(result.getInt(1));
 				report.setAuthor(User.getSpecificUser(result.getString(2)));
 				report.setTitle(result.getString(3));
