@@ -54,24 +54,27 @@
 			</c:if>
 			
 		<% } else { %>
-			<c:if test = "${specificReport.status == 'completed'}">
-			<h3>Please select if the the issue has been resolved:</h3>
-			<form action="editReport" method="POST">
-				<input type="radio" name="state" value="inProgress">No<br>
-				<input type="radio" name="state" value="resolved" required>Yes<br>
-				<input type="hidden" name="reportID" value="${specificReport.reportid}">
-				<input type="hidden" name="knowledge" value="false">
-				<input type="submit" name="submit">
-			</form>
-			</c:if>
+			<c:if test="${user.getName()} == ${specificReport.getAuthor()}">
+				<c:if test = "${specificReport.status == 'completed'}">
+				<h3>Please select if the the issue has been resolved:</h3>
+				<form action="editReport" method="POST">
+					<input type="radio" name="state" value="inProgress">No<br>
+					<input type="radio" name="state" value="resolved" required>Yes<br>
+					<input type="hidden" name="reportID" value="${specificReport.reportid}">
+					<input type="hidden" name="knowledge" value="false">
+					<input type="submit" name="submit">
+				</form>
+				</c:if>
+			
 		
-			<form action="editReport" method="POST">
-				<h3>Has the problem been solved?</h3>
-				<input type="checkbox" name="state" value="resolved" required>Yes 
-				<input type="hidden" name="reportID" value="${specificReport.reportid}">
-				<input type="hidden" name="knowledge" value="false">
-				<input type="submit" name="submit">
-			</form>		
+				<form action="editReport" method="POST">
+					<h3>Has the problem been solved?</h3>
+					<input type="checkbox" name="state" value="resolved" required>Yes 
+					<input type="hidden" name="reportID" value="${specificReport.reportid}">
+					<input type="hidden" name="knowledge" value="false">
+					<input type="submit" name="submit">
+				</form>	
+			</c:if>	
 		
 		<%} %>
 	</div>
