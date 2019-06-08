@@ -163,7 +163,6 @@ public class Comment implements Serializable {
 				// Retrieve values from database
 				comment.setCommentNum(result.getInt(1));
 				comment.setReportid(result.getInt(2));
-				// TODO check this against other users
 				user.setUid(result.getString(3));
 				comment.setAuthor(user);
 				comment.setComment(result.getString(4));
@@ -209,7 +208,6 @@ public class Comment implements Serializable {
 				// Retrieve values from query
 				comment.setCommentNum(result.getInt(1));
 				comment.setReportid(result.getInt(2));
-				// TODO check this against other users
 				user.setUid(result.getString(3));
 				comment.setAuthor(user);
 				comment.setComment(result.getString(4));
