@@ -65,6 +65,12 @@ General stuff (and in no specific order);
     - [x] 17. “Not all incidents will make it to the Knowledge-Base right away. We need a useful way to search over the old incidents that aren’t in the Knowledge-Base” – IT staff. (weight 20)
     - [x] Total: 60/30
     
+12. [ ] README.TXT
+    - [ ] how to setup database
+    - [ ] how to setup tomcat
+    - [ ] detail completed additional requirements
+    - [ ] other stuff?
+    
 12. [x] Will;
 
     1. Database stuff 
