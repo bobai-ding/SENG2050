@@ -57,6 +57,8 @@
 			<th>Type</th>
 			<th>Time</th>
 			<th>Date</th>
+			<th>Time Resolved</th>
+			<th>Date Resolved</th>
 			<th>Status</th>
 			<th></th>
 		</tr>
@@ -74,9 +76,11 @@
 				<td><c:out value="${report.author.uid}"/></td>
 				<td><c:out value="${report.title}"/></td>
 				<td><p class="limited"><c:out value="${report.reportContent}"/></p></td>
-				<td><c:out value="${report.type}"/></td>
-				<td><c:out value="${report.time}"/></td>
-				<td><c:out value="${report.date}"/></td>
+				<td><c:out value="${report.getType()}"/></td>
+				<td><c:out value="${report.getTime()}"/></td>
+				<td><c:out value="${report.getDate()}"/></td>
+				<td><c:out value="${report.getTimeResolved()}"/></td>
+				<td><c:out value="${report.getDateResolved()}"/></td>
 				<td><c:out value="${report.status}"/></td>
 				<td> 
 					<form action="Controller" method="POST">
@@ -100,8 +104,10 @@
 				<td><c:out value="${report.title}"/></td>
 				<td><p><c:out value="${report.reportContent}"/></p></td>
 				<td><c:out value="${report.type}"/></td>
-				<td><c:out value="${report.time}"/></td>
-				<td><c:out value="${report.date}"/></td>
+				<td><c:out value="${report.getTime()}"/></td>
+				<td><c:out value="${report.getDate()}"/></td>
+				<td><c:out value="${report.getTimeResolved()}"/></td>
+				<td><c:out value="${report.getDateResolved()}"/></td>
 				<td><c:out value="${report.status}"/></td>
 				<td> 
 					<%if(request.isUserInRole("staff")){ %>
