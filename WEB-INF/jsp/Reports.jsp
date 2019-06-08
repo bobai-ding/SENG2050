@@ -11,6 +11,13 @@
 <body>
 	<h1> Reports </h1>
 	<h4>Logged in as: <c:out value="${user.getName()}"/> </h4>
+	
+	<%if (session.getAttribute("newReport").equals(true)){
+        	out.print("<h4>You have sucessfully made a new report</h4>");
+        	session.setAttribute("newReport", false);
+    	}
+    	%>
+	
 	<hr>
 	<div class="bottom">
 	<form action="ViewReports" method="POST">
