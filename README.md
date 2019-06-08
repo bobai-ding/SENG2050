@@ -53,7 +53,7 @@ General stuff (and in no specific order);
     - [x] No comments on resolved except if in knowledge base
     - [ ] Add resolution details to report
     - [x] staff can add to knowledge base when resolved AND completed
-    - [ ] multi user safety
+    - [x] multi user safety
     - [x] HTML validity
     - [x] request parameter security? nah she'll be rite
     
