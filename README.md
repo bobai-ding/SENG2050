@@ -42,8 +42,8 @@ General stuff (and in no specific order);
     - [ ] currently refreshing resend the form
     - [ ] a bug with user permissions
     
-5. [ ] Need to add to report db
-    - [ ] date time resolved
+5. [X] Need to add to report db
+    - [X] date time resolved
     
 6. [x] Need to add to user db
     - [x] Name
