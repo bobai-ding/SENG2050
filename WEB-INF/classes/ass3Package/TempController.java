@@ -1,15 +1,12 @@
 package ass3Package;
 
 import java.io.IOException;
-import java.security.Principal;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.catalina.realm.GenericPrincipal;
 
 @WebServlet("/Controller")
 public class TempController extends HttpServlet {
@@ -69,11 +66,6 @@ public class TempController extends HttpServlet {
 		request.setAttribute("user", request.getUserPrincipal());
 		request.setAttribute("userReports", Report.getUserReports(uid));
 		System.out.println("user id: " + uid + " is getting their reports");
-		
-		final Principal userPrincipal = request.getUserPrincipal();
-	    GenericPrincipal genericPrincipal = (GenericPrincipal) userPrincipal;
-	    final String[] roles = genericPrincipal.getRoles();
-	    request.setAttribute("userRoles", roles);
 		
 		getServletContext().getRequestDispatcher(dispatchLocation).forward(request, response);
 		
