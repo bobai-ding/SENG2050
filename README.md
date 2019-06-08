@@ -55,7 +55,7 @@ General stuff (and in no specific order);
     - [x] staff can add to knowledge base when resolved AND completed
     - [ ] multi user safety
     - [ ] HTML validity
-    - [ ] request parameter security?
+    - [x] request parameter security? nah she'll be rite
     
 11. [x] Completed aditional requirements 
     - [x] 3.“Sometimes the language that IT staff use is complicated, maybe users should be able to add comments to the Knowledge-Base articles to help other users.” (weight 10)
