@@ -1,12 +1,10 @@
 <xml>	
 	<!-- Change -->
-	<Realm className="org.apache.catalina.realm.LockOutRealm">
 		<Realm className="org.apache.catalina.realm.UserDatabaseRealm"
 	               resourceName="UserDatabase"/>
 	</Realm>
 	
 	<!-- To -->
-	<Realm className="org.apache.catalina.realm.LockOutRealm">
 	     <Realm className="org.apache.catalina.realm.JDBCRealm"
 		driverName="com.mysql.jdbc.Driver"
 		connectionURL="jdbc:mysql://localhost:3306/Will_Simi_Lachlan"
