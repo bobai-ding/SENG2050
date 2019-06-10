@@ -30,8 +30,9 @@ public class Report implements Serializable{
     private String resolutionDetails;
     private int reportid;
     private Boolean inKnowledge;
-    
-    private LocalTime time;
+    private String additional;
+
+	private LocalTime time;
     private LocalDate date;
     
     private LocalTime timeResolved;
@@ -162,13 +163,22 @@ public class Report implements Serializable{
 	public void setResolutionDetails(String resolutionDetails) {
 		this.resolutionDetails = resolutionDetails;
 	}
+	
+    public String getAdditional() {
+		return additional;
+	}
+
+
+	public void setAdditional(String additional) {
+		this.additional = additional;
+	}
 
 	@Override
 	public String toString() {
 		return "Report [author=" + author + ", reportContent=" + reportContent + ", title=" + title + ", type=" + type
 				+ ", status=" + status + ", reportid=" + reportid + ", inKnowledge=" + inKnowledge + ", time=" + time
 				+ ", date=" + date + ", timeResolved=" + timeResolved + ", dateResolved=" + dateResolved + ", comments="
-				+ "]";
+				+ ", additional =" + additional + "]";
 	}
 	
 	//TODO clean methods up
@@ -397,7 +407,7 @@ public class Report implements Serializable{
 		}
 	
 	// Add a new report to database
-	public static void addReport(String uid, String title, String reportContent, String type, String status) {
+	public static void addReport(String uid, String title, String reportContent, String type, String status, String addition) {
 		Connection con = null;
 		PreparedStatement ps = null;
 		Time tempTime = Time.valueOf(LocalTime.now());
@@ -408,7 +418,7 @@ public class Report implements Serializable{
 		
 		try {
 			con = Config.getConnection();
-			ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO reports VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setInt(1, reportid);
 			ps.setString(2, uid);
 			ps.setString(3, title);
@@ -421,6 +431,7 @@ public class Report implements Serializable{
 			ps.setTime(10, null);
 			ps.setDate(11, null);
 			ps.setString(12, null);
+			ps.setString(13, addition);
 			ps.executeUpdate();
 		} catch(Exception e){
 			System.err.println(e.getMessage());
@@ -433,8 +444,8 @@ public class Report implements Serializable{
 	
 	// Create table in database for reports
 	public static void createReportTable() {
-		String varNames[] = {"ReportID", "UserID", "Title", "ReportContent", "Type", "Time", "Date", "Status", "inKnowledge", "TimeResolved", "DateResolved", "ResolutionDetails"};
-		String varType[] = {"INT", "VARCHAR(80)", "VARCHAR(80)", "VARCHAR(1000)", "VARCHAR(80)", "TIME", "DATE", "VARCHAR(80)", "BOOLEAN", "TIME", "DATE", "VARCHAR(500)"};
+		String varNames[] = {"ReportID", "UserID", "Title", "ReportContent", "Type", "Time", "Date", "Status", "inKnowledge", "TimeResolved", "DateResolved", "ResolutionDetails", "AdditionalInformation"};
+		String varType[] = {"INT", "VARCHAR(80)", "VARCHAR(80)", "VARCHAR(1000)", "VARCHAR(80)", "TIME", "DATE", "VARCHAR(80)", "BOOLEAN", "TIME", "DATE", "VARCHAR(500)", "VARCHAR(500)"};
 		
 		Database.createTableString("reports", varNames, varType);
 	}
